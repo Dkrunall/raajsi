@@ -51,13 +51,13 @@ export default function Navbar({ children }) {
     <>
       <nav className="navbar navbar-expand-lg bg-white border-bottom py-1 fixed-top">
         <div className="container-fluid px-5">
-          <div className="row w-100 align-items-center position-relative">
+          <div className="row w-100 align-items-center justify-content-between position-relative">
             <div className="col-4 d-none d-lg-flex justify-content-start gap-4 align-items-center nav-links-left">
               <Link href="/" className={`nav-link nav-item fs-6 nudge-right ${isActive("/") ? "active-link" : ""}`}>ROYAL HOME</Link>
               <Link href="/royal-promises" className={`nav-link nav-item fs-6 nudge-rig ${isActive("/royal-promises") ? "active-link" : ""}`}>THE ROYAL PROMISE</Link>
             </div>
-            <div className="col-8 col-lg-4 d-flex justify-content-center justify-content-lg-center">
-              <Link href="/" className="navbar-brand mx-auto">
+            <div className="col-8 col-lg-4 d-flex justify-content-start justify-content-lg-center">
+              <Link href="/" className="navbar-brand">
                 <Image src="/royal-logo.png" alt="Royal Logo" width={50} height={50} style={{ objectFit: "contain" }} />
               </Link>
             </div>
@@ -174,7 +174,7 @@ export default function Navbar({ children }) {
           <div className="drawer-header">
             <div className="drawer-brand">
               <Image src="/royal-logo.png" alt="Royal Logo" width={40} height={40} style={{ objectFit: "contain" }} />
-              <span className="brand-text">ROYAL</span>
+              <span className="brand-text">RAAJSI</span>
             </div>
             <button type="button" className="drawer-close-btn" onClick={() => setMobileMenuOpen(false)} aria-label="Close menu">
               <div className="close-icon">
