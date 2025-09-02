@@ -1,375 +1,340 @@
 "use client";
 
-import Image from "next/image";
-import { useEffect, useState } from "react";
+import React from "react";
 
-export default function RoyalPromise() {
-  const [scrollY, setScrollY] = useState(0);
-  const [visibleItems, setVisibleItems] = useState([true, true, true, true]); // Default all visible
+export default function RoyalPromisesPage() {
+  const items = [
+    {
+      title:
+        "TIME-TESTED FORMULAS DERIVED FROM ANCIENT SCIENCES AND SCRIPTURES",
+      desc:
+        "Rooted in Ayurveda and proven through generations of ritual wisdom.",
+      img: "/blog1.png",
+    },
+    {
+      title: "HIGH-QUALITY, ORGANIC INGREDIENTS FOR OPTIMAL EFFICACY",
+      desc:
+        "Sourced from certified farms to ensure purity and potency in every drop.",
+      img: "/blog2.png",
+    },
+    {
+      title: "ECO-FRIENDLY MANUFACTURING PROCESSES",
+      desc: "Produced in small batches using low-impact, conscious methods.",
+      img: "/blog3.png",
+    },
+    {
+      title: "CRUELTY-FREE AND SUSTAINABLE PRACTICES",
+      desc:
+        "Approved by ethical standards—never tested on animals, always kind to nature.",
+      img: "/blog1.png",
+    },
+    {
+      title: "ECO-FRIENDLY MANUFACTURING PROCESSES",
+      desc: "Produced in small batches using low-impact, conscious methods.",
+      img: "/blog2.png",
+    },
+    {
+      title: "CRUELTY-FREE AND SUSTAINABLE PRACTICES",
+      desc:
+        "Approved by ethical standards—never tested on animals, always kind to nature.",
+      img: "/blog3.png",
+    },
+  ];
 
-  useEffect(() => {
-    let ticking = false;
-    
-    const handleScroll = () => {
-      if (!ticking) {
-        requestAnimationFrame(() => {
-          const currentScrollY = window.scrollY;
-          setScrollY(currentScrollY);
-          
-          // Calculate which items should be visible based on scroll position
-          const section = document.querySelector('section:nth-child(2)');
-          if (section) {
-            const sectionTop = section.offsetTop;
-            const sectionHeight = section.offsetHeight;
-            const windowHeight = window.innerHeight;
-            
-            // Calculate scroll progress within the section with smoother threshold
-            const scrollProgress = (currentScrollY - sectionTop + windowHeight * 0.8) / (sectionHeight + windowHeight * 0.6);
-            const normalizedProgress = Math.max(0, Math.min(1, scrollProgress));
-            
-            // Determine which items should be visible with improved threshold
-            const totalItems = 4;
-            const itemsToShow = Math.ceil(normalizedProgress * totalItems);
-            const newVisibleItems = Array.from({ length: totalItems }, (_, i) => i < itemsToShow);
-            setVisibleItems(newVisibleItems);
-          }
-          ticking = false;
-        });
-        ticking = true;
-      }
-    };
-
-    // Initial call to set visible items
-    handleScroll();
-    
-    window.addEventListener('scroll', handleScroll, { passive: true });
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
+  const headingColor = "#C28A58"; // regal gold/bronze
+  const bodyColor = "#5E4D3F";
+  const lineColor = "#E9D9C9";
+  const cream = "#FBF4EC";
 
   return (
-    <>
-      <style jsx>{`
-        @media (max-width: 768px) {
-          .mobile-responsive-image {
-            width: 280px !important;
-            height: 380px !important;
-            margin-left: auto !important;
-            margin-right: auto !important;
-            display: block !important;
-            margin-top: 20px !important;
-          }
-          .mobile-responsive-content {
-            padding-left: 15px !important;
-            padding-right: 15px !important;
-            text-align: center !important;
-            padding-top: 2rem !important;
-          }
-          .mobile-responsive-title {
-            font-size: 1.2rem !important;
-            margin-bottom: 15px !important;
-            text-align: center !important;
-          }
-          .mobile-responsive-text {
-            font-size: 0.9rem !important;
-            line-height: 1.4 !important;
-            text-align: center !important;
-          }
-          .mobile-section {
-            min-height: 60vh !important;
-            padding-top: 80px !important;
-            padding-bottom: 40px !important;
-          }
-          .mobile-card-section {
-            min-height: auto !important;
-            padding-top: 40px !important;
-            padding-bottom: 40px !important;
-          }
-        }
-      `}</style>
-      <section
-        className="d-flex flex-column justify-content-center align-items-center text-center mobile-section"
+    <main>
+      {/* Banner Section - similar style to homepage hero */}
+      <div
+        className="position-relative text-white"
         style={{
-          minHeight: "80vh",
-          paddingTop: "120px",
-          paddingBottom: "60px",
-          position: "relative",
-          backgroundColor: "#fff",
-          backgroundImage: "url('/im1.png')",
-          backgroundSize: "400px 400px",
+          height: "100vh",
+          backgroundImage: "url('/heromain.png')",
+          backgroundSize: "cover",
           backgroundPosition: "center",
           backgroundRepeat: "no-repeat",
         }}
       >
-        <h2
+        <div
+          className="position-absolute"
           style={{
-            fontFamily: "'Rose Velt Personal Use Only', serif",
-            color: "#4C0A2E",
-            fontWeight: "bold",
-            fontSize: "1.6rem",
-            letterSpacing: "1px",
-            margin: 0,
-            textTransform: "uppercase",
-            zIndex: 1,
-            opacity: 1,
-            transform: `translateY(${scrollY * 0.1}px)`,
-            transition: "transform 0.3s ease-out",
+            top: "clamp(80px, 12vh, 120px)",
+            left: "clamp(24px, 6vw, 80px)",
+            maxWidth: 900,
+            pointerEvents: "none",
           }}
         >
-          <span style={{ fontSize: "1.8rem" }}>A</span>T <span style={{ fontSize: "1.8rem" }}>R</span>AAJSI, <span style={{ fontSize: "1.8rem" }}>L</span>UXURY <span style={{ fontSize: "1.8rem" }}>M</span>EETS <span style={{ fontSize: "1.8rem" }}>R</span>ESPONSIBILITY.
-        </h2>
-
-        <p
-          style={{
-            fontSize: "14px",
-            fontWeight: "500",
-            maxWidth: "700px",
-            zIndex: 1,
-            opacity: 1,
-            transform: `translateY(${scrollY * 0.05}px)`,
-            transition: "transform 0.3s ease-out",
-          }}
-          className="text-dark mt-2"
-        >
-          OUR ROYAL PROMISE IS BUILT ON INTEGRITY, TRANSPARENCY, AND TIMELESS
-          CARE  <br /> -FOR YOU AND THE PLANET.
-        </p>
-
-        <div className="mt-5 d-flex justify-content-center" style={{ marginTop: "384px" }}>
-          <button
-            onClick={() => {
-              const cardSection = document.querySelector('#card-section');
-              if (cardSection) {
-                // Scroll to the middle of the card section
-                const sectionTop = cardSection.offsetTop;
-                const sectionHeight = cardSection.offsetHeight;
-                const windowHeight = window.innerHeight;
-                const scrollTo = sectionTop + (sectionHeight / 2) - (windowHeight / 2);
-                
-                window.scrollTo({
-                  top: scrollTo,
-                  behavior: 'smooth'
-                });
-              }
-            }}
+          <h1
             style={{
-              fontSize: "1.4rem",
-              border: "2px solid #000",
-              borderRadius: "50%",
-              width: "50px",
-              height: "50px",
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "center",
-              cursor: "pointer",
-              backgroundColor: "transparent",
-              color: "#000",
-              transition: "all 0.3s ease",
-              outline: "none",
-              fontWeight: "bold",
-              transform: `translateY(${scrollY * 0.02}px)`,
-            }}
-            onMouseEnter={(e) => {
-              e.target.style.transform = "scale(1.15)";
-              e.target.style.borderColor = "#000";
-            }}
-            onMouseLeave={(e) => {
-              e.target.style.transform = `scale(1) translateY(${scrollY * 0.02}px)`;
-              e.target.style.borderColor = "#000";
+              margin: 0,
+              color: "#FFFFFF",
+              fontFamily: "'Rose Velt Personal Use Only', serif",
+              fontWeight: 400,
+              fontSize: "clamp(32px, 5.5vw, 32px)",
+              lineHeight: 1.1,
+              letterSpacing: 0.5,
+              textTransform: "none",
+              textShadow: "0 2px 24px rgba(0,0,0,0.55), 0 0 2px rgba(0,0,0,0.4)",
+              marginTop: "60px",
             }}
           >
-            &#8595;
-          </button>
+            At Raajsi, luxury meets responsibility.
+          </h1>
+          <p
+            style={{
+              marginTop: 12,
+              color: "#FFFFFF",
+              fontFamily: "Avenir, sans-serif",
+              fontSize: "clamp(14px, 1.4vw, 18px)",
+              lineHeight: 1.6,
+              maxWidth: 700,
+              textShadow: "0 1px 12px rgba(0,0,0,0.45)",
+            }}
+          >
+            Our royal promise is built on integrity, transparency, and timeless care - for you and the planet.
+          </p>
         </div>
-      </section>
+      </div>
 
-      {/* Card Section - Second Section */}
-      <section
-        id="card-section"
-        className="d-flex align-items-center justify-content-center mobile-card-section"
-        style={{
-          maxWidth: "1400px",
-          margin: "0 auto",
-          padding: "0 15px",
-          minHeight: "120vh",
-          position: "relative",
-          borderRadius: "30px",
-          overflow: "hidden",
-          top: "-50px",
-        }}
-      >
-        <div
-          style={{
-            position: "absolute",
-            top: "-20px",
-            left: 0,
-            right: 0,
-            bottom: 0,
-            backgroundImage: "url('/background3.png')",
-            backgroundSize: "cover",
-            backgroundPosition: "center",
-            backgroundRepeat: "no-repeat",
-            borderRadius: "30px",
-            zIndex: -1,
-            opacity: 0.5,
-            transform: `translateY(${scrollY * 0.1}px)`,
-            transition: "transform 0.3s ease-out",
-          }}
-        ></div>
-
-        <div className="container">
-          <div className="row">
-            <div className="col-md-4 col-12">
-              <img
-                src="/image5.png"
-                alt="Royal Promise Art"
-                className="img-fluid mobile-responsive-image"
-                style={{
-                  width: "350px",
-                  height: "500px",
-                  objectFit: "cover",
-                  borderRadius: "200px",
-                  position: "relative",
-                  marginTop: "50px",
-                  marginLeft: "80px",
-                }}
-              />
-            </div>
-
-            <div className="col-md-8 col-12">
-              <div 
-                className="ps-md-5 pt-5 pb-5 mobile-responsive-content"
-                style={{
-                  transform: `translateY(${Math.sin(scrollY * 0.002) * 3}px) rotateX(${Math.sin(scrollY * 0.001) * 0.5}deg) scale(${1 + Math.sin(scrollY * 0.0015) * 0.01})`,
-                  transition: "transform 0.4s ease-out",
-                  position: "relative",
-                  zIndex: 2,
-                  perspective: "800px",
-                  transformStyle: "preserve-3d",
-                  willChange: "transform",
-                  paddingTop: "3rem",
-                  paddingBottom: "3rem",
-                }}
-              >
-                {[
-                  {
-                    title:
-                      "TIME-TESTED FORMULAS DERIVED FROM ANCIENT SCIENCES AND SCRIPTURES",
-                    desc: "Rooted in Ayurveda and proven through generations of ritual wisdom",
-                  },
-                  {
-                    title:
-                      "HIGH-QUALITY, ORGANIC INGREDIENTS FOR OPTIMAL EFFICACY",
-                    desc: "Sourced from certified farms to ensure purity and potency in every drop.",
-                  },
-                  {
-                    title: "ECO-FRIENDLY MANUFACTURING PROCESSES",
-                    desc: "Produced in small batches using low-impact, conscious methods.",
-                  },
-                  {
-                    title: "CRUELTY-FREE AND SUSTAINABLE PRACTICES",
-                    desc: "Approved by ethical standards—never tested on animals, always kind to nature.",
-                  },
-                ].map((item, idx) => (
-                  <div 
-                    key={idx} 
-                    className="mb-4"
-                    style={{
-                      opacity: visibleItems[idx] ? 1 : 0.75,
-                      transform: visibleItems[idx] 
-                        ? `translateY(${-scrollY * 0.03 * (idx + 1)}px) scale(1) rotateZ(${scrollY * 0.0002 * (idx + 1)}deg)` 
-                        : `translateY(${3 - scrollY * 0.03 * (idx + 1)}px) scale(0.995) rotateZ(${scrollY * 0.0002 * (idx + 1)}deg)`,
-                      transition: `all 1s cubic-bezier(0.25, 0.46, 0.45, 0.94)`,
-                      // Minimize height for second and fourth items
-                      marginBottom: idx === 1 || idx === 3 ? "20px" : "40px",
-                      filter: visibleItems[idx] ? "drop-shadow(0 2px 4px rgba(0,0,0,0.1))" : "drop-shadow(0 1px 2px rgba(0,0,0,0.05))",
-                    }}
-                  >
-                    <h6
-                      className="mobile-responsive-title"
-                      style={{
-                        fontFamily: "'Rose Velt Personal Use Only', serif",
-                        color: "#000",
-                        fontWeight: "500",
-                        fontSize: "1.6rem",
-                        lineHeight: "1.3",
-                        marginBottom: idx === 1 || idx === 3 ? "4px" : "8px",
-                        transition: "transform 0.4s ease-out",
-                        textRendering: "optimizeLegibility",
-                        WebkitFontSmoothing: "antialiased",
-                        MozOsxFontSmoothing: "grayscale",
-                        maxWidth: "100%",
-                      }}
-                    >
-                      {item.title}
-                    </h6>
-
-                    <div className="d-flex align-items-center" style={{ 
-                      marginTop: idx === 1 || idx === 3 ? "8px" : "16px",
-                      maxWidth: "100%",
-                      overflow: "hidden"
-                    }}>
-                      {/* Decorative Icon */}
-                      <div className="me-2" style={{ marginTop: "0px", flexShrink: 0 }}>
-                        <img
-                          src="/dot.png"
-                          alt="Design"
-                          style={{ 
-                            width: "20px",
-                            transform: visibleItems[idx] 
-                              ? `scale(1.05) rotate(${Math.min(scrollY * 0.002, 2)}deg)` 
-                              : `scale(1) rotate(${Math.min(scrollY * 0.002, 2)}deg)`,
-                            transition: "transform 0.4s ease-out",
-                            filter: visibleItems[idx] ? "drop-shadow(0 1px 2px rgba(180, 131, 56, 0.2))" : "none",
-                          }}
-                        />
-                      </div>
-                      
-                      <div style={{ flex: 1 }}>
-                        <p 
-                          className="mobile-responsive-text"
-                          style={{ 
-                            fontSize: "13px", 
-                            color: "#333", 
-                            lineHeight: "1.5",
-                            margin: 0,
-                            transform: visibleItems[idx] 
-                              ? `translateY(0px)` 
-                              : `translateY(1px)`,
-                            transition: "transform 0.4s ease-out",
-                            opacity: visibleItems[idx] ? 1 : 0.85,
-                          }}
-                        >
-                          {item.desc}
-                        </p>
-                      </div>
-                    </div>
-
-                    <div className="my-3" style={{ 
-                      marginTop: idx === 1 || idx === 3 ? "12px" : "24px",
-                      marginBottom: idx === 1 || idx === 3 ? "12px" : "24px"
-                    }}>
-                      <img
-                        src="/line.png"
-                        alt="Divider"
-                        style={{ 
-                          height: idx === 1 || idx === 3 ? "40px" : "60px", 
-                          width: "1px",
-                          opacity: visibleItems[idx] ? 1 : 0.5,
-                          transform: visibleItems[idx] 
-                            ? `scaleY(1) translateY(${scrollY * 0.002}px) rotate(${scrollY * 0.005}deg)` 
-                            : `scaleY(0.95) translateY(${scrollY * 0.002}px) rotate(${scrollY * 0.005}deg)`,
-                          transition: "all 0.7s cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.25s",
-                          filter: visibleItems[idx] ? "drop-shadow(0 1px 1px rgba(0,0,0,0.1))" : "none",
-                        }}
-                      />
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </div>
+      {/* Section Title */}
+      <section style={{ padding: "48px 16px 0", background: "#fff" }}>
+        <div style={{ maxWidth: 1120, margin: "0 auto", textAlign: "center" }}>
+          <div style={{ display: "inline-flex", alignItems: "center", gap: 12 }}>
+            <img src="/left-design.png" alt="orn-left" style={{ width: 14, height: 14 }} />
+            <h3
+              style={{
+                fontFamily: "'Rose Velt Personal Use Only', serif",
+                fontSize: "clamp(18px, 2.2vw, 28px)",
+                letterSpacing: 0.6,
+                textTransform: "uppercase",
+                color: "#4C0A2E",
+                margin: 0,
+              }}
+            >
+              THE ROYAL PROMISE
+            </h3>
+            <img src="/right-design.png" alt="orn-right" style={{ width: 14, height: 14 }} />
           </div>
         </div>
       </section>
-    </>
+
+      {/* Timeline Card */}
+      <section style={{ padding: "28px 16px 72px" }}>
+        <div
+          className="rp-card"
+          style={{
+            maxWidth: 1240,
+            margin: "0 auto",
+            background: cream,
+            border: `1px solid ${lineColor}`,
+            borderRadius: 16,
+            padding: "40px 36px",
+            position: "relative",
+            boxShadow: "0 10px 28px rgba(0,0,0,0.06)",
+          }}
+        >
+          {/* Center Vertical Line */}
+          <div
+            aria-hidden
+            style={{
+              position: "absolute",
+              top: 18,
+              bottom: 18,
+              left: "50%",
+              width: 1,
+              transform: "translateX(-50%)",
+              background: lineColor,
+            }}
+          />
+
+          <div>
+            {items.map((it, i) => {
+              const isLeftImage = i % 2 === 0; // alternate
+              return (
+                <div
+                  key={i}
+                  className="rp-row"
+                  data-order={isLeftImage ? "image-first" : "text-first"}
+                  style={{
+                    display: "grid",
+                    gridTemplateColumns: "1fr 1fr",
+                    gap: 48,
+                    alignItems: "center",
+                    position: "relative",
+                    padding: "22px 0",
+                  }}
+                >
+                  {/* decorative leaf near the center */}
+                  <img
+                    src="/dot.png"
+                    alt="decor"
+                    style={{
+                      position: "absolute",
+                      left: "50%",
+                      top: "50%",
+                      transform: "translate(-50%, -50%)",
+                      width: 18,
+                      height: 18,
+                      zIndex: 2,
+                      filter: "drop-shadow(0 1px 1px rgba(0,0,0,0.15))",
+                    }}
+                  />
+
+                  {/* Left cell */}
+                  {isLeftImage ? (
+                    <div className="rp-media" style={{ width: "92%", justifySelf: "start" }}>
+                      <img
+                        src={it.img}
+                        alt="visual"
+                        className="rp-img"
+                        style={{
+                          width: "100%",
+                          height: 240,
+                          objectFit: "cover",
+                          borderRadius: 14,
+                          boxShadow: "0 8px 22px rgba(0,0,0,0.10)",
+                          transition: "transform .35s ease, box-shadow .35s ease",
+                        }}
+                      />
+                    </div>
+                  ) : (
+                    <div className="rp-text" style={{ textAlign: "right" }}>
+                      <img src="/dot.png" alt="" className="rp-mobile-icon" />
+                       <h4
+                         style={{
+                           fontFamily: "'Rose Velt Personal Use Only', serif",
+                           color: headingColor,
+                           fontSize: 22,
+                           textTransform: "uppercase",
+                           letterSpacing: 0.6,
+                           lineHeight: 1.4,
+                           margin: 0,
+                         }}
+                       >
+                         {it.title}
+                       </h4>
+                      <p
+                        style={{
+                          margin: "10px 0 0",
+                          fontSize: 13,
+                          color: "#6A5B51",
+                          letterSpacing: 0.15,
+                          lineHeight: 1.65,
+                          fontFamily: "Avenir, sans-serif",
+                        }}
+                      >
+                        {it.desc}
+                      </p>
+                    </div>
+                  )}
+
+                  {/* Right cell */}
+                  {!isLeftImage ? (
+                    <div className="rp-media" style={{ width: "92%", justifySelf: "end" }}>
+                      <img
+                        src={it.img}
+                        alt="visual"
+                        className="rp-img"
+                        style={{
+                          width: "100%",
+                          height: 240,
+                          objectFit: "cover",
+                          borderRadius: 14,
+                          boxShadow: "0 8px 22px rgba(0,0,0,0.10)",
+                          transition: "transform .35s ease, box-shadow .35s ease",
+                        }}
+                      />
+                    </div>
+                  ) : (
+                    <div className="rp-text" style={{ textAlign: "left" }}>
+                      <img src="/dot.png" alt="" className="rp-mobile-icon" />
+                       <h4
+                         style={{
+                           fontFamily: "'Rose Velt Personal Use Only', serif",
+                           color: headingColor,
+                           fontSize: 22,
+                           textTransform: "uppercase",
+                           letterSpacing: 0.6,
+                           lineHeight: 1.4,
+                           margin: 0,
+                         }}
+                       >
+                         {it.title}
+                       </h4>
+                      <p
+                        style={{
+                          margin: "10px 0 0",
+                          fontSize: 13,
+                          color: "#6A5B51",
+                          letterSpacing: 0.15,
+                          lineHeight: 1.65,
+                          fontFamily: "Avenir, sans-serif",
+                        }}
+                      >
+                        {it.desc}
+                      </p>
+                    </div>
+                  )}
+                </div>
+              );
+            })}
+          </div>
+        </div>
+      </section>
+
+      <style jsx>{`
+        .rp-media:hover .rp-img {
+          transform: translateY(-2px) scale(1.025);
+          box-shadow: 0 12px 30px rgba(0,0,0,0.14);
+        }
+        .rp-text:hover {
+          transform: translateY(-1px);
+          transition: transform .25s ease;
+        }
+        .rp-mobile-icon { display: none; }
+         @media (max-width: 992px) {
+          .rp-row {
+            grid-template-columns: 1fr !important;
+          }
+          .rp-row > img[alt='decor'] {
+            display: none !important;
+          }
+          div[aria-hidden] { /* center line */
+            display: none !important;
+          }
+          .rp-text { text-align: left !important; }
+        }
+        @media (max-width: 768px) {
+          .rp-row { display: flex !important; flex-direction: column !important; }
+          /* Mobile: enforce a consistent order for all rows: image -> text */
+          .rp-row .rp-media { order: 1; }
+          .rp-row .rp-text { order: 2; }
+          .rp-text h4 { display: inline-flex; align-items: center; gap: 8px; }
+          .rp-mobile-icon { display: inline-block; width: 14px; height: 14px; filter: drop-shadow(0 1px 1px rgba(0,0,0,0.12)); }
+          .rp-img { height: 200px !important; }
+          .rp-row { gap: 16px !important; padding: 18px 0 !important; }
+          .rp-media { width: 100% !important; justify-self: stretch !important; }
+          .rp-text { padding: 6px 2px !important; }
+          .rp-text p { line-height: 1.7 !important; }
+          .rp-card { padding: 24px 16px !important; border-radius: 12px !important; }
+          .rp-hero .hero-title { font-size: 26px !important; line-height: 1.2 !important; letter-spacing: 0.2px !important; }
+          .rp-hero .hero-desc { font-size: 14px !important; line-height: 1.6 !important; }
+          .rp-text h4 { font-size: 18px !important; }
+        }
+        @media (max-width: 480px) {
+          .rp-img { height: 180px !important; }
+          .rp-row { gap: 14px !important; padding: 16px 0 !important; }
+          .rp-card { padding: 20px 12px !important; border-radius: 10px !important; }
+          .rp-hero .hero-title { font-size: 22px !important; line-height: 1.25 !important; }
+          .rp-hero .hero-desc { font-size: 13px !important; line-height: 1.65 !important; }
+          .rp-text h4 { font-size: 16px !important; }
+          .rp-text p { font-size: 12px !important; line-height: 1.75 !important; }
+        }
+      `}</style>
+    </main>
   );
 }

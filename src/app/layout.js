@@ -4,6 +4,14 @@ import '../styles/globals.css';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
 import BootstrapProvider from '../components/BootstrapProvider';
+import { Noto_Serif_Devanagari } from 'next/font/google';
+
+const devanagariFont = Noto_Serif_Devanagari({
+  subsets: ['devanagari', 'latin'],
+  weight: ['400', '600', '700'],
+  variable: '--font-devanagari',
+  display: 'swap',
+});
 
 export const metadata = {
   title: 'Royal Website',
@@ -13,7 +21,7 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body>
+      <body className={`${devanagariFont.variable}`}>
         <BootstrapProvider>
           <Navbar />
           {children}

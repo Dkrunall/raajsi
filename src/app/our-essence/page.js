@@ -4,7 +4,106 @@ export default function OurEssence() {
   return (
     <>
       <style jsx>{`
+        :root {
+          --essence-max-w: 1210px;
+          --card-h: 360px;
+          --band-h: 300px;
+          --beige-1: #faf5ee;
+          --beige-2: #f4e7d6;
+          --text-dark: #2b2b2b;
+          --brand-accent: #ffb660;
+          --brand-plum: #4c0a2e;
+        }
+
+        /* Row background bands that stretch full viewport width */
+        .essence-row {
+          position: relative;
+          padding: 34px 0; /* vertical rhythm around cards */
+        }
+        .essence-row::before {
+          content: "";
+          position: absolute;
+          left: 50%;
+          top: 50%;
+          transform: translate(-50%, -50%);
+          width: 100vw;
+          height: var(--band-h);
+          z-index: 0;
+          pointer-events: none;
+        }
+        .essence-row.right::before {
+          background: linear-gradient(90deg, transparent 0 50%, var(--beige-2) 50% 100%);
+        }
+        .essence-row.left::before {
+          background: linear-gradient(90deg, var(--beige-2) 0 50%, transparent 50% 100%);
+        }
+
+        /* Essence cards */
+        .essence-card {
+          display: flex;
+          flex-direction: column;
+          border-radius: 20px;
+          overflow: hidden;
+          width: var(--essence-max-w);
+          height: var(--card-h);
+          position: relative;
+          background: #fff;
+          z-index: 1; /* above the band */
+        }
+        .essence-body {
+          flex: 1;
+          color: var(--text-dark);
+        }
+        /* Vertically center content within the card column */
+        .vcenter {
+          min-height: var(--card-h);
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          gap: 10px; /* tidy spacing between title and paragraph */
+        }
+        .essence-title {
+          font-family: 'Rose Velt Personal Use Only', serif;
+          color: var(--brand-accent);
+          font-size: 32px;
+          font-weight: 200;
+          letter-spacing: 0px;
+          line-height: 1;
+          margin: 0 0 12px 0;
+          position: relative;
+          display: inline-block;
+          text-transform: uppercase;
+        }
+        .essence-title:before {
+          content: '';
+          width: 8px;
+          height: 8px;
+          border-radius: 50%;
+          background: var(--brand-accent);
+          display: inline-block;
+          margin-right: 10px;
+          transform: translateY(-2px);
+        }
+        .essence-text {
+          font-family: Avenir, sans-serif;
+          font-size: 15px;
+          line-height: 1.6;
+          font-weight: 300;
+          margin: 0;
+          letter-spacing: 0;
+        }
+        .img-wrap img {
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+          filter: drop-shadow(0 12px 24px rgba(0,0,0,0.15));
+        }
+
+        /* Mobile adjustments */
         @media (max-width: 768px) {
+          /* Hide background bands on mobile for clean stack */
+          .essence-row::before { display: none; }
+
           /* Hero section mobile styles */
           section.d-flex.flex-column.justify-content-center.align-items-center.position-relative.text-center {
             padding-top: 80px !important;
@@ -28,57 +127,55 @@ export default function OurEssence() {
             height: 35px !important;
             font-size: 1.2rem !important;
           }
-          
+
           /* Content sections mobile styles */
           .my-5.d-flex.justify-content-center {
             margin: 20px 0 !important;
             padding: 0 15px !important;
           }
-          .my-5.d-flex.justify-content-center > div {
+          .essence-card {
             flex-direction: column !important;
             width: 100% !important;
             max-width: 100% !important;
             height: auto !important;
             border-radius: 15px !important;
             margin-bottom: 20px !important;
+            background: #fff !important;
           }
-          
-          /* Image containers - always show first on mobile */
-          .my-5.d-flex.justify-content-center > div > div:has(img) {
+          /* Image should appear first on mobile */
+          .essence-card > .img-wrap {
             order: -1 !important;
             height: 250px !important;
             flex: none !important;
           }
-          
-          /* Text containers */
-          .my-5.d-flex.justify-content-center .p-4, 
-          .my-5.d-flex.justify-content-center .p-md-5 {
+          .essence-card .p-4, 
+          .essence-card .p-md-5 {
             padding: 25px 20px !important;
             margin-left: 0 !important;
             margin-top: 0 !important;
             text-align: center !important;
           }
-          
-          .my-5.d-flex.justify-content-center h5 {
+          .essence-title {
             font-size: 1.4rem !important;
-            margin-top: 0 !important;
-            margin-bottom: 15px !important;
-            text-align: center !important;
+            margin-bottom: 10px !important;
           }
-          
-          .my-5.d-flex.justify-content-center p {
+          .essence-text {
             font-size: 0.95rem !important;
             line-height: 1.5 !important;
-            margin-top: 0 !important;
-            margin-bottom: 0 !important;
             text-align: center !important;
           }
-          
-          .my-5.d-flex.justify-content-center img {
+          .essence-card img {
             width: 100% !important;
             height: 100% !important;
             object-fit: cover !important;
             border-radius: 15px 15px 0 0 !important;
+            filter: none !important;
+          }
+          /* Remove forced equal height on mobile */
+          .vcenter {
+            min-height: auto !important;
+            justify-content: flex-start !important;
+            gap: 8px !important;
           }
         }
       `}</style>
@@ -94,8 +191,6 @@ export default function OurEssence() {
           backgroundRepeat: "no-repeat",
         }}
       >
-
-
         {/* Main Heading */}
         <h2
           style={{
@@ -118,13 +213,13 @@ export default function OurEssence() {
           style={{
             fontSize: "14px",
             fontWeight: 500,
-            maxWidth: "700px",
+            maxWidth: "760px",
             zIndex: 1,
             fontFamily: "Avenir, sans-serif",
           }}
         >
-          OUR ROYAL PROMISE IS BUILT ON INTEGRITY, TRANSPARENCY, AND TIMELESS<br />
-          CARE – FOR YOU AND THE PLANET.
+          RAAJSI is a premium Ayurvedic beauty and wellness brand with a royal conscience—uniting heritage and integrity for a modern ritual. <br />
+          Immerse yourself in our scents, textures, and colours inspired by tradition and crafted for today.
         </p>
 
         {/* Circular Down-Arrow Button */}
@@ -167,35 +262,16 @@ export default function OurEssence() {
         {/* Placeholder for Next Section Anchor */}
         <div id="essence-next"></div>
       </section>
-      <section className="my-5 d-flex justify-content-center">
-        <div
-          className="d-flex flex-column flex-md-row rounded-4 overflow-hidden"
-          style={{
-            backgroundColor: "#4D0B2F", 
-            width: "1205px", 
-            height: "438px",
-            borderRadius: "20px",
-          }}
-        >
+
+      {/* Section 1 - Text Left, Image Right */}
+      <section className="my-5 d-flex justify-content-center essence-row right">
+        <div className="essence-card d-flex flex-column flex-md-row">
           {/* Left Text Section */}
-          <div className="p-4 p-md-5 text-white" style={{ flex: 1, marginLeft: "30px" }}>
-            <h5
-              className="fw-semibold"
-              style={{ letterSpacing: "1px", marginTop: "60px", fontFamily: "'Rose Velt Personal Use Only', serif", color: "#FFB680", fontSize: "32px", fontWeight: "200" }}
-            >
+          <div className="p-4 p-md-5 essence-body vcenter" style={{ flex: 1, marginLeft: "30px" }}>
+            <h5 className="fw-semibold essence-title">
               <span style={{ fontSize: "32px" }}>G</span>ENESIS
             </h5>
-            <p
-              style={{ 
-                fontSize: "20px", 
-                lineHeight: "110%", 
-                marginTop: "8px", 
-                fontFamily: "Avenir, sans-serif",
-                fontWeight: "200",
-                fontStyle: "normal",
-                letterSpacing: "0%"
-              }}
-            >
+            <p className="essence-text">
               Raajsi is a premium Ayurvedic wellness and beauty brand,<br />
               crafted for those who seek grace, balance, and timeless<br />
               elegance in their self-care. Rooted in the sacred traditions<br />
@@ -206,69 +282,36 @@ export default function OurEssence() {
           </div>
 
           {/* Right Image Section */}
-          <div style={{ flex: 1, height: "437px", position: "relative" }}>
+          <div className="img-wrap" style={{ flex: 1, height: "calc(var(--card-h))", position: "relative" }}>
             <img
-              src="/o1.png" 
+              src="/es1.png"
               alt="Genesis Artwork"
-              style={{
-                width: "100%",
-                height: "100%",
-                objectFit: "cover",
-                borderRadius: "0px",
-                marginTop: "0px",
-              }}
+              className="essence-img"
+              style={{ borderRadius: "0px", marginTop: "0px" }}
             />
           </div>
         </div>
       </section>
-      <section className="my-5 d-flex justify-content-center">
-        <div
-          className="d-flex flex-column flex-md-row rounded-4 overflow-hidden"
-          style={{
-            width: "1210px",
-            height: "438px",
-            backgroundColor: "#6A5013", 
-            borderRadius: "20px",
-          }}
-        >
+
+      {/* Section 2 - Image Left, Text Right */}
+      <section className="my-5 d-flex justify-content-center essence-row left">
+        <div className="essence-card d-flex flex-column flex-md-row">
           {/* Left Image */}
-          <div style={{ flex: 1, height: "437px" }}>
+          <div className="img-wrap" style={{ flex: 1, height: "calc(var(--card-h))" }}>
             <img
-              src="/o1.png" 
+              src="/es2.png"
               alt="Creative Artistic Description"
-              style={{
-                width: "100%",
-                height: "100%",
-                objectFit: "cover",
-                marginTop: "0px",
-              }}
+              className="essence-img"
+              style={{ marginTop: "0px" }}
             />
           </div>
 
           {/* Right Content */}
-          <div
-            className="p-4 p-md-5 text-white d-flex flex-column justify-content-center"
-            style={{
-              flex: 1,
-              color: "white",
-              paddingTop: "40px", 
-            }}
-          >
-            <h5
-              className="fw-semibold mb-3"
-              style={{
-                letterSpacing: "0px",
-                fontFamily: "'Rose Velt Personal Use Only', serif",
-                color: "#FFB660",
-                fontSize: "32px",
-                fontWeight: "200",
-                height: "32px",
-                lineHeight: "100%"
-              }}
-            >
+          <div className="p-4 p-md-5 d-flex flex-column justify-content-center essence-body" style={{ flex: 1, paddingTop: "10px" }}>
+            <h5 className="fw-semibold mb-3 essence-title">
               <span style={{ fontSize: "32px" }}>C</span>REATIVE / <span style={{ fontSize: "32px" }}>A</span>RTISTIC <span style={{ fontSize: "32px" }}>D</span>ESCRIPTION
             </h5>
-            <p style={{ fontSize: "16px", lineHeight: "110%", fontFamily: "Avenir, sans-serif", fontWeight: "200", fontStyle: "normal", letterSpacing: "0%" }}>
+            <p className="essence-text">
               Bathed in the golden glow of tradition, Raajsi is a sensory<br />
               journey through time — where the velvet touch of uttaras, the<br />
               aroma of pure rose, and the soothing whispers of sandalwood evoke<br />
@@ -281,113 +324,58 @@ export default function OurEssence() {
         </div>
       </section>
 
-      <section className="my-5 d-flex justify-content-center">
-        <div
-          className="d-flex flex-column flex-md-row rounded-4 overflow-hidden"
-          style={{
-            backgroundColor: "#BA7E38",
-            width: "1205px",
-            height: "438px",
-            borderRadius: "20px",
-          }}
-        >
-          <div className="p-4 p-md-5 text-white" style={{ flex: 1, marginLeft: "30px" }}>
-            <h5
-              className="fw-semibold"
-              style={{ letterSpacing: "1px", marginTop: "60px", fontFamily: "'Rose Velt Personal Use Only', serif", color: "#FFB680", fontSize: "32px", fontWeight: "200" }}
-            >
-              <span style={{ fontSize: "32px" }}>G</span>ENESIS
+      {/* Section 3 - Text Left, Image Right */}
+      <section className="my-5 d-flex justify-content-center essence-row right">
+        <div className="essence-card d-flex flex-column flex-md-row">
+          <div className="p-4 p-md-5 essence-body vcenter" style={{ flex: 1, marginLeft: "30px" }}>
+            <h5 className="fw-semibold essence-title">
+              <span style={{ fontSize: "32px" }}>P</span>HILOSOPHY
             </h5>
-            <p
-              style={{ 
-                fontSize: "20px", 
-                lineHeight: "110%", 
-                marginTop: "8px", 
-                fontFamily: "Avenir, sans-serif",
-                fontWeight: "200",
-                fontStyle: "normal",
-                letterSpacing: "0%"
-              }}
-            >
-              Raajsi is a premium Ayurvedic wellness and beauty brand,<br />
-              crafted for those who seek grace, balance, and timeless<br />
-              elegance in their self-care. Rooted in the sacred traditions<br />
-              of Indian royalty and ancient healing, Raajsi is where<br />
-              Ayurveda meets regal ritual, creating an experience that is<br />
-              as restorative as it is luxurious.
+            <p className="essence-text">
+              Raajsi is born from a belief that beauty should be real —
+              rich in spirit, grounded in wisdom, and radiant in grace.
+              With every concoction, we honour tradition, integrity, and
+              conscious care; drawing from royal wisdom and modern wellness
+              science.
             </p>
           </div>
 
-          <div style={{ flex: 1, height: "437px" }}>
+          <div className="img-wrap" style={{ flex: 1, height: "calc(var(--card-h))" }}>
             <img
-              src="/o1.png"
+              src="/es1.png"
               alt="Genesis Artwork"
-              style={{
-                width: "100%",
-                height: "100%",
-                objectFit: "cover",
-                borderRadius: "0px",
-                marginTop: "0px",
-              }}
+              className="essence-img"
+              style={{ borderRadius: "0px", marginTop: "0px" }}
             />
           </div>
         </div>
       </section>
 
-      <section className="my-5 d-flex justify-content-center">
-        <div
-          className="d-flex flex-column flex-md-row rounded-4 overflow-hidden"
-          style={{
-            width: "1210px",
-            height: "438px",
-            backgroundColor: "#631E44",
-            borderRadius: "20px",
-          }}
-        >
-          <div style={{ flex: 1, height: "437px" }}>
+      {/* Section 4 - Image Left, Text Right */}
+      <section className="my-5 d-flex justify-content-center essence-row left">
+        <div className="essence-card d-flex flex-column flex-md-row">
+          <div className="img-wrap" style={{ flex: 1, height: "calc(var(--card-h))" }}>
             <img
-              src="/o1.png"
+              src="/es2.png"
               alt="Creative Artistic Description"
-              style={{
-                width: "100%",
-                height: "100%",
-                objectFit: "cover",
-                marginTop: "0px",
-              }}
+              className="essence-img"
+              style={{ marginTop: "0px" }}
             />
           </div>
 
           {/* Right Content */}
-          <div
-            className="p-4 p-md-5 text-white d-flex flex-column justify-content-center"
-            style={{
-              flex: 1,
-              color: "white",
-              paddingTop: "40px", // You can tweak top spacing here
-            }}
-          >
-            <h5
-              className="fw-semibold mb-3"
-              style={{
-                letterSpacing: "0px",
-                fontFamily: "'Rose Velt Personal Use Only', serif",
-                color: "#FFB660",
-                fontSize: "32px",
-                fontWeight: "200",
-                height: "32px",
-                lineHeight: "100%"
-              }}
-            >
-              <span style={{ fontSize: "32px" }}>C</span>REATIVE / <span style={{ fontSize: "32px" }}>A</span>RTISTIC <span style={{ fontSize: "32px" }}>D</span>ESCRIPTION
+          <div className="p-4 p-md-5 d-flex flex-column justify-content-center essence-body" style={{ flex: 1, paddingTop: "10px" }}>
+            <h5 className="fw-semibold mb-3 essence-title">
+              <span style={{ fontSize: "32px" }}>A</span>SPIRATIONAL <span style={{ fontSize: "32px" }}>B</span>EAUTY
             </h5>
-            <p style={{ fontSize: "16px", lineHeight: "110%", fontFamily: "Avenir, sans-serif", fontWeight: "200", fontStyle: "normal", letterSpacing: "0%" }}>
-              Bathed in the golden glow of tradition, Raajsi is a sensory<br />
-              journey through time — where the velvet touch of uttaras, the<br />
-              aroma of pure rose, and the soothing whispers of sandalwood evoke<br />
-              the grandeur of palatial rituals. Every drop, every grain, every<br />
-              scent is a nod to a time when beauty was sacred and rituals were<br />
-              revered. Here, skincare is poetry, and self-care is an ode to your<br />
-              inner queen.
+            <p className="essence-text">
+              When a ritual doesn’t just feel elegant, it is a world of solace,
+              reflection, expansion — a world of power that’s felt and not
+              spoken.
+              <br />
+              Raajsi is the modern mystic; one who owns the voice, the honour
+              within; whose grace is soft yet decisive; whose rituals become
+              your home and your heritage.
             </p>
           </div>
         </div>

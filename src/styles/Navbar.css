@@ -1,6 +1,6 @@
 .navbar {
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
-  min-height: 80px;
+  min-height: 65px;
 }
 .custom-navbar {
   padding-top: 0.2rem !important;   
@@ -583,6 +583,126 @@
     display: flex !important;
   }
 }
+
+
+
+
+/* Auth/Login Modal Styles */
+.auth-modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.45);
+  backdrop-filter: blur(2px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 20000;
+  padding: 1rem;
+}
+
+.auth-modal-card {
+  position: relative;
+  width: 100%;
+  max-width: 520px;
+  background: #ffffff;
+  border-radius: 24px;
+  box-shadow: 0 24px 60px rgba(0,0,0,0.2);
+  padding: 1.75rem 2rem 1.75rem 2rem;
+  color: #2c1e1e;
+}
+
+.auth-close-btn {
+  position: absolute;
+  top: 14px;
+  right: 16px;
+  width: 34px;
+  height: 34px;
+  border: none;
+  border-radius: 50%;
+  background: #f1f1f1;
+  color: #7a7a7a;
+  font-size: 1.25rem;
+  line-height: 1;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+}
+.auth-close-btn:hover {
+  background: #e8e8e8;
+  color: #4c0a2e;
+}
+
+.auth-title {
+  text-align: center;
+  font-family: 'Rose Velt Personal Use Only', serif;
+  color: #4c0a2e;
+  font-size: 1.25rem;
+  font-weight: 800;
+  letter-spacing: 1px;
+  margin-top: 0.25rem;
+}
+
+.auth-subtitle {
+  text-align: center;
+  font-size: 0.95rem;
+  color: #6b6b6b;
+  margin-top: 0.25rem;
+  margin-bottom: 1.25rem;
+}
+
+.auth-form .form-label {
+  color: #321919;
+}
+
+.auth-input {
+  background: #f7f7f7 !important;
+  border: 1px solid #e6e6e6 !important;
+  border-radius: 12px !important;
+  height: 44px;
+  font-size: 0.95rem;
+  padding: 0.5rem 0.9rem;
+  box-shadow: none !important;
+}
+.auth-input:focus {
+  border-color: #BA7E38 !important;
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(186, 126, 56, 0.15) !important;
+}
+
+.auth-phone-group {
+  gap: 0.5rem;
+}
+
+.auth-country-select {
+  max-width: 110px;
+  border-radius: 12px !important;
+  background: #f7f7f7 !important;
+  border: 1px solid #e6e6e6 !important;
+  height: 44px !important;
+  box-shadow: none !important;
+}
+
+.auth-submit-btn {
+  background: #BA7E38;
+  color: #fff;
+  font-weight: 600;
+  border-radius: 24px;
+  padding: 0.6rem 2.25rem;
+  border: none;
+  transition: all 0.2s ease-in-out;
+}
+.auth-submit-btn:hover {
+  background: #a47030;
+  transform: translateY(-1px);
+}
+
+@media (max-width: 480px) {
+  .auth-modal-card {
+    padding: 1.25rem 1rem;
+    border-radius: 18px;
+  }
+}
+
+/* end of file */
 
 
 

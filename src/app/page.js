@@ -6,7 +6,7 @@ import React, { useState, useEffect } from "react";
 import { FaChevronDown, FaChevronUp } from "react-icons/fa";
 
 export default function HomePage({ onAddToCart }) {
-  const [currentSlide, setCurrentSlide] = useState(0);
+
   const [currentCardIndex, setCurrentCardIndex] = useState(0);
   const [isTransitioning, setIsTransitioning] = useState(false);
   const [showNextSection, setShowNextSection] = useState(false);
@@ -20,34 +20,34 @@ export default function HomePage({ onAddToCart }) {
   // Royal Promises content
   const ROYAL_PROMISES = [
     {
-      title: "THE ROYAL PROMISE",
+      title: "THE ROYAL PROMISE 1",
       description:
         "At Raajsi, luxury meets responsibility. Our royal promise is built on integrity, transparency, and timeless care — for you and the planet.",
       highlight:
         "Time-tested formulas derived from ancient sciences and scriptures",
       detail:
         "Rooted in Ayurveda and proven through generations of ritual wisdom.",
-      image: "/image4.png",
+      image: "/rph.png",
     },
     {
-      title: "THE ROYAL PROMISE",
+      title: "THE ROYAL PROMISE 2",
       description:
         "At Raajsi, luxury meets responsibility. Our royal promise is built on integrity, transparency, and timeless care — for you and the planet.",
       highlight:
         "Time-tested formulas derived from ancient sciences and scriptures",
       detail:
         "Rooted in Ayurveda and proven through generations of ritual wisdom.",
-      image: "/image4.png",
+      image: "/rph.png",
     },
     {
-      title: "THE ROYAL PROMISE",
+      title: "THE ROYAL PROMISE 3",
       description:
         "At Raajsi, luxury meets responsibility. Our royal promise is built on integrity, transparency, and timeless care — for you and the planet.",
       highlight:
         "Time-tested formulas derived from ancient sciences and scriptures",
       detail:
         "Rooted in Ayurveda and proven through generations of ritual wisdom.",
-      image: "/image4.png",
+      image: "/rph.png",
     },
   ];
 
@@ -147,21 +147,7 @@ export default function HomePage({ onAddToCart }) {
   const [cardStartIndex, setCardStartIndex] = useState(0);
   const section = SECTIONS[sectionIdx];
 
-  // Background images for slides
-  const backgroundImages = [
-    "/home-bg.png",
-    "/featured-bg.png", // You can replace with different images
-    "/home-bg.png", // You can replace with different images
-  ];
 
-  // Automatic slider functionality for Hero Section
-  useEffect(() => {
-    const heroInterval = setInterval(() => {
-      setCurrentSlide((prev) => (prev + 1) % backgroundImages.length);
-    }, 5000); // Change every 5 seconds
-
-    return () => clearInterval(heroInterval);
-  }, [backgroundImages.length]);
 
   // Automatic slider functionality for Royal Promises
   useEffect(() => {
@@ -238,22 +224,23 @@ export default function HomePage({ onAddToCart }) {
   const [touchEnd, setTouchEnd] = useState(null);
 
   const handleTouchStart = (e) => {
-    e.preventDefault();
     setTouchStart(e.targetTouches[0].clientX);
   };
 
   const handleTouchMove = (e) => {
-    e.preventDefault();
     setTouchEnd(e.targetTouches[0].clientX);
   };
 
   const handleTouchEnd = (e) => {
-    e.preventDefault();
     if (!touchStart || !touchEnd) return;
 
     const distance = touchStart - touchEnd;
     const isLeftSwipe = distance > 80; // Increased threshold to prevent accidental scrolls
     const isRightSwipe = distance < -80; // Increased threshold to prevent accidental scrolls
+
+    if (isLeftSwipe || isRightSwipe) {
+      e.preventDefault();
+    }
 
     if (isLeftSwipe && cardStartIndex < CARDS.length - 2) {
       // Changed to stop at second-to-last card
@@ -304,8 +291,10 @@ export default function HomePage({ onAddToCart }) {
 
   // Wheel event for touchpad scrolling
   const handleWheel = (e) => {
+    const isHorizontal = Math.abs(e.deltaX) > Math.abs(e.deltaY) && Math.abs(e.deltaX) > 50;
+    if (!isHorizontal) return; // allow normal vertical scroll
     e.preventDefault();
-    if (Math.abs(e.deltaX) > Math.abs(e.deltaY) && Math.abs(e.deltaX) > 50) {
+    if (isHorizontal) {
       // Added minimum threshold
       // Horizontal scroll detected with minimum threshold
       if (e.deltaX > 0 && cardStartIndex < CARDS.length - 2) {
@@ -355,46 +344,41 @@ export default function HomePage({ onAddToCart }) {
       <div
         className="position-relative text-white"
         style={{
-          height: "100vh",
-          backgroundImage: `url('${backgroundImages[currentSlide]}')`,
+          height: "100svh",
+          minHeight: "100vh",
+          backgroundImage: "url('/heromain.png')",
           backgroundSize: "cover",
           backgroundPosition: "center",
+          backgroundRepeat: "no-repeat",
         }}
-        onClick={() =>
-          console.log(
-            "Current slide:",
-            currentSlide,
-            "Image:",
-            backgroundImages[currentSlide]
-          )
-        }
       >
-        <div className="container h-100 d-flex align-items-center justify-content-center">
-          <div className="row w-100">
-            <div className="col-12 d-flex justify-content-center align-items-center">
-              <div
-                className="custom-overlay-text text-center"
-                style={{
-                  maxWidth: "800px",
-                  color: "#FFFFFF",
-                  fontFamily: "Abel, sans-serif",
-                  fontSize: "30px",
-                  lineHeight: "140%",
-                  letterSpacing: "0%",
-                  textAlign: "center",
-                  textShadow:
-                    "0 0 20px rgba(255, 255, 255, 0.4), 0 0 40px rgba(255, 255, 255, 0.2), 0 0 60px rgba(255, 255, 255, 0.1)",
-                  mixBlendMode: "soft-light",
-                  padding: "20px",
-                }}
-              >
-                <p className="mb-0">
-                  मुग्धे! धानुष्कता केयमपूर्वा त्वयि दृश्यते <br />
-                  यया विध्यसि चेतांसि गुणैरेव न सायकैः
-                </p>
-              </div>
-            </div>
-          </div>
+        <div
+          className="position-absolute"
+          style={{
+            top: "clamp(80px, 12vh, 120px)",
+            left: "clamp(24px, 6vw, 80px)",
+            maxWidth: "900px",
+            pointerEvents: "none",
+          }}
+        >
+          <p
+            style={{
+              margin: 0,
+              color: "#FFFFFF",
+              fontFamily:
+                "var(--font-devanagari), 'Noto Serif Devanagari','Mukta','Hind', serif",
+              fontWeight: 500,
+              fontSize: "clamp(22px, 3.2vw, 42px)",
+              lineHeight: 1.1,
+              letterSpacing: "0.3px",
+              textShadow:
+                "0 2px 24px rgba(0,0,0,0.55), 0 0 2px rgba(0,0,0,0.4)",
+              marginTop:"60px",
+            }}
+          >
+            मुग्धे! धानुष्कता केयमपूर्वा त्वयि दृश्यते <br />
+            यया विध्यसि चेतांसि गुणैरेव न सायकैः
+          </p>
         </div>
 
         <div className="position-absolute bottom-0 start-50 translate-middle-x mb-4">
@@ -425,54 +409,6 @@ export default function HomePage({ onAddToCart }) {
             </span>
           </Link>
         </div>
-
-        {/* Slider Lines - Horizontal */}
-        <div className="position-absolute bottom-0 end-0 mb-4 me-4">
-          <div className="d-flex gap-2">
-            <div
-              onClick={() => setCurrentSlide(0)}
-              style={{
-                width: currentSlide === 0 ? "50px" : "30px",
-                height: "5px",
-                backgroundColor:
-                  currentSlide === 0
-                    ? "rgba(255, 255, 255, 1)"
-                    : "rgba(255, 255, 255, 0.4)",
-                borderRadius: "3px",
-                cursor: "pointer",
-                transition: "all 0.3s ease",
-              }}
-            ></div>
-            <div
-              onClick={() => setCurrentSlide(1)}
-              style={{
-                width: currentSlide === 1 ? "50px" : "30px",
-                height: "5px",
-                backgroundColor:
-                  currentSlide === 1
-                    ? "rgba(255, 255, 255, 1)"
-                    : "rgba(255, 255, 255, 0.4)",
-                borderRadius: "3px",
-                cursor: "pointer",
-                transition: "all 0.3s ease",
-              }}
-            ></div>
-            <div
-              onClick={() => setCurrentSlide(2)}
-              style={{
-                width: currentSlide === 2 ? "50px" : "30px",
-                height: "5px",
-                backgroundColor:
-                  currentSlide === 2
-                    ? "rgba(255, 255, 255, 1)"
-                    : "rgba(255, 255, 255, 0.4)",
-                borderRadius: "3px",
-                cursor: "pointer",
-                transition: "all 0.3s ease",
-              }}
-            ></div>
-          </div>
-        </div>
       </div>
 
       <div
@@ -485,135 +421,116 @@ export default function HomePage({ onAddToCart }) {
           marginBottom: "40px",
         }}
       >
-        <div
-          className="d-none d-sm-block"
-          style={{
-            position: "absolute",
-            top: "90%",
-            left: "-50px",
-            transform: "translateY(-50%)",
-            height: "380px",
-            width: "200px",
-            backgroundImage: 'url("/right-side-card.png")',
-            backgroundSize: "cover",
-            backgroundPosition: "center",
-            backgroundRepeat: "no-repeat",
-            borderRadius: "12px",
-            zIndex: 1,
-          }}
-        ></div>
 
-        <div
-          className="d-none d-sm-block"
-          style={{
-            position: "absolute",
-            top: "90%",
-            right: "-50px",
-            transform: "translateY(-50%)",
-            height: "380px",
-            width: "200px",
-            backgroundImage: 'url("/left-card.png")',
-            backgroundSize: "cover",
-            backgroundPosition: "center",
-            backgroundRepeat: "no-repeat",
-            borderRadius: "12px",
-            zIndex: 1,
-          }}
-        ></div>
-
-        <div className="container">
-          <div className="row justify-content-center align-items-center text-center">
-            <div className="col-12 col-md-4 mb-4 d-flex justify-content-center">
+        <div className="container-fluid px-0 position-relative" style={{ zIndex: 1 }}>
+          <div className="row align-items-center g-0 text-center text-md-start">
+            {/* Left Image - full bleed to the left edge */}
+            <div className="col-12 col-md-6 px-0">
               <div
                 style={{
-                  height: "410px",
-                  width: "310px",
-                  backgroundImage: 'url("/card1.png")',
+                  height: "450px",
+                  width: "100%",
+                  backgroundImage: 'url("/es2.png")',
                   backgroundSize: "cover",
-                  backgroundPosition: "center",
+                  backgroundPosition: "left center",
                   backgroundRepeat: "no-repeat",
-                  borderRadius: "12px",
                 }}
-              ></div>
+                aria-label="RAAJSI essence visual"
+                role="img"
+              />
             </div>
 
-            <div className="col-12 col-md-4 mb-4">
+            {/* Right Content */}
+            <div className="col-12 col-md-6 ps-md-5 pe-md-4 py-4">
               <h2
                 style={{
-                  color: "#61003C",
-                  fontWeight: "600",
+                  color: "#1F1F1F",
+                  fontWeight: 600,
                   fontFamily: "'Rose Velt Personal Use Only', serif",
-                  fontSize: "32px",
-                  letterSpacing: "1px",
+                  fontSize: "clamp(22px, 2.8vw, 36px)",
+                  letterSpacing: "0.5px",
+                  lineHeight: "1.2",
+                  textTransform: "none",
                 }}
               >
-                <span style={{ fontSize: "36px" }}>O</span>UR{" "}
-                <span style={{ fontSize: "36px" }}>E</span>SSENCE
+                Our Essence
               </h2>
+
               <p
                 style={{
-                  fontSize: "24px",
-                  fontFamily: "Abel, sans-serif",
-                  fontStyle: "normal",
-                  fontWeight: "400",
-                  background:
-                    "linear-gradient(45deg, #6F572A 0%, #D5A751 50%, #6F572A 100%)",
+                  fontFamily: "var(--font-devanagari)",
+                  fontSize: "clamp(14px, 1.3vw, 18px)",
+                  marginBottom: "6px",
+                  backgroundImage: "linear-gradient(45deg, rgb(111, 87, 42) 0%, rgb(213, 167, 81) 50%, rgb(111, 87, 42) 100%)",
+                  backgroundClip: "text",
                   WebkitBackgroundClip: "text",
                   WebkitTextFillColor: "transparent",
-                  backgroundClip: "text",
+                  color: "transparent",
+                  display: "inline-block",
                 }}
               >
-                मृदुः धातूनां केममपूर्वं त्वचि दृश्यते
-                <br />
-                यथा विद्यास्ति चैतन्यं गुणैरेव न सायकेः
-              </p>
+                मुग्धे! धानुष्कता केयमपूर्वा त्वयि दृश्यते ।
+              </p><br/>
               <p
-                className="fst-italic mt-2"
                 style={{
-                  fontFamily: "Avenir, sans-serif",
-                  fontSize: "24px",
-                  fontWeight: "400",
-                  letterSpacing: "0%",
-                  lineHeight: "110%",
-                  fontStyle: "oblique",
+                  fontFamily: "var(--font-devanagari)",
+                  fontSize: "clamp(14px, 1.3vw, 18px)",
+                  marginTop: 0,
+                  backgroundImage: "linear-gradient(45deg, rgb(111, 87, 42) 0%, rgb(213, 167, 81) 50%, rgb(111, 87, 42) 100%)",
+                  backgroundClip: "text",
+                  WebkitBackgroundClip: "text",
+                  WebkitTextFillColor: "transparent",
+                  color: "transparent",
+                  display: "inline-block",
                 }}
               >
-                Raajsi is a premium ayurvedic beauty and wellness brand with a
-                royal touch.
+                यया विध्यसि चेतांसि गुणैरेव न सायकैः ॥
               </p>
-              <Link 
-                href="/our-essence"
-                className="btn mt-5 px-4 py-2"
-                style={{
-                  borderRadius: "25px",
-                  fontSize: "16px",
-                  color: "#FFFFFF",
-                    fontWeight: "400",
-                    backgroundColor: "#BA7E38",
-                    border: "none",
-                    height: "50px",
-                    width: "180px",
-                    textAlign: "center",
-                    lineHeight: "35px",
-                  }}
-                >
-                  EXPLORE ESSENCE
-              </Link>
-            </div>
 
-            <div className="col-12 col-md-4 mb-4 d-flex justify-content-center">
-              <div
+              <p
                 style={{
-                  height: "410px",
-                  width: "310px",
-                  top: "90%",
-                  backgroundImage: 'url("/card2.png")',
-                  backgroundSize: "cover",
-                  backgroundPosition: "center",
-                  backgroundRepeat: "no-repeat",
-                  borderRadius: "12px",
+                  fontSize: "clamp(14px, 1.2vw, 16px)",
+                  fontFamily: "Avenir, sans-serif",
+                  fontWeight: 400,
+                  color: "#414141",
+                  lineHeight: "1.6",
+                  marginTop: "10px",
+                  marginBottom: 0,
+                  maxWidth: "620px",
                 }}
-              ></div>
+              >
+                Raajsi is a premium ayurvedic beauty and wellness brand with a royal touch.
+              </p>
+
+              <p
+                style={{
+                  fontSize: "clamp(14px, 1.2vw, 16px)",
+                  fontFamily: "Avenir, sans-serif",
+                  fontWeight: 400,
+                  color: "#414141",
+                  lineHeight: "1.6",
+                  marginTop: "8px",
+                  marginBottom: 0,
+                  maxWidth: "620px",
+                }}
+              >
+                Combining elements of regal rituals and ayurveda, we invite you to immerse yourself in the scents, texture and colours of our heritage.
+              </p>
+
+              <Link
+                href="/our-essence"
+                className="btn mt-3"
+                style={{
+                  backgroundColor: "#BA7E38",
+                  color: "#FFFFFF",
+                  borderRadius: 30,
+                  padding: "10px 24px",
+                  fontWeight: 500,
+                  letterSpacing: "0.5px",
+                }}
+              >
+                EXPLORE ESSENCE
+              </Link>
             </div>
           </div>
         </div>
@@ -821,9 +738,13 @@ export default function HomePage({ onAddToCart }) {
             height: 45px !important;
           }
           #our-essence [style*="background-image"] {
-            height: 300px !important;
-            width: 240px !important;
-            margin: 0 auto !important;
+            height: 45vh !important;
+            min-height: 220px !important;
+            max-height: 360px !important;
+            width: 100% !important;
+            margin: 0 !important;
+            background-position: center center !important;
+            background-size: cover !important;
           }
         }
         
@@ -838,8 +759,13 @@ export default function HomePage({ onAddToCart }) {
             font-size: 0.8rem !important;
           }
           #our-essence [style*="background-image"] {
-            height: 250px !important;
-            width: 200px !important;
+            height: 38vh !important;
+            min-height: 200px !important;
+            max-height: 320px !important;
+            width: 100% !important;
+            margin: 0 !important;
+            background-position: center center !important;
+            background-size: cover !important;
           }
           .royal-promise-section {
             min-height: 450px !important;
@@ -1395,8 +1321,8 @@ export default function HomePage({ onAddToCart }) {
             gap: 4px !important;
             flex-wrap: nowrap !important;
             white-space: nowrap !important;
-            width: 100vw !important;
-            max-width: 100vw !important;
+            width: 100% !important;
+            max-width: 100% !important;
             overflow: hidden !important;
             padding: 0 4vw !important;
             margin: 0 auto !important;
@@ -1427,6 +1353,12 @@ export default function HomePage({ onAddToCart }) {
             min-height: 16px !important;
             display: inline-block !important;
             vertical-align: middle !important;
+          }
+        }
+        @media (max-width: 768px) {
+          img[src="/left-design.png"],
+          img[src="/right-design.png"] {
+            display: none !important;
           }
         }
       `}</style>
@@ -1682,7 +1614,7 @@ export default function HomePage({ onAddToCart }) {
                   </div>
                   <div className="d-flex justify-content-between w-100 px-4 mt-2">
                     <Link
-                      href="/featured-products"
+                      href="/product/1"
                       className="btn btn-sm d-flex align-items-center justify-content-center"
                       style={{
                         backgroundColor: "#8B5E3C",
@@ -1772,7 +1704,7 @@ export default function HomePage({ onAddToCart }) {
                         style={{
                           display: "flex",
                           gap: "70px",
-                          minWidth: "calc(100vw - 160px)",
+                          minWidth: "100%",
                         }}
                       >
                         {CARDS.slice(pairIndex * 2, pairIndex * 2 + 2).map(
@@ -1892,7 +1824,7 @@ export default function HomePage({ onAddToCart }) {
                               </div>
                               <div className="d-flex justify-content-between w-100 px-4 mt-2">
                                 <Link
-                                  href="/featured-products"
+                                  href="/product/1"
                                   className="btn btn-sm d-flex align-items-center justify-content-center"
                                   style={{
                                     backgroundColor: "#8B5E3C",
@@ -2206,7 +2138,7 @@ export default function HomePage({ onAddToCart }) {
             <div className="col-md-4">
               <div className="card h-100 shadow-sm border-0 rounded-4">
                 <img
-                  src="/card51.png"
+                  src="/blog1.png"
                   alt="Blog 1"
                   className="card-img-top rounded-top-4"
                 />
@@ -2233,7 +2165,7 @@ export default function HomePage({ onAddToCart }) {
             <div className="col-md-4">
               <div className="card h-100 shadow-sm border-0 rounded-4 position-relative">
                 <img
-                  src="/card52.png"
+                  src="/blog2.png"
                   alt="Blog 2"
                   className="card-img-top rounded-top-4"
                 />
@@ -2272,7 +2204,7 @@ export default function HomePage({ onAddToCart }) {
             <div className="col-md-4">
               <div className="card h-100 shadow-sm border-0 rounded-4">
                 <img
-                  src="/card53.png"
+                  src="/blog3.png"
                   alt="Blog 3"
                   className="card-img-top rounded-top-4"
                 />

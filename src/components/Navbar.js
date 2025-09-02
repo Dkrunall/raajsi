@@ -13,6 +13,8 @@ export default function Navbar({ children }) {
   const isActive = (path) => pathname === path;
   const [cartOpen, setCartOpen] = useState(false);
   const [cartItems, setCartItems] = useState([]);
+  // NEW: Login modal state
+  const [loginOpen, setLoginOpen] = useState(false);
   const handleCartClick = (e) => {
     e.preventDefault();
     setCartOpen((open) => !open);
@@ -64,7 +66,10 @@ export default function Navbar({ children }) {
             <div className="col-4 d-flex d-lg-flex justify-content-end gap-5 position-relative nav-links-right">
               <Link href="/our-essence" className={`nav-link ${isActive("/our-essence") ? "active-link" : ""}`}>OUR ESSENCE</Link>
               <Link href="/featured-products" className={`nav-link nav-item fs-8  ${isActive("/featured-products") ? "active-link" : ""}`}>FEATURED PRODUCTS</Link>
-              <Link href="#" className="nav-link nav-icon"><i className="bi bi-person fs-5"></i></Link>
+              {/* Removed desktop ACCOUNT link to revert to previous navbar */}
+              <button type="button" className="nav-link nav-icon bg-transparent border-0 p-0" onClick={() => setLoginOpen(true)} aria-label="Open login">
+                <i className="bi bi-person fs-5"></i>
+              </button>
               <button className="nav-link nav-icon bg-transparent border-0 p-0" style={{ outline: "none", boxShadow: "none" }} onClick={handleCartClick} aria-label="Open cart">
                 <i className="bi bi-cart fs-5"></i>
               </button>
@@ -216,6 +221,7 @@ export default function Navbar({ children }) {
                 >
                   <span className="nav-card-text">FEATURED PRODUCTS</span>
                 </Link>
+                {/* Removed mobile ACCOUNT nav card to match previous navbar */}
               </div>
             </div>
             
@@ -234,7 +240,46 @@ export default function Navbar({ children }) {
           </div>
         </div>
       </div>
-      {children && React.cloneElement(children, { onAddToCart: handleAddToCart })}
+      {children && React.Children.map(children, (child) => (
+        React.isValidElement(child)
+          ? React.cloneElement(child, { onAddToCart: handleAddToCart })
+          : child
+      ))}
+
+      {/* Login Modal */}
+      {loginOpen && (
+        <div className="auth-modal-overlay" onClick={() => setLoginOpen(false)}>
+          <div className="auth-modal-card" onClick={(e) => e.stopPropagation()} role="dialog" aria-modal="true" aria-labelledby="authModalTitle">
+            <button className="auth-close-btn" onClick={() => setLoginOpen(false)} aria-label="Close login">&times;</button>
+            <div id="authModalTitle" className="auth-title">LOGIN</div>
+            <div className="auth-subtitle">Sign-Up For Our Exclusive Launch Now and Get a 0% Discount on Products</div>
+            <form onSubmit={(e) => { e.preventDefault(); setLoginOpen(false); }} className="auth-form">
+              <label className="form-label small fw-semibold mb-1">Name</label>
+              <input type="text" className="form-control auth-input" placeholder="Full Name" />
+
+              <label className="form-label small fw-semibold mb-1 mt-3">Email</label>
+              <input type="email" className="form-control auth-input" placeholder="Email Address" required />
+
+              <label className="form-label small fw-semibold mb-1 mt-3">Password</label>
+              <input type="password" className="form-control auth-input" placeholder="Enter Password" required />
+
+              <label className="form-label small fw-semibold mb-1 mt-3">Phone</label>
+              <div className="d-flex align-items-stretch auth-phone-group">
+                <select className="form-select auth-country-select" defaultValue="IN">
+                  <option value="IN">🇮🇳 +91</option>
+                  <option value="US">🇺🇸 +1</option>
+                  <option value="GB">🇬🇧 +44</option>
+                </select>
+                <input type="tel" className="form-control auth-input flex-grow-1" placeholder="Enter Your Number" />
+              </div>
+
+              <div className="text-center mt-4">
+                <button type="submit" className="btn auth-submit-btn">Login</button>
+              </div>
+            </form>
+          </div>
+        </div>
+      )}
     </>
   );
 }

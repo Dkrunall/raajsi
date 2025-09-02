@@ -1,0 +1,205 @@
+/* Account Dashboard Styles */
+
+.account-page {
+  padding-top: 110px; /* clear fixed navbar */
+  padding-bottom: 60px;
+}
+
+.account-heading {
+  font-family: 'Rose Velt Personal Use Only', serif;
+  font-size: 1.9rem;
+  color: #4C0A2E;
+  margin-bottom: 1.25rem;
+  letter-spacing: 0.5px;
+}
+
+.account-wrapper {
+  display: grid;
+  grid-template-columns: 220px 1fr 520px;
+  gap: 28px;
+}
+
+/* Sidebar */
+.account-sidebar {
+  background: #fff;
+  border-right: 1px solid rgba(0,0,0,0.08);
+  padding-right: 1rem;
+}
+.account-menu {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+.account-menu a {
+  text-decoration: none;
+  color: #6B6B6B;
+  font-weight: 600;
+  padding: 6px 0;
+  transition: color .2s ease;
+}
+.account-menu a:hover { color: #4C0A2E; }
+.account-menu a.active {
+  color: #4C0A2E;
+  position: relative;
+}
+.account-menu a.active::before {
+  content: '';
+  position: absolute;
+  left: -16px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 3px;
+  height: 18px;
+  background: #4C0A2E;
+  border-radius: 2px;
+}
+
+/* Main content */
+.account-card { background: #fff; }
+
+.account-greeting {
+  font-size: 1rem;
+  color: #3a2b2b;
+  margin-bottom: 1.2rem;
+}
+.account-greeting .name { font-weight: 700; }
+.account-greeting a { color: #4C0A2E; text-decoration: underline; }
+
+.account-section + .account-section { margin-top: 18px; }
+
+.section-title {
+  font-family: 'Georgia', serif;
+  font-size: 1.25rem;
+  color: #4C0A2E;
+  margin-bottom: 0.75rem;
+}
+
+.order-banner {
+  background: #E3F3E5;
+  color: #2b5c35;
+  border: 1px solid #CBE8D2;
+  padding: 10px 14px;
+  border-radius: 8px;
+  font-size: 0.95rem;
+}
+.order-banner .cta {
+  background: #bce3c1;
+  color: #1d4526;
+  font-weight: 700;
+  padding: 4px 8px;
+  border-radius: 4px;
+  margin-right: 6px;
+}
+
+.details-list {
+  border: 1px solid rgba(0,0,0,0.08);
+  border-radius: 8px;
+}
+.details-row {
+  display: grid;
+  grid-template-columns: 140px 1fr;
+  gap: 16px;
+  padding: 12px 14px;
+  align-items: center;
+  font-size: 0.95rem;
+}
+.details-row + .details-row { border-top: 1px solid rgba(0,0,0,0.06); }
+.details-label { color: #6B6B6B; }
+.details-value { color: #2c1e1e; font-weight: 600; }
+
+.address-btn {
+  display: inline-block;
+  background: #BA7E38;
+  color: #fff;
+  border: none;
+  padding: 10px 22px;
+  border-radius: 26px;
+  font-weight: 600;
+  box-shadow: 0 4px 10px rgba(186,126,56,0.25);
+  transition: transform .1s ease, background .2s ease, box-shadow .2s ease;
+}
+.address-btn:hover { background: #a47030; color: #fff; box-shadow: 0 6px 14px rgba(186,126,56,0.32); }
+.address-btn:active { transform: translateY(1px); }
+
+/* Address form */
+.address-form { margin-top: 6px; max-width: 520px; }
+.address-form .form-group { margin-bottom: 14px; }
+.address-form label {
+  display: block;
+  font-size: 0.9rem;
+  color: #6B6B6B;
+  margin-bottom: 6px;
+}
+.address-form .form-control {
+  width: 100%;
+  border: 1px solid rgba(0,0,0,0.12);
+  background: #f8f5f3;
+  color: #2c1e1e;
+  border-radius: 8px;
+  height: 42px;
+  padding: 10px 12px;
+  outline: none;
+  transition: border-color .15s ease, box-shadow .15s ease, background .15s ease;
+}
+.address-form .form-control:focus {
+  border-color: #4C0A2E;
+  box-shadow: 0 0 0 3px rgba(76,10,46,0.08);
+  background: #fff;
+}
+.address-form .form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+
+/* Right feature card */
+.feature-card {
+  position: relative;
+  border-radius: 24px;
+  overflow: hidden;
+  height: 540px;
+  background: #f7efe6;
+}
+.feature-img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: saturate(0.8) contrast(0.95);
+}
+.feature-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(76,10,46,0.1) 0%, rgba(0,0,0,0.35) 100%);
+}
+.feature-badge {
+  position: absolute;
+  left: 22px;
+  bottom: 48px;
+  font-weight: 800;
+  font-size: 1.8rem;
+  letter-spacing: 1px;
+  color: #ffb762;
+  text-shadow: 0 3px 8px rgba(0,0,0,0.5);
+}
+.feature-logo {
+  position: absolute;
+  left: 22px;
+  bottom: 96px;
+  width: 64px;
+  height: 64px;
+}
+
+@media (max-width: 1200px) {
+  .account-wrapper { grid-template-columns: 200px 1fr 420px; }
+  .feature-card { height: 480px; }
+}
+@media (max-width: 992px) {
+  .account-wrapper { grid-template-columns: 1fr; }
+  .account-sidebar { border-right: none; padding-right: 0; }
+  .feature-card { height: 380px; }
+}
