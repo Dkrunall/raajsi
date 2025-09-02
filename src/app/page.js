@@ -242,12 +242,29 @@ export default function HomePage({ onAddToCart }) {
       e.preventDefault();
     }
 
-    if (isLeftSwipe && cardStartIndex < CARDS.length - 2) {
-      // Changed to stop at second-to-last card
-      handleCardNext();
-    }
-    if (isRightSwipe && cardStartIndex > 0) {
-      handleCardPrev();
+    // Check if we're on mobile (screen width < 768px)
+    const isMobile = window.innerWidth < 768;
+    
+    if (isMobile) {
+      // Mobile: Navigate between sections (single cards)
+      if (isLeftSwipe && sectionIdx < SECTIONS.length - 1) {
+        const newIdx = sectionIdx + 1;
+        setSectionIdx(newIdx);
+        setCardStartIndex(newIdx * 2);
+      }
+      if (isRightSwipe && sectionIdx > 0) {
+        const newIdx = sectionIdx - 1;
+        setSectionIdx(newIdx);
+        setCardStartIndex(newIdx * 2);
+      }
+    } else {
+      // Desktop: Navigate between card pairs
+      if (isLeftSwipe && cardStartIndex < CARDS.length - 2) {
+        handleCardNext();
+      }
+      if (isRightSwipe && cardStartIndex > 0) {
+        handleCardPrev();
+      }
     }
 
     setTouchStart(null);
@@ -1484,7 +1501,7 @@ export default function HomePage({ onAddToCart }) {
               style={{ position: "relative", width: "100%" }}
             >
               <button
-                className="btn btn-outline-dark rounded-circle nav-arrow-btn"
+                className="btn btn-outline-dark rounded-circle nav-arrow-btn d-none d-md-block"
                 style={{
                   width: 48,
                   height: 48,
@@ -1509,7 +1526,7 @@ export default function HomePage({ onAddToCart }) {
               <div className="d-block d-md-none">
                 <div
                   className="col-12 d-flex flex-column align-items-center mb-4 mobile-card-container"
-                  style={{ minWidth: 0 }}
+                  style={{ minWidth: 0, position: "relative" }}
                 >
                   <div
                     className="card mobile-featured-card"
@@ -1527,7 +1544,11 @@ export default function HomePage({ onAddToCart }) {
                       overflow: "hidden",
                       border: "none",
                       boxShadow: "0 4px 12px rgba(0,0,0,0.15)",
+                      cursor: "grab",
                     }}
+                    onTouchStart={handleTouchStart}
+                    onTouchMove={handleTouchMove}
+                    onTouchEnd={handleTouchEnd}
                   >
                     {/* Enhanced overlay for better text readability */}
                     <div
@@ -1649,6 +1670,94 @@ export default function HomePage({ onAddToCart }) {
                         Get 50% OFF {CARDS[sectionIdx % CARDS.length].oldPrice}
                       </div>
                     </div>
+                  </div>
+                  
+                  {/* Mobile Navigation arrows and indicators */}
+                  <div className="position-relative mt-3" style={{ width: "100%", height: "50px" }}>
+                    {/* Left Arrow */}
+                    <button
+                      onClick={() => {
+                        const newIdx = sectionIdx === 0 ? SECTIONS.length - 1 : sectionIdx - 1;
+                        setSectionIdx(newIdx);
+                        setCardStartIndex(newIdx * 2);
+                      }}
+                      className="btn position-absolute"
+                      style={{
+                        backgroundColor: "#8B5E3C",
+                        color: "white",
+                        borderRadius: "50%",
+                        width: "40px",
+                        height: "40px",
+                        border: "none",
+                        display: "flex",
+                        alignItems: "center",
+                        justifyContent: "center",
+                        fontSize: "18px",
+                        fontWeight: "bold",
+                        left: "20px",
+                        top: "50%",
+                        transform: "translateY(-50%)",
+                      }}
+                      aria-label="Previous product"
+                    >
+                      ‹
+                    </button>
+                    
+                    {/* Centered Slide indicators */}
+                    <div 
+                      className="position-absolute d-flex gap-2" 
+                      style={{
+                        left: "50%",
+                        top: "50%",
+                        transform: "translate(-50%, -50%)",
+                      }}
+                    >
+                      {SECTIONS.map((_, index) => (
+                        <div
+                          key={index}
+                          style={{
+                            width: "8px",
+                            height: "8px",
+                            borderRadius: "50%",
+                            backgroundColor: sectionIdx === index ? "#8B5E3C" : "#ccc",
+                            cursor: "pointer",
+                          }}
+                          onClick={() => {
+                            setSectionIdx(index);
+                            setCardStartIndex(index * 2);
+                          }}
+                        />
+                      ))}
+                    </div>
+                    
+                    {/* Right Arrow */}
+                    <button
+                      onClick={() => {
+                        const newIdx = sectionIdx === SECTIONS.length - 1 ? 0 : sectionIdx + 1;
+                        setSectionIdx(newIdx);
+                        setCardStartIndex(newIdx * 2);
+                      }}
+                      className="btn position-absolute"
+                      style={{
+                        backgroundColor: "#8B5E3C",
+                        color: "white",
+                        borderRadius: "50%",
+                        width: "40px",
+                        height: "40px",
+                        border: "none",
+                        display: "flex",
+                        alignItems: "center",
+                        justifyContent: "center",
+                        fontSize: "18px",
+                        fontWeight: "bold",
+                        right: "20px",
+                        top: "50%",
+                        transform: "translateY(-50%)",
+                      }}
+                      aria-label="Next product"
+                    >
+                      ›
+                    </button>
                   </div>
                 </div>
               </div>
@@ -1870,7 +1979,7 @@ export default function HomePage({ onAddToCart }) {
               </div>
 
               <button
-                className="btn btn-outline-dark rounded-circle nav-arrow-btn"
+                className="btn btn-outline-dark rounded-circle nav-arrow-btn d-none d-md-block"
                 style={{
                   width: 48,
                   height: 48,
