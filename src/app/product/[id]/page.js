@@ -184,12 +184,6 @@ export default function ProductPage({ onAddToCart }) {
                     <div id="stockHelp" className="small text-muted mt-2" aria-live="polite">Only {product.stock} in stock</div>
                   </div>
                 </div>
-
-                {/*<ul className="list-unstyled text-muted mb-4" style={{ lineHeight: 1.6 }}>
-                  {product.highlights.slice(2).map((t, i) => (
-                    <li key={i} className="mb-1">• {t}</li>
-                  ))}
-                </ul>*/}
               </div>
             </div>
           </div>

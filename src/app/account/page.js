@@ -58,7 +58,8 @@ export default function AccountPage() {
                 <div className="section-title">Order History</div>
                 <div className="order-banner">
                   <span className="cta">Make Your First Order</span>
-                  You Haven't Placed Any Orders Yet.
+-                  You Haven't Placed Any Orders Yet.
++                  You Haven&apos;t Placed Any Orders Yet.
                 </div>
               </section>
 
@@ -127,10 +128,9 @@ export default function AccountPage() {
 
         {/* Right Feature Panel */}
         <div className="feature-card">
-          <Image src="/right-side-card.png" alt="Feature" fill className="feature-img" />
-          <div className="feature-overlay" />
-          <Image src="/royal-logo.png" alt="Logo" width={64} height={64} className="feature-logo" />
-          <div className="feature-badge">EVOKE THE ROYALTY IN YOU</div>
+-          <div className="feature-overlay" />
+-          <Image src="/mci.png" alt="Logo" width={64} height={64} className="feature-logo" />
++          <Image src="/mci.png" alt="Feature" fill className="feature-img" />
         </div>
       </div>
     </div>

@@ -71,10 +71,12 @@
 .account-section + .account-section { margin-top: 18px; }
 
 .section-title {
-  font-family: 'Georgia', serif;
+  font-family: 'Rose Velt Personal Use Only', serif !important;
   font-size: 1.25rem;
   color: #4C0A2E;
   margin-bottom: 0.75rem;
+  text-shadow: none !important;
+  letter-spacing: 0.5px;
 }
 
 .order-banner {
@@ -202,4 +204,7 @@
   .account-wrapper { grid-template-columns: 1fr; }
   .account-sidebar { border-right: none; padding-right: 0; }
   .feature-card { height: 380px; }
+  /* Mobile font enforcement and remove text shadows */
+  .section-title { font-family: 'Rose Velt Personal Use Only', serif !important; text-shadow: none !important; }
+  .feature-badge { text-shadow: none !important; }
 }
