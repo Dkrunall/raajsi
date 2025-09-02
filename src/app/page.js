@@ -460,30 +460,17 @@ export default function HomePage({ onAddToCart }) {
                 style={{
                   fontFamily: "var(--font-devanagari)",
                   fontSize: "clamp(14px, 1.3vw, 18px)",
-                  marginBottom: "6px",
+                  marginBottom: "2px",
                   backgroundImage: "linear-gradient(45deg, rgb(111, 87, 42) 0%, rgb(213, 167, 81) 50%, rgb(111, 87, 42) 100%)",
                   backgroundClip: "text",
                   WebkitBackgroundClip: "text",
                   WebkitTextFillColor: "transparent",
                   color: "transparent",
-                  display: "inline-block",
+                  display: "block",
+                  lineHeight: "1.4",
                 }}
               >
-                मुग्धे! धानुष्कता केयमपूर्वा त्वयि दृश्यते ।
-              </p><br/>
-              <p
-                style={{
-                  fontFamily: "var(--font-devanagari)",
-                  fontSize: "clamp(14px, 1.3vw, 18px)",
-                  marginTop: 0,
-                  backgroundImage: "linear-gradient(45deg, rgb(111, 87, 42) 0%, rgb(213, 167, 81) 50%, rgb(111, 87, 42) 100%)",
-                  backgroundClip: "text",
-                  WebkitBackgroundClip: "text",
-                  WebkitTextFillColor: "transparent",
-                  color: "transparent",
-                  display: "inline-block",
-                }}
-              >
+                मुग्धे! धानुष्कता केयमपूर्वा त्वयि दृश्यते । <br />
                 यया विध्यसि चेतांसि गुणैरेव न सायकैः ॥
               </p>
 
@@ -494,7 +481,7 @@ export default function HomePage({ onAddToCart }) {
                   fontWeight: 400,
                   color: "#414141",
                   lineHeight: "1.6",
-                  marginTop: "10px",
+                  marginTop: "18px",
                   marginBottom: 0,
                   maxWidth: "620px",
                 }}
@@ -727,6 +714,15 @@ export default function HomePage({ onAddToCart }) {
             margin-bottom: 15px !important;
             padding: 0 10px !important;
           }
+          #our-essence p[style*="font-devanagari"] {
+            font-size: 0.95rem !important;
+            line-height: 1.3 !important;
+            margin-bottom: 12px !important;
+            padding: 0 5px !important;
+          }
+          #our-essence p[style*="marginTop"] {
+            margin-top: 12px !important;
+          }
           #our-essence .fst-italic {
             font-size: 0.9rem !important;
             margin-bottom: 20px !important;
@@ -737,13 +733,13 @@ export default function HomePage({ onAddToCart }) {
             width: 160px !important;
             height: 45px !important;
           }
-          #our-essence [style*="background-image"] {
+          #our-essence div[style*="background-image"] {
             height: 45vh !important;
             min-height: 220px !important;
             max-height: 360px !important;
             width: 100% !important;
             margin: 0 !important;
-            background-position: center center !important;
+            background-position: 50% !important;
             background-size: cover !important;
           }
         }
@@ -755,16 +751,25 @@ export default function HomePage({ onAddToCart }) {
           #our-essence p {
             font-size: 0.9rem !important;
           }
+          #our-essence p[style*="font-devanagari"] {
+            font-size: 0.85rem !important;
+            line-height: 1.25 !important;
+            margin-bottom: 10px !important;
+            padding: 0 3px !important;
+          }
+          #our-essence p[style*="marginTop"] {
+            margin-top: 10px !important;
+          }
           #our-essence .fst-italic {
             font-size: 0.8rem !important;
           }
-          #our-essence [style*="background-image"] {
+          #our-essence div[style*="background-image"] {
             height: 38vh !important;
             min-height: 200px !important;
             max-height: 320px !important;
             width: 100% !important;
             margin: 0 !important;
-            background-position: center center !important;
+            background-position: 50% !important;
             background-size: cover !important;
           }
           .royal-promise-section {
@@ -811,7 +816,7 @@ export default function HomePage({ onAddToCart }) {
           backgroundImage: "url('/background3.png')",
           backgroundRepeat: "repeat",
           backgroundSize: "cover",
-          marginTop: "170px",
+          marginTop: "100px",
           minHeight: "106vh",
           paddingTop: "190px",
           paddingBottom: "80px",
