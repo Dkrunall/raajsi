@@ -128,7 +128,15 @@ export default function RoyalPromisesPage() {
       <section style={{ padding: "48px 16px 0", background: "#fff" }}>
         <div style={{ maxWidth: 1120, margin: "0 auto", textAlign: "center" }}>
           <div style={{ display: "inline-flex", alignItems: "center", gap: 12 }}>
-            <img src="/left-design.png" alt="orn-left" style={{ width: 14, height: 14 }} />
+            <img
+                src="/right-design.png"
+                alt="Left Icon"
+                style={{
+                  maxWidth: "40px",
+                  transform: "rotate(180deg)",
+                  opacity: 0.8,
+                }}
+              />
             <h3
               style={{
                 fontFamily: "'Rose Velt Personal Use Only', serif",
@@ -141,7 +149,14 @@ export default function RoyalPromisesPage() {
             >
               THE ROYAL PROMISE
             </h3>
-            <img src="/right-design.png" alt="orn-right" style={{ width: 14, height: 14 }} />
+            <img
+                src="/right-design.png"
+                alt="Right Icon"
+                style={{
+                  maxWidth: "40px",
+                  opacity: 0.8,
+                }}
+              />
           </div>
         </div>
       </section>
@@ -348,6 +363,10 @@ export default function RoyalPromisesPage() {
           .rp-hero .hero-title { font-size: 26px !important; line-height: 1.2 !important; letter-spacing: 0.2px !important; }
           .rp-hero .hero-desc { font-size: 14px !important; line-height: 1.6 !important; }
           .rp-text h4 { font-size: 18px !important; }
+          /* Ornament icons */
+          img[alt="Left Icon"], img[alt="Right Icon"] {
+            max-width: 28px !important;
+          }
         }
         @media (max-width: 480px) {
           .rp-img { height: 180px !important; }
@@ -357,6 +376,10 @@ export default function RoyalPromisesPage() {
           .rp-hero .hero-desc { font-size: 13px !important; line-height: 1.65 !important; }
           .rp-text h4 { font-size: 16px !important; }
           .rp-text p { font-size: 12px !important; line-height: 1.75 !important; }
+          /* Ornament icons */
+          img[alt="Left Icon"], img[alt="Right Icon"] {
+            max-width: 24px !important;
+          }
         }
       `}</style>
     </main>

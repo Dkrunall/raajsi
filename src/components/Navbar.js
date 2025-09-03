@@ -261,15 +261,12 @@ export default function Navbar({ children }) {
             <button className="auth-close-btn" onClick={() => setLoginOpen(false)} aria-label="Close login">&times;</button>
             <div id="authModalTitle" className="auth-title">LOGIN</div>
             <div className="auth-subtitle">Sign-Up For Our Exclusive Launch Now and Get a 0% Discount on Products</div>
-            <form onSubmit={(e) => { e.preventDefault(); setLoginOpen(false); }} className="auth-form">
+            <form onSubmit={(e) => { e.preventDefault(); setLoginOpen(false); router.push('/account'); }} className="auth-form">
               <label className="form-label small fw-semibold mb-1">Name</label>
               <input type="text" className="form-control auth-input" placeholder="Full Name" />
 
               <label className="form-label small fw-semibold mb-1 mt-3">Email</label>
-              <input type="email" className="form-control auth-input" placeholder="Email Address" required />
-
-              <label className="form-label small fw-semibold mb-1 mt-3">Password</label>
-              <input type="password" className="form-control auth-input" placeholder="Enter Password" required />
+              <input type="email" className="form-control auth-input" placeholder="Email Address" />
 
               <label className="form-label small fw-semibold mb-1 mt-3">Phone</label>
               <div className="d-flex align-items-stretch auth-phone-group">

@@ -648,31 +648,36 @@ export default function HomePage({ onAddToCart }) {
           }
           
           .step-royal-row {
-            flex-direction: column !important;
-            gap: 10px !important;
+            flex-direction: row !important;
+            gap: 5px !important;
             width: 100% !important;
             max-width: 100% !important;
+            justify-content: center !important;
+            align-items: center !important;
           }
           
           .step-royal-row .col-auto {
-            margin-bottom: 10px !important;
+            margin-bottom: 0 !important;
             width: auto !important;
+            flex-shrink: 0 !important;
           }
           
           .step-royal-row h2 {
             font-size: 1.3rem !important;
             text-align: center !important;
-            padding: 0 15px !important;
+            padding: 0 8px !important;
             word-wrap: break-word !important;
-            white-space: normal !important;
+            white-space: nowrap !important;
+            margin: 0 !important;
           }
           
           .step-royal-row h2 span {
-            font-size: 1.5rem !important;
+            font-size: 1.6rem !important;
           }
           
           .step-royal-row img {
-            max-width: 30px !important;
+            max-width: 35px !important;
+            height: auto !important;
           }
           
           #royal-indulgence-section .container {
@@ -687,7 +692,9 @@ export default function HomePage({ onAddToCart }) {
             margin: 0 !important;
             padding: 20px 10px !important;
             min-height: auto !important;
-            flex-direction: column !important;
+            flex-direction: row !important;
+            justify-content: center !important;
+            align-items: center !important;
           }
           
           #royal-indulgence-section .col-md-7 {
@@ -722,16 +729,19 @@ export default function HomePage({ onAddToCart }) {
           }
           
           .step-royal-row h2 {
-            font-size: 1.1rem !important;
-            padding: 0 10px !important;
+            font-size: 1.2rem !important;
+            padding: 0 5px !important;
+            white-space: nowrap !important;
+            margin: 0 !important;
           }
           
           .step-royal-row h2 span {
-            font-size: 1.3rem !important;
+            font-size: 1.4rem !important;
           }
           
           .step-royal-row img {
-            max-width: 25px !important;
+            max-width: 30px !important;
+            height: auto !important;
           }
           
           #royal-indulgence-section .container {
