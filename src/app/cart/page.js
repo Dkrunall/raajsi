@@ -188,7 +188,7 @@ export default function CartPage() {
                   
                   {shipping === 0 && (
                     <div className="free-shipping-note">
-                      🎉 You've qualified for free shipping!
+                      🎉 You&apos;ve qualified for free shipping!
                     </div>
                   )}
                   

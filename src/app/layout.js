@@ -14,8 +14,11 @@ const devanagariFont = Noto_Serif_Devanagari({
 });
 
 export const metadata = {
-  title: 'Royal Website',
-  description: 'Figma to Next.js with Bootstrap',
+  title: 'Raajsi',
+  description: 'Raajsi is a skincare brand that offers a range of products to help you look and feel your best',
+  icons: {
+    icon: '/royal-logo.png',
+  },
 };
 
 export default function RootLayout({ children }) {
