@@ -150,19 +150,26 @@ export default function OurEssence() {
           }
           .essence-card .p-4, 
           .essence-card .p-md-5 {
-            padding: 25px 20px !important;
+            padding: 25px 15px !important;
             margin-left: 0 !important;
             margin-top: 0 !important;
             text-align: center !important;
+            max-width: 100% !important;
+            box-sizing: border-box !important;
           }
           .essence-title {
             font-size: 1.4rem !important;
-            margin-bottom: 10px !important;
+            margin-bottom: 15px !important;
+            word-wrap: break-word !important;
+            overflow-wrap: break-word !important;
           }
           .essence-text {
             font-size: 0.95rem !important;
             line-height: 1.5 !important;
             text-align: center !important;
+            word-wrap: break-word !important;
+            overflow-wrap: break-word !important;
+            hyphens: auto !important;
           }
           .essence-card img {
             width: 100% !important;
@@ -272,12 +279,7 @@ export default function OurEssence() {
               <span style={{ fontSize: "32px" }}>G</span>ENESIS
             </h5>
             <p className="essence-text">
-              Raajsi is a premium Ayurvedic wellness and beauty brand,<br />
-              crafted for those who seek grace, balance, and timeless<br />
-              elegance in their self-care. Rooted in the sacred traditions<br />
-              of Indian royalty and ancient healing, Raajsi is where<br />
-              Ayurveda meets regal ritual, creating an experience that is<br />
-              as restorative as it is luxurious.
+              Raajsi is a premium Ayurvedic wellness and beauty brand, crafted for those who seek grace, balance, and timeless elegance in their self-care. Rooted in the sacred traditions of Indian royalty and ancient healing, Raajsi is where Ayurveda meets regal ritual, creating an experience that is as restorative as it is luxurious.
             </p>
           </div>
 
@@ -312,13 +314,7 @@ export default function OurEssence() {
               <span style={{ fontSize: "32px" }}>C</span>REATIVE / <span style={{ fontSize: "32px" }}>A</span>RTISTIC <span style={{ fontSize: "32px" }}>D</span>ESCRIPTION
             </h5>
             <p className="essence-text">
-              Bathed in the golden glow of tradition, Raajsi is a sensory<br />
-              journey through time — where the velvet touch of uttaras, the<br />
-              aroma of pure rose, and the soothing whispers of sandalwood evoke<br />
-              the grandeur of palatial rituals. Every drop, every grain, every<br />
-              scent is a nod to a time when beauty was sacred and rituals were<br />
-              revered. Here, skincare is poetry, and self-care is an ode to your<br />
-              inner queen.
+              Bathed in the golden glow of tradition, Raajsi is a sensory journey through time — where the velvet touch of uttaras, the aroma of pure rose, and the soothing whispers of sandalwood evoke the grandeur of palatial rituals. Every drop, every grain, every scent is a nod to a time when beauty was sacred and rituals were revered. Here, skincare is poetry, and self-care is an ode to your inner queen.
             </p>
           </div>
         </div>

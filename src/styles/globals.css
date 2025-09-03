@@ -61,3 +61,17 @@ html, body {
 * {
   box-sizing: border-box;
 }
+
+/* Home hero responsive tweaks */
+@media (max-width: 768px) {
+  .home-hero {
+    min-height: 90vh !important;
+    height: 90svh !important;
+  }
+}
+@media (max-width: 480px) {
+  .home-hero {
+    min-height: 90vh !important;
+    height: 90svh !important;
+  }
+}

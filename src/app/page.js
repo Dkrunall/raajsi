@@ -74,7 +74,7 @@ export default function HomePage({ onAddToCart }) {
     },
   ];
   const CARDS = [
-    // Body Therapy - 2 cards
+    // Body Therapy - 4 cards
     {
       image: "/card11.png",
       title: "COSMIC BODY OIL",
@@ -91,7 +91,23 @@ export default function HomePage({ onAddToCart }) {
       oldPrice: "₹2000",
       section: "BODY THERAPY",
     },
-    // Skin Therapy - 2 cards
+    {
+      image: "/f1.png",
+      title: "ROYAL BODY BUTTER",
+      desc: "Luxurious body butter enriched with natural ingredients that deeply moisturize and nourish your skin for a royal glow.",
+      price: "₹1900",
+      oldPrice: "₹2300",
+      section: "BODY THERAPY",
+    },
+    {
+      image: "/f2.png",
+      title: "DIVINE BODY LOTION",
+      desc: "A lightweight yet nourishing body lotion that absorbs quickly and leaves your skin feeling silky smooth all day.",
+      price: "₹1400",
+      oldPrice: "₹1700",
+      section: "BODY THERAPY",
+    },
+    // Skin Therapy - 4 cards
     {
       image: "/card21.png",
       title: "ROYAL FACE SERUM",
@@ -108,7 +124,23 @@ export default function HomePage({ onAddToCart }) {
       oldPrice: "₹2200",
       section: "SKIN THERAPY",
     },
-    // Hair Therapy - 2 cards
+    {
+      image: "/card21.png",
+      title: "RADIANT FACE CREAM",
+      desc: "Premium anti-aging face cream that reduces fine lines and restores your skin's natural luminosity.",
+      price: "₹2500",
+      oldPrice: "₹3000",
+      section: "SKIN THERAPY",
+    },
+    {
+      image: "/card22.png",
+      title: "GOLDEN FACE CLEANSER",
+      desc: "Gentle yet effective cleanser that removes impurities while maintaining your skin's natural moisture balance.",
+      price: "₹1500",
+      oldPrice: "₹1900",
+      section: "SKIN THERAPY",
+    },
+    // Hair Therapy - 4 cards
     {
       image: "/card11.png",
       title: "DIVINE HAIR OIL",
@@ -125,7 +157,23 @@ export default function HomePage({ onAddToCart }) {
       oldPrice: "₹2000",
       section: "HAIR THERAPY",
     },
-    // Ritual Kit - 2 cards
+    {
+      image: "/card1.png",
+      title: "LUSTROUS HAIR MASK",
+      desc: "Deep conditioning hair mask that repairs damaged hair and restores natural shine and strength.",
+      price: "₹1800",
+      oldPrice: "₹2200",
+      section: "HAIR THERAPY",
+    },
+    {
+      image: "/card2.png",
+      title: "SILKY HAIR CONDITIONER",
+      desc: "Nourishing conditioner that detangles and softens hair while providing long-lasting moisture and protection.",
+      price: "₹1200",
+      oldPrice: "₹1500",
+      section: "HAIR THERAPY",
+    },
+    // Ritual Kit - 4 cards
     {
       image: "/card21.png",
       title: "SACRED BATH SALT",
@@ -142,10 +190,30 @@ export default function HomePage({ onAddToCart }) {
       oldPrice: "₹3500",
       section: "RITUAL KIT",
     },
+    {
+      image: "/card51.png",
+      title: "TRANQUIL ESSENCE SET",
+      desc: "A curated collection of aromatherapy essentials designed to create a peaceful and rejuvenating ritual experience.",
+      price: "₹2400",
+      oldPrice: "₹3000",
+      section: "RITUAL KIT",
+    },
+    {
+      image: "/card52.png",
+      title: "BLISSFUL RITUAL DUO",
+      desc: "Perfect pairing of bath oils and candles to transform your daily routine into a luxurious spa-like experience.",
+      price: "₹2000",
+      oldPrice: "₹2500",
+      section: "RITUAL KIT",
+    },
   ];
   const [sectionIdx, setSectionIdx] = useState(0);
   const [cardStartIndex, setCardStartIndex] = useState(0);
+  const [mobileCardIndex, setMobileCardIndex] = useState(0);
   const section = SECTIONS[sectionIdx];
+  
+  // Filter cards by current section
+  const sectionCards = CARDS.filter(card => card.section === section.badge);
 
 
 
@@ -165,29 +233,20 @@ export default function HomePage({ onAddToCart }) {
     setSectionIdx((prev) => (prev === SECTIONS.length - 1 ? 0 : prev + 1));
   };
 
-  // Card carousel functions - now works with pairs of cards
+  // Card carousel functions - now works with pairs of cards within current section
   const handleCardPrev = () => {
-    setCardStartIndex((prev) => {
-      const newIndex = Math.max(0, prev - 2); // Move by 2 cards at a time
-      // Update section index based on card position
-      const newSectionIndex = Math.floor(newIndex / 2);
-      setSectionIdx(newSectionIndex);
-      return newIndex;
-    });
+    setCardStartIndex((prev) => Math.max(0, prev - 2)); // Move by 2 cards at a time within current section
+    setMobileCardIndex((prev) => Math.max(0, prev - 1)); // Move by 1 card for mobile
   };
   const handleCardNext = () => {
-    setCardStartIndex((prev) => {
-      const newIndex = Math.min(CARDS.length - 2, prev + 2); // Move by 2 cards at a time, stop at second-to-last card
-      // Update section index based on card position
-      const newSectionIndex = Math.floor(newIndex / 2);
-      setSectionIdx(newSectionIndex);
-      return newIndex;
-    });
+    setCardStartIndex((prev) => Math.min(sectionCards.length - 2, prev + 2)); // Move by 2 cards at a time within current section
+    setMobileCardIndex((prev) => Math.min(sectionCards.length - 1, prev + 1)); // Move by 1 card for mobile
   };
   const handleTabClick = (idx) => {
     setSectionIdx(idx);
-    // Update card position based on section (show first card of each section)
-    setCardStartIndex(idx * 2);
+    // Reset card positions when switching tabs
+    setCardStartIndex(0);
+    setMobileCardIndex(0);
   };
 
   // Card navigation functions
@@ -246,20 +305,16 @@ export default function HomePage({ onAddToCart }) {
     const isMobile = window.innerWidth < 768;
     
     if (isMobile) {
-      // Mobile: Navigate between sections (single cards)
-      if (isLeftSwipe && sectionIdx < SECTIONS.length - 1) {
-        const newIdx = sectionIdx + 1;
-        setSectionIdx(newIdx);
-        setCardStartIndex(newIdx * 2);
+      // Mobile: Navigate within current section (single cards)
+      if (isLeftSwipe && mobileCardIndex < sectionCards.length - 1) {
+        setMobileCardIndex(prev => prev + 1);
       }
-      if (isRightSwipe && sectionIdx > 0) {
-        const newIdx = sectionIdx - 1;
-        setSectionIdx(newIdx);
-        setCardStartIndex(newIdx * 2);
+      if (isRightSwipe && mobileCardIndex > 0) {
+        setMobileCardIndex(prev => prev - 1);
       }
     } else {
-      // Desktop: Navigate between card pairs
-      if (isLeftSwipe && cardStartIndex < CARDS.length - 2) {
+      // Desktop: Navigate between card pairs within current section
+      if (isLeftSwipe && cardStartIndex < sectionCards.length - 2) {
         handleCardNext();
       }
       if (isRightSwipe && cardStartIndex > 0) {
@@ -293,8 +348,8 @@ export default function HomePage({ onAddToCart }) {
     const isLeftSwipe = distance > 80; // Increased threshold
     const isRightSwipe = distance < -80; // Increased threshold
 
-    if (isLeftSwipe && cardStartIndex < CARDS.length - 2) {
-      // Changed to stop at second-to-last card
+    if (isLeftSwipe && cardStartIndex < sectionCards.length - 2) {
+      // Navigate within current section only
       handleCardNext();
     }
     if (isRightSwipe && cardStartIndex > 0) {
@@ -314,8 +369,8 @@ export default function HomePage({ onAddToCart }) {
     if (isHorizontal) {
       // Added minimum threshold
       // Horizontal scroll detected with minimum threshold
-      if (e.deltaX > 0 && cardStartIndex < CARDS.length - 2) {
-        // Changed to stop at second-to-last card
+      if (e.deltaX > 0 && cardStartIndex < sectionCards.length - 2) {
+        // Navigate within current section only
         handleCardNext();
       } else if (e.deltaX < 0 && cardStartIndex > 0) {
         handleCardPrev();
@@ -356,13 +411,37 @@ export default function HomePage({ onAddToCart }) {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  // Responsive hero banner height
+  const [heroHeight, setHeroHeight] = useState("100svh");
+  const [heroMinHeight, setHeroMinHeight] = useState("100vh");
+
+  useEffect(() => {
+    const computeHeroHeights = () => {
+      if (typeof window === "undefined") return;
+      const w = window.innerWidth;
+      if (w <= 480) {
+        setHeroHeight("85svh");
+        setHeroMinHeight("85vh");
+      } else if (w <= 768) {
+        setHeroHeight("90svh");
+        setHeroMinHeight("90vh");
+      } else {
+        setHeroHeight("100svh");
+        setHeroMinHeight("100vh");
+      }
+    };
+    computeHeroHeights();
+    window.addEventListener("resize", computeHeroHeights);
+    return () => window.removeEventListener("resize", computeHeroHeights);
+  }, []);
+
   return (
     <>
       <div
-        className="position-relative text-white"
+        className="position-relative text-white home-hero"
         style={{
-          height: "100svh",
-          minHeight: "100vh",
+          height: heroHeight,
+          minHeight: heroMinHeight,
           backgroundImage: "url('/heromain.png')",
           backgroundSize: "cover",
           backgroundPosition: "center",
@@ -382,15 +461,14 @@ export default function HomePage({ onAddToCart }) {
             style={{
               margin: 0,
               color: "#FFFFFF",
-              fontFamily:
-                "var(--font-devanagari), 'Noto Serif Devanagari','Mukta','Hind', serif",
               fontWeight: 500,
               fontSize: "clamp(22px, 3.2vw, 42px)",
-              lineHeight: 1.1,
+              lineHeight: 1.28,
               letterSpacing: "0.3px",
               textShadow:
                 "0 2px 24px rgba(0,0,0,0.55), 0 0 2px rgba(0,0,0,0.4)",
-              marginTop:"60px",
+              marginTop:"70px",
+              paddingTop: "4px",
             }}
           >
             मुग्धे! धानुष्कता केयमपूर्वा त्वयि दृश्यते <br />
@@ -1536,7 +1614,7 @@ export default function HomePage({ onAddToCart }) {
                       height: "450px",
                       borderRadius: "15px",
                       backgroundImage: `url(${
-                        CARDS[sectionIdx % CARDS.length].image
+                        sectionCards[mobileCardIndex]?.image || sectionCards[0]?.image
                       })`,
                       backgroundSize: "cover",
                       backgroundPosition: "center",
@@ -1624,7 +1702,7 @@ export default function HomePage({ onAddToCart }) {
                           textAlign: "left",
                         }}
                       >
-                        {CARDS[sectionIdx % CARDS.length].title}
+                        {sectionCards[mobileCardIndex]?.title || sectionCards[0]?.title}
                       </h5>
                       <p
                         style={{
@@ -1634,7 +1712,7 @@ export default function HomePage({ onAddToCart }) {
                           textAlign: "left",
                         }}
                       >
-                        {CARDS[sectionIdx % CARDS.length].desc}
+                        {sectionCards[mobileCardIndex]?.desc || sectionCards[0]?.desc}
                       </p>
                     </div>
                   </div>
@@ -1659,7 +1737,7 @@ export default function HomePage({ onAddToCart }) {
                       VIEW PRODUCT
                     </Link>
                     <div className="text-end">
-                      <strong>{CARDS[sectionIdx % CARDS.length].price}</strong>
+                      <strong>{sectionCards[mobileCardIndex]?.price || sectionCards[0]?.price}</strong>
                       <div
                         style={{
                           fontSize: "0.75rem",
@@ -1667,7 +1745,7 @@ export default function HomePage({ onAddToCart }) {
                           color: "gray",
                         }}
                       >
-                        Get 50% OFF {CARDS[sectionIdx % CARDS.length].oldPrice}
+                        Get 50% OFF {sectionCards[mobileCardIndex]?.oldPrice || sectionCards[0]?.oldPrice}
                       </div>
                     </div>
                   </div>
@@ -1677,13 +1755,13 @@ export default function HomePage({ onAddToCart }) {
                     {/* Left Arrow */}
                     <button
                       onClick={() => {
-                        const newIdx = sectionIdx === 0 ? SECTIONS.length - 1 : sectionIdx - 1;
-                        setSectionIdx(newIdx);
-                        setCardStartIndex(newIdx * 2);
+                        if (mobileCardIndex > 0) {
+                          setMobileCardIndex(prev => prev - 1);
+                        }
                       }}
                       className="btn position-absolute"
                       style={{
-                        backgroundColor: "#8B5E3C",
+                        backgroundColor: mobileCardIndex === 0 ? "#ccc" : "#8B5E3C",
                         color: "white",
                         borderRadius: "50%",
                         width: "40px",
@@ -1697,6 +1775,8 @@ export default function HomePage({ onAddToCart }) {
                         left: "20px",
                         top: "50%",
                         transform: "translateY(-50%)",
+                        opacity: mobileCardIndex === 0 ? 0.5 : 1,
+                        cursor: mobileCardIndex === 0 ? "not-allowed" : "pointer",
                       }}
                       aria-label="Previous product"
                     >
@@ -1712,19 +1792,18 @@ export default function HomePage({ onAddToCart }) {
                         transform: "translate(-50%, -50%)",
                       }}
                     >
-                      {SECTIONS.map((_, index) => (
+                      {sectionCards.map((_, index) => (
                         <div
                           key={index}
                           style={{
                             width: "8px",
                             height: "8px",
                             borderRadius: "50%",
-                            backgroundColor: sectionIdx === index ? "#8B5E3C" : "#ccc",
+                            backgroundColor: mobileCardIndex === index ? "#8B5E3C" : "#ccc",
                             cursor: "pointer",
                           }}
                           onClick={() => {
-                            setSectionIdx(index);
-                            setCardStartIndex(index * 2);
+                            setMobileCardIndex(index);
                           }}
                         />
                       ))}
@@ -1733,13 +1812,13 @@ export default function HomePage({ onAddToCart }) {
                     {/* Right Arrow */}
                     <button
                       onClick={() => {
-                        const newIdx = sectionIdx === SECTIONS.length - 1 ? 0 : sectionIdx + 1;
-                        setSectionIdx(newIdx);
-                        setCardStartIndex(newIdx * 2);
+                        if (mobileCardIndex < sectionCards.length - 1) {
+                          setMobileCardIndex(prev => prev + 1);
+                        }
                       }}
                       className="btn position-absolute"
                       style={{
-                        backgroundColor: "#8B5E3C",
+                        backgroundColor: mobileCardIndex === sectionCards.length - 1 ? "#ccc" : "#8B5E3C",
                         color: "white",
                         borderRadius: "50%",
                         width: "40px",
@@ -1753,6 +1832,8 @@ export default function HomePage({ onAddToCart }) {
                         right: "20px",
                         top: "50%",
                         transform: "translateY(-50%)",
+                        opacity: mobileCardIndex === sectionCards.length - 1 ? 0.5 : 1,
+                        cursor: mobileCardIndex === sectionCards.length - 1 ? "not-allowed" : "pointer",
                       }}
                       aria-label="Next product"
                     >
@@ -1796,9 +1877,9 @@ export default function HomePage({ onAddToCart }) {
                     borderRadius: "4px",
                   }}
                 >
-                  {CARDS[cardStartIndex]?.section || "Products"} • Cards{" "}
+                  {sectionCards[0]?.section || "Products"} • Cards{" "}
                   {cardStartIndex + 1}-
-                  {Math.min(cardStartIndex + 2, CARDS.length)} of {CARDS.length}
+                  {Math.min(cardStartIndex + 2, sectionCards.length)} of {sectionCards.length}
                 </div>
                 <div
                   style={{
@@ -1811,7 +1892,7 @@ export default function HomePage({ onAddToCart }) {
                 >
                   {/* Show 2 cards at a time */}
                   {Array.from(
-                    { length: Math.ceil(CARDS.length / 2) },
+                    { length: Math.ceil(sectionCards.length / 2) },
                     (_, pairIndex) => (
                       <div
                         key={pairIndex}
@@ -1821,7 +1902,7 @@ export default function HomePage({ onAddToCart }) {
                           minWidth: "100%",
                         }}
                       >
-                        {CARDS.slice(pairIndex * 2, pairIndex * 2 + 2).map(
+                        {sectionCards.slice(pairIndex * 2, pairIndex * 2 + 2).map(
                           (card, cardIndex) => (
                             <div
                               key={cardIndex}
@@ -1984,21 +2065,21 @@ export default function HomePage({ onAddToCart }) {
                   width: 48,
                   height: 48,
                   alignSelf: "center",
-                  opacity: cardStartIndex >= CARDS.length - 2 ? 0.5 : 1,
+                  opacity: cardStartIndex >= sectionCards.length - 2 ? 0.5 : 1,
                   cursor:
-                    cardStartIndex >= CARDS.length - 2
-                      ? "not-allowed"
-                      : "pointer",
+                      cardStartIndex >= sectionCards.length - 2
+                        ? "not-allowed"
+                        : "pointer",
                   border: "2px solid #333",
                   backgroundColor:
-                    cardStartIndex >= CARDS.length - 2 ? "#f5f5f5" : "white",
+                    cardStartIndex >= sectionCards.length - 2 ? "#f5f5f5" : "white",
                   transition: "all 0.3s ease",
                   position: "absolute",
                   right: "20px",
                   zIndex: 10,
                 }}
                 onClick={handleCardNext}
-                disabled={cardStartIndex >= CARDS.length - 2}
+                disabled={cardStartIndex >= sectionCards.length - 2}
                 aria-label="Next"
               >
                 &#x276F;
@@ -2027,11 +2108,12 @@ export default function HomePage({ onAddToCart }) {
         <div className="container h-100">
           <div className="row h-100 align-items-center">
             {/* Left Text + Decorative Image */}
-            <div className="col-md-6 text-white px-4 d-flex flex-column justify-content-center h-100 position-relative">
-              {/* Decorative image in background */}
+            <div className="col-md-6 text-white px-2 px-md-4 d-flex flex-column justify-content-center h-100 position-relative">
+              {/* Decorative image in background - hidden on mobile */}
               <img
                 src="/design.png"
                 alt="Floral Design"
+                className="d-none d-md-block"
                 style={{
                   position: "absolute",
                   bottom: "10px",
@@ -2045,17 +2127,18 @@ export default function HomePage({ onAddToCart }) {
 
               {/* Text Content */}
               <h3
+                className="text-center text-md-start ms-md-4"
                 style={{
                   fontFamily: "'Rose Velt Personal Use Only', serif",
                   color: "#FFD700",
                   position: "relative",
-                  left: "20px",
                   fontWeight: "400",
-                  fontSize: "32px",
+                  fontSize: "clamp(24px, 4vw, 32px)",
                   lineHeight: "100%",
                   letterSpacing: "0%",
                   textTransform: "uppercase",
                   marginBottom: "20px",
+                  paddingLeft: "0",
                 }}
               >
                 <span style={{ fontSize: "36px" }}>T</span>HE{" "}
@@ -2064,65 +2147,62 @@ export default function HomePage({ onAddToCart }) {
               </h3>
 
               <p
+                className="text-center text-md-start px-3 px-md-0 ms-md-4"
                 style={{
                   fontFamily: "Avenir, sans-serif",
                   color: "white",
                   position: "relative",
                   zIndex: 1,
-                  left: "20px",
                   fontSize: "14px",
                   lineHeight: "1.4",
                   maxWidth: "400px",
                   fontWeight: "normal",
+                  margin: "0 auto",
                 }}
               >
-                At Raajsi, luxury meets responsibility.Our Royal Promise is
-                <br />
-                built on integrity, transparency, and timeless care
-                <br />— for you and the planet.
+                At Raajsi, luxury meets responsibility. Our Royal Promise is built on integrity, transparency, and timeless care — for you and the planet.
               </p>
 
               <p
-                className="fst-italic"
+                className="fst-italic text-center text-md-start px-3 px-md-0 ms-md-4"
                 style={{
                   color: "#fff",
                   fontWeight: "500",
                   position: "relative",
                   zIndex: 1,
-                  left: "20px",
-                  fontSize: "18px",
+                  fontSize: "clamp(16px, 3vw, 18px)",
                   lineHeight: "1.3",
+                  maxWidth: "400px",
+                  margin: "0 auto",
                 }}
               >
                 <strong>
                   <em>
-                    Time-tested formulas derived from ancient sciences and
-                    <br />
-                    scriptures.
+                    Time-tested formulas derived from ancient sciences and scriptures.
                   </em>
                 </strong>
               </p>
 
               <p
+                className="text-center text-md-start px-3 px-md-0 ms-md-4"
                 style={{
                   fontFamily: "Avenir",
                   fontStyle: "Roman",
                   color: "white",
                   position: "relative",
                   zIndex: 1,
-                  left: "20px",
                   fontSize: "16px",
                   fontWeight: "400",
                   lineHeight: "1.3",
+                  maxWidth: "400px",
+                  margin: "0 auto",
                 }}
               >
-                Rooted in Ayurveda and proven through generations of
-                <br />
-                ritual wisdom.
+                Rooted in Ayurveda and proven through generations of ritual wisdom.
               </p>
 
               {/* Decorative dots - Now functional slider */}
-              <div className="d-flex gap-2 my-3 ms-4">
+              <div className="d-flex gap-2 my-3 justify-content-center justify-content-md-start ms-md-4">
                 <span
                   onClick={() => setRoyalPromiseSlide(0)}
                   style={{
@@ -2162,25 +2242,27 @@ export default function HomePage({ onAddToCart }) {
               </div>
 
               {/* Explore Button */}
-              <Link 
-                href="/royal-promises"
-                className="btn mt-3 d-flex align-items-center justify-content-center"
-                style={{
-                  backgroundColor: "#BA7E38",
-                  color: "#FFFFFF",
-                  borderRadius: "30px",
-                  padding: "8px 24px",
-                  fontWeight: "300",
-                  position: "relative",
+              <div className="d-flex justify-content-center justify-content-md-start ms-md-4">
+                <Link 
+                  href="/royal-promises"
+                  className="btn mt-3 d-flex align-items-center justify-content-center"
+                  style={{
+                    backgroundColor: "#BA7E38",
+                    color: "#FFFFFF",
+                    borderRadius: "30px",
+                    padding: "8px 24px",
+                    fontWeight: "300",
+                    position: "relative",
                     height: "52px",
                     width: "192px",
                     zIndex: 1,
-                    left: "20px",
+                    left: "0",
                     fontSize: "1.1rem",
                   }}
                 >
                   EXPLORE
-              </Link>
+                </Link>
+              </div>
             </div>
 
             {/* Right Image */}

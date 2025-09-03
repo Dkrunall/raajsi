@@ -1,8 +1,31 @@
 "use client";
 
-import React from "react";
+import React, { useState, useEffect } from "react";
 
 export default function RoyalPromisesPage() {
+  // Responsive hero banner height - same as home page
+  const [heroHeight, setHeroHeight] = useState("100svh");
+  const [heroMinHeight, setHeroMinHeight] = useState("100vh");
+
+  useEffect(() => {
+    const computeHeroHeights = () => {
+      if (typeof window === "undefined") return;
+      const w = window.innerWidth;
+      if (w <= 480) {
+        setHeroHeight("85svh");
+        setHeroMinHeight("85vh");
+      } else if (w <= 768) {
+        setHeroHeight("90svh");
+        setHeroMinHeight("90vh");
+      } else {
+        setHeroHeight("100svh");
+        setHeroMinHeight("100vh");
+      }
+    };
+    computeHeroHeights();
+    window.addEventListener("resize", computeHeroHeights);
+    return () => window.removeEventListener("resize", computeHeroHeights);
+  }, []);
   const items = [
     {
       title:
@@ -52,7 +75,8 @@ export default function RoyalPromisesPage() {
       <div
         className="position-relative text-white"
         style={{
-          height: "100vh",
+          height: heroHeight,
+          minHeight: heroMinHeight,
           backgroundImage: "url('/heromain.png')",
           backgroundSize: "cover",
           backgroundPosition: "center",

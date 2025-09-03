@@ -322,16 +322,18 @@
   }
   /* Section Styling */
   .section-title {
-    font-size: 0.9rem;
+    font-size: 1.1rem;
     font-weight: 700;
-    color: #FFFFFF;
+    color: #FFFFFF!important;
     text-transform: uppercase;
     letter-spacing: 2px;
-    margin-bottom: 1.2rem;
+    margin-bottom: 1.2rem!important;
     padding-left: 0.5rem;
     position: relative;
     font-family: 'Rose Velt Personal Use Only', serif;
-    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.8);
+    opacity: 1;
+    z-index: 10;
   }
   
   .section-title::after {
@@ -446,6 +448,12 @@
     position: relative;
     backdrop-filter: blur(10px);
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    text-decoration: none;
+  }
+  
+  .action-card:focus {
+    outline: 2px solid #BA7E38;
+    outline-offset: 2px;
   }
   
   .nav-card:hover, .action-card:hover {

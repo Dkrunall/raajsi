@@ -1,14 +1,73 @@
 .heroSection {
-  min-height: 100vh; /* Instead of fixed height */
-  width: 100%; /* Instead of fixed width */
+  min-height: 100vh;
+  width: 100%;
   position: relative;
   overflow: hidden;
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
 }
+
+/* Hero Typography */
+.heroHeading {
+  font-family: "Avenir", sans-serif;
+  font-size: 2rem;
+  font-weight: 500;
+  line-height: 1.4;
+  letter-spacing: 0.2px;
+  color: #ffffff;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.25);
+  margin-bottom: 0.75rem;
+}
+
+.heroHeadingLarge {
+  font-size: 2.1rem;
+  font-weight: 600;
+}
+
+.sanskritText {
+  font-family: "Avenir", sans-serif;
+  font-size: 1.4rem;
+  font-weight: 500;
+  letter-spacing: 0.2px;
+  line-height: 1.45;
+  color: #ffffff;
+  text-shadow: 0 2px 3px rgba(0, 0, 0, 0.2);
+}
+
+/* Scroll Button */
 .arrowWrapper {
   position: absolute;
-  bottom: 40px; /* Move lower by adjusting this value */
+  bottom: 36px;
   left: 50%;
   transform: translateX(-50%);
+  z-index: 10;
+}
+
+.scrollButton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  border: 2px solid rgba(255, 255, 255, 0.8);
+  background-color: rgba(255, 255, 255, 0.1);
+  color: rgba(255, 255, 255, 0.9);
+  cursor: pointer;
+  transition: all 0.3s ease;
+  backdrop-filter: blur(10px);
+  outline: none;
+}
+
+.scrollButton:hover {
+  background-color: rgba(255, 255, 255, 0.2);
+  transform: scale(1.05);
+  border-color: rgba(255, 255, 255, 1);
+}
+
+.scrollButton:active {
+  transform: scale(0.95);
 }
 
 .arrow {
@@ -21,7 +80,7 @@
   font-size: 32px;
   text-align: center;
   color: white;
-  background-color: rgba(255, 255, 255, 0.1); /* Optional subtle background */
+  background-color: rgba(255, 255, 255, 0.1);
   transition: background-color 0.3s ease;
 }
 
@@ -34,6 +93,32 @@
 }
 .backgroundImage {
   z-index: 0;
+}
+
+/* Overlayed left-aligned content */
+.heroContent {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 40px 30px 80px 30px; /* pull up and left */
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  text-align: left;
+}
+
+/* Bottom-right indicator bar */
+.heroIndicator {
+  position: absolute;
+  right: 60px;
+  bottom: 60px;
+  width: 80px;
+  height: 6px;
+  border-radius: 4px;
+  background: rgba(255, 255, 255, 0.9);
+  z-index: 2;
 }
 
 /* Responsive background container */
@@ -77,10 +162,66 @@
   z-index: 2 !important;
 }
 
+/* Tablet Styles */
+@media (max-width: 1024px) {
+  .heroHeading {
+    font-size: 2.2rem;
+    padding: 0 20px;
+  }
+  
+  .heroHeadingLarge {
+    font-size: 2.6rem;
+  }
+  
+  .sanskritText {
+    font-size: 1.6rem;
+  }
+}
+
+/* Mobile Styles */
 @media (max-width: 768px) {
   .heroSection {
-    min-height: 70vh !important;
+    min-height: 85vh;
+    padding: 20px 0;
   }
+
+  .heroContent {
+    padding: 60px 16px 80px 16px;
+  }
+  
+  .heroHeading {
+    font-size: 1.6rem;
+    line-height: 1.35;
+    padding: 0;
+    margin-bottom: 0.75rem;
+  }
+  
+  .heroHeadingLarge {
+    font-size: 1.9rem;
+  }
+  
+  .sanskritText {
+    font-size: 1.1rem;
+    margin-top: 0.75rem;
+    padding: 0;
+  }
+  
+  .arrowWrapper {
+    bottom: 28px;
+  }
+
+  .heroIndicator {
+    right: 24px;
+    bottom: 28px;
+    width: 64px;
+    height: 5px;
+  }
+  
+  .scrollButton {
+    width: 50px;
+    height: 50px;
+  }
+  
   .ornament {
     width: 60px !important;
     height: 100px !important;
@@ -96,6 +237,52 @@
   .card {
     height: 280px !important;
     margin-bottom: 15px !important;
+  }
+}
+
+/* Small Mobile Styles */
+@media (max-width: 480px) {
+  .heroSection {
+    min-height: 80vh;
+  }
+
+  .heroContent {
+    padding: 40px 30px; /* pull to top-left */
+  }
+  
+  .heroHeading {
+    font-size: 1.6rem;
+    line-height: 1.35;
+    padding: 0;
+  }
+  
+  .heroHeadingLarge {
+    font-size: 1.9rem;
+  }
+  
+  .sanskritText {
+    font-size: 1.1rem;
+    background: none; /* remove gold gradient */
+    -webkit-background-clip: initial;
+    -webkit-text-fill-color: initial;
+    color: #ffffff; /* white like reference */
+    font-size: 1.4rem; /* slightly smaller */
+  }
+  
+  .arrowWrapper {
+    bottom: 24px;
+  }
+
+  .heroIndicator {
+    right: 20px;
+    bottom: 24px;
+    width: 56px;
+    height: 4px;
+  }
+  
+  .scrollButton {
+    width: 45px;
+    height: 45px;
   }
 }
 

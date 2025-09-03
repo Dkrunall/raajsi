@@ -127,115 +127,82 @@ export default function FeaturedProducts() {
   // Pause auto-play on hover
   const handleMouseEnter = () => setIsAutoPlaying(false);
   const handleMouseLeave = () => setIsAutoPlaying(true);
+  // Responsive hero banner height - same as royal-promises
+  const [heroHeight, setHeroHeight] = useState("100svh");
+  const [heroMinHeight, setHeroMinHeight] = useState("100vh");
+
+  useEffect(() => {
+    const computeHeroHeights = () => {
+      if (typeof window === "undefined") return;
+      const w = window.innerWidth;
+      if (w <= 480) {
+        setHeroHeight("85svh");
+        setHeroMinHeight("85vh");
+      } else if (w <= 768) {
+        setHeroHeight("90svh");
+        setHeroMinHeight("90vh");
+      } else {
+        setHeroHeight("100svh");
+        setHeroMinHeight("100vh");
+      }
+    };
+    computeHeroHeights();
+    window.addEventListener("resize", computeHeroHeights);
+    return () => window.removeEventListener("resize", computeHeroHeights);
+  }, []);
+
   return (
-    <div className="position-relative text-white">
-      {/* Background image */}
+    <div className="position-relative">
+      {/* Hero Banner - exact clone of royal-promises */}
       <div
-        className={`${styles.heroSection} d-flex align-items-center justify-content-center text-center`}
+        className="position-relative text-white"
+        style={{
+          height: heroHeight,
+          minHeight: heroMinHeight,
+          backgroundImage: "url('/heromain.png')",
+          backgroundSize: "cover",
+          backgroundPosition: "center",
+          backgroundRepeat: "no-repeat",
+        }}
       >
         <div
-          className="position-absolute top-0 start-0 w-100 h-100"
-          style={{ zIndex: -1 }}
+          className="position-absolute"
+          style={{
+            top: "clamp(80px, 12vh, 120px)",
+            left: "clamp(24px, 6vw, 80px)",
+            maxWidth: 900,
+            pointerEvents: "none",
+          }}
         >
-          <Image
-            src="/featured-bg.png" // ✅ Save your image as 'public/featured-bg.jpg'
-            alt="Featured Background"
-            width={1920}
-            height={1080}
-            style={{ objectFit: "cover", width: "100%", height: "100%" }}
-            quality={100}
-          />
-        </div>
-
-        {/* Text Overlay */}
-        <div className="container">
-          <h2 className="custom-heading" style={{
-            fontFamily: "Avenir, sans-serif!important",
-            color: "#fff",
-            fontSize: "1.5rem",
-            letterSpacing: "1px",
-            margin: 0,
-            textTransform: "capitalize"
-          }}>
-            <span style={{ fontSize: "1.5rem" }}>E</span>xplore our wide range of luxurious skincare <br/> and wellness products to celebrate beauty that is timeless.
-          </h2>
-          <p className="fs-4 mt-3" style={{
-              fontFamily: "Georgia, serif",
-              fontWeight: "500",
-              letterSpacing: "0.5px",
-              lineHeight: "1.5",
-              background: "linear-gradient(45deg, rgb(111, 87, 42) 0%, rgb(213, 167, 81) 50%, rgb(111, 87, 42) 100%)",
-              WebkitBackgroundClip: "text",
-              WebkitTextFillColor: "transparent"
-            }}>शरीरमाद्यं खलु धर्मसाधनम्</p>
-          
-          <style jsx>{`
-            @media (max-width: 768px) {
-              h2 {
-                font-size: 1.2rem !important;
-                line-height: 1.4 !important;
-                padding: 0 15px !important;
-              }
-              h2 span {
-                font-size: 1.4rem !important;
-              }
-              .fs-4 {
-                font-size: 1rem !important;
-                margin-top: 1rem !important;
-              }
-            }
-            @media (max-width: 480px) {
-              h2 {
-                font-size: 1rem !important;
-                line-height: 1.3 !important;
-                padding: 0 10px !important;
-              }
-              h2 span {
-                font-size: 1.2rem !important;
-              }
-              .fs-4 {
-                font-size: 0.9rem !important;
-                margin-top: 0.8rem !important;
-              }
-            }
-          `}</style>
-
-          {/* Circular Down Arrow */}
-          <div className="mt-4 d-flex justify-content-center">
-            <button
-              onClick={() => {
-                const nextSection = document.querySelector('.py-5.bg-light');
-                if (nextSection) {
-                  nextSection.scrollIntoView({ behavior: 'smooth' });
-                }
-              }}
-              style={{
-                fontSize: "1.2rem",
-                border: "2px solid rgba(255, 255, 255, 0.8)",
-                borderRadius: "50%",
-                width: "50px",
-                height: "50px",
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "center",
-                cursor: "pointer",
-                backgroundColor: "rgba(255, 255, 255, 0.1)",
-                color: "rgba(255, 255, 255, 0.8)",
-                transition: "all 0.3s ease",
-                outline: "none",
-              }}
-              onMouseEnter={(e) => {
-                e.target.style.backgroundColor = "rgba(255, 255, 255, 0.2)";
-                e.target.style.transform = "scale(1.1)";
-              }}
-              onMouseLeave={(e) => {
-                e.target.style.backgroundColor = "rgba(255, 255, 255, 0.1)";
-                e.target.style.transform = "scale(1)";
-              }}
-            >
-              &#8595;
-            </button>
-          </div>
+          <h1
+             style={{
+               margin: 0,
+               color: "#FFFFFF",
+               fontFamily: "Avenir, sans-serif",
+               fontWeight: 400,
+               fontSize: "clamp(20px, 5.5vw, 32px)",
+               lineHeight: 1.1,
+               letterSpacing: 0.5,
+               textTransform: "none",
+               textShadow: "0 2px 24px rgba(0,0,0,0.55), 0 0 2px rgba(0,0,0,0.4)",
+               marginTop: "60px",
+             }}
+           >
+             Explore our wide range of luxurious skincare and wellness products to celebrate beauty that is timeless.
+           </h1>
+           <p
+             style={{
+               marginTop: 12,
+               color: "#FFFFFF",
+               fontFamily: "Avenir, sans-serif",
+               fontSize: "clamp(25px, 2vw, 30px)",
+               lineHeight: 1.6,
+               maxWidth: 700,
+               textShadow: "0 1px 12px rgba(0,0,0,0.45)",
+             }}
+           >
+             शरीरमाद्यं खलु धर्मसाधनम्।
+           </p>
         </div>
       </div>
 

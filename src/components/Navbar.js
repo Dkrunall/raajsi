@@ -228,11 +228,19 @@ export default function Navbar({ children }) {
             <div className="action-section">
               <h3 className="section-title">Account</h3>
               <div className="action-cards">
-                <button type="button" className="action-card" onClick={() => { setMobileMenuOpen(false); }}>
+                <button type="button" className="action-card" onClick={() => { setMobileMenuOpen(false); setLoginOpen(true); }}>
                   <span className="action-card-text">My Account</span>
                 </button>
-                <button type="button" className="action-card" onClick={() => { setMobileMenuOpen(false); handleCartClick({preventDefault:()=>{}}); }}>
+                <Link 
+                  href="/cart" 
+                  className="action-card"
+                  onClick={() => setMobileMenuOpen(false)}
+                >
                   <span className="action-card-text">Shopping Cart</span>
+                  {cartItems.length > 0 && <span className="cart-badge">{cartItems.reduce((sum, item) => sum + item.qty, 0)}</span>}
+                </Link>
+                <button type="button" className="action-card" onClick={() => { setMobileMenuOpen(false); handleCartClick({preventDefault:()=>{}}); }}>
+                  <span className="action-card-text">Cart Popup</span>
                   {cartItems.length > 0 && <span className="cart-badge">{cartItems.reduce((sum, item) => sum + item.qty, 0)}</span>}
                 </button>
               </div>
