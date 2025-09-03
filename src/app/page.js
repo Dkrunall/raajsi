@@ -553,7 +553,6 @@ export default function HomePage({ onAddToCart }) {
 
               <p
                 style={{
-                  fontFamily: "var(--font-devanagari)",
                   fontSize: "clamp(14px, 1.3vw, 18px)",
                   marginBottom: "2px",
                   backgroundImage: "linear-gradient(45deg, rgb(111, 87, 42) 0%, rgb(213, 167, 81) 50%, rgb(111, 87, 42) 100%)",
@@ -581,22 +580,7 @@ export default function HomePage({ onAddToCart }) {
                   maxWidth: "620px",
                 }}
               >
-                Raajsi is a premium ayurvedic beauty and wellness brand with a royal touch.
-              </p>
-
-              <p
-                style={{
-                  fontSize: "clamp(14px, 1.2vw, 16px)",
-                  fontFamily: "Avenir, sans-serif",
-                  fontWeight: 400,
-                  color: "#414141",
-                  lineHeight: "1.6",
-                  marginTop: "8px",
-                  marginBottom: 0,
-                  maxWidth: "620px",
-                }}
-              >
-                Combining elements of regal rituals and ayurveda, we invite you to immerse yourself in the scents, texture and colours of our heritage.
+                Raajsi is a premium ayurvedic beauty and wellness brand with a royal touch. Combining elements of regal rituals and ayurveda, we invite you to immerse yourself in the scents, texture and colours of our heritage.
               </p>
 
               <Link
