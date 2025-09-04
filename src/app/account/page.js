@@ -55,7 +55,7 @@ export default function AccountPage() {
           {activeTab === 'dashboard' && (
             <>
               <section className="account-section mb-4">
-                <div className="section-title">Order History</div>
+                <div className="section-title-1" style={{fontFamily: "'Rose Velt Personal Use Only', serif", marginBottom: "1.2rem!important", fontSize: "1.5rem"}}>Order History</div>
                 <div className="order-banner">
                   <span className="cta">Make Your First Order</span>
                   You Haven&apos;t Placed Any Orders Yet.
@@ -63,7 +63,7 @@ export default function AccountPage() {
               </section>
 
               <section className="account-section">
-                <div className="section-title">Account Details</div>
+                <div className="section-title-1" style={{fontFamily: "'Rose Velt Personal Use Only', serif", marginBottom: "1.2rem!important", fontSize: "1.5rem"}}>Account Details</div>
                 <div className="details-list">
                   <div className="details-row">
                     <div className="details-label">Name</div>
@@ -83,7 +83,7 @@ export default function AccountPage() {
 
           {activeTab === 'address' && (
             <section className="account-section" aria-labelledby="address-heading">
-              <div id="address-heading" className="section-title">Address Details</div>
+              <div id="address-heading" className="section-title-1" style={{fontFamily: "'Rose Velt Personal Use Only', serif", marginBottom: "1.2rem!important", fontSize: "1.5rem"}}>Address Details</div>
               <form className="address-form" onSubmit={(e) => e.preventDefault()} noValidate>
                 <div className="form-group">
                   <label htmlFor="name">Name</label>
