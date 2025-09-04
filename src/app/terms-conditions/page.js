@@ -108,7 +108,7 @@ export default function TermsConditions() {
             <li>Although our products are crafted using natural, ayurvedic ingredients, we recommend conducting a patch test before use, as individual skin responses may vary.</li>
             <li>We reserve the right to update prices, policies, and product offerings without prior notice.</li>
             <li>Orders are confirmed only upon successful payment and availability.</li>
-            <li>Raajsi retains ownership of this website's content, trademarks, and intellectual property.</li>
+            <li>Raajsi retains ownership of this website&rsquo;s content, trademarks, and intellectual property.</li>
           </ol>
           <p className="content">
             Your use of our platform implies your acceptance of these terms. For questions or clarifications, feel free to contact us.
@@ -138,10 +138,10 @@ export default function TermsConditions() {
           <ul className="content">
             <li>Once your return is approved, the refund will be processed within 7–10 working days.</li>
             <li>For card payments, refunds will be made to the same debit/credit card.</li>
-            <li>For Cash on Delivery (COD) orders, we'll reach out via email to collect your bank details and process the refund via bank transfer within 24–48 business hours of receiving the product. Funds may take 4–5 additional business days to reflect in your account.</li>
+            <li>For Cash on Delivery (COD) orders, we&rsquo;ll reach out via email to collect your bank details and process the refund via bank transfer within 24–48 business hours of receiving the product. Funds may take 4–5 additional business days to reflect in your account.</li>
           </ul>
           <p className="content">
-            We're committed to offering you the best in self-grooming and wellness. If you feel we've missed the mark, let us know — we&rsquo;ll do our best to make it right. Write to us at Info@phyinternational.com for return initiation.
+            We&rsquo;re committed to offering you the best in self-grooming and wellness. If you feel we&rsquo;ve missed the mark, let us know — we&rsquo;ll do our best to make it right. Write to us at Info@phyinternational.com for return initiation.
           </p>
           <p className="content" style={{fontStyle: 'italic', textAlign: 'center', marginTop: '30px', fontSize: '1.1rem'}}>
             &ldquo;Your satisfaction is part of our royal promise.&rdquo;
