@@ -276,7 +276,7 @@ export default function OurEssence() {
           {/* Left Text Section */}
           <div className="p-4 p-md-5 essence-body vcenter" style={{ flex: 1, marginLeft: "30px" }}>
             <h5 className="fw-semibold essence-title">
-              <span style={{ fontSize: "32px" }}>G</span>ENESIS
+              <span style={{ fontSize: "32px", marginLeft: "-16px" }}>G</span>ENESIS
             </h5>
             <p className="essence-text">
               Raajsi is a premium Ayurvedic wellness and beauty brand, crafted for those who seek grace, balance, and timeless elegance in their self-care. Rooted in the sacred traditions of Indian royalty and ancient healing, Raajsi is where Ayurveda meets regal ritual, creating an experience that is as restorative as it is luxurious.
@@ -311,7 +311,7 @@ export default function OurEssence() {
           {/* Right Content */}
           <div className="p-4 p-md-5 d-flex flex-column justify-content-center essence-body" style={{ flex: 1, paddingTop: "10px" }}>
             <h5 className="fw-semibold mb-3 essence-title">
-              <span style={{ fontSize: "32px" }}>C</span>REATIVE / <span style={{ fontSize: "32px" }}>A</span>RTISTIC <span style={{ fontSize: "32px" }}>D</span>ESCRIPTION
+              <span style={{ fontSize: "32px", marginLeft: "-16px"}}>C</span>REATIVE / <span style={{ fontSize: "32px" }}>A</span>RTISTIC <span style={{ fontSize: "32px" }}>D</span>ESCRIPTION
             </h5>
             <p className="essence-text">
               Bathed in the golden glow of tradition, Raajsi is a sensory journey through time — where the velvet touch of uttaras, the aroma of pure rose, and the soothing whispers of sandalwood evoke the grandeur of palatial rituals. Every drop, every grain, every scent is a nod to a time when beauty was sacred and rituals were revered. Here, skincare is poetry, and self-care is an ode to your inner queen.
@@ -325,7 +325,7 @@ export default function OurEssence() {
         <div className="essence-card d-flex flex-column flex-md-row">
           <div className="p-4 p-md-5 essence-body vcenter" style={{ flex: 1, marginLeft: "30px" }}>
             <h5 className="fw-semibold essence-title">
-              <span style={{ fontSize: "32px" }}>P</span>HILOSOPHY
+              <span style={{ fontSize: "32px", marginLeft: "-16px" }}>P</span>HILOSOPHY
             </h5>
             <p className="essence-text">
               Raajsi is born from a belief that beauty should be real —
@@ -362,7 +362,7 @@ export default function OurEssence() {
           {/* Right Content */}
           <div className="p-4 p-md-5 d-flex flex-column justify-content-center essence-body" style={{ flex: 1, paddingTop: "10px" }}>
             <h5 className="fw-semibold mb-3 essence-title">
-              <span style={{ fontSize: "32px" }}>A</span>SPIRATIONAL <span style={{ fontSize: "32px" }}>B</span>EAUTY
+              <span style={{ fontSize: "32px", marginLeft: "-16px" }}>A</span>SPIRATIONAL <span style={{ fontSize: "32px" }}>B</span>EAUTY
             </h5>
             <p className="essence-text">
               When a ritual doesn’t just feel elegant, it is a world of solace,
