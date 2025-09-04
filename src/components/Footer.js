@@ -167,8 +167,8 @@ const Footer = () => {
               <FaRegCopyright style={{ marginRight: '5px' }} /> 2025 Raajsi. All Rights Reserved.
             </Col>
             <Col md={6} className="d-flex justify-content-center justify-content-md-end">
-              <a href="#" className="text-white mx-3" style={{ fontSize: '0.9rem', textDecoration: 'none' }}>Terms & Conditions</a>
-              <a href="#" className="text-white mx-3" style={{ fontSize: '0.9rem', textDecoration: 'none' }}>Privacy Policy</a>
+              <a href="/terms-conditions" className="text-white mx-3" style={{ fontSize: '0.9rem', textDecoration: 'none' }}>Terms & Conditions</a>
+              <a href="/privacy-policy" className="text-white mx-3" style={{ fontSize: '0.9rem', textDecoration: 'none' }}>Privacy Policy</a>
             </Col>
           </Row>
         </Container>

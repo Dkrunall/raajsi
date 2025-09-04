@@ -55,22 +55,22 @@ export default function HomePage({ onAddToCart }) {
     {
       key: "body-therapy",
       badge: "BODY THERAPY",
-      badgeStyle: { backgroundColor: "#4C0A2E", color: "#fff" },
+      badgeStyle: { backgroundColor: "#BA7E38", color: "#fff" },
     },
     {
       key: "skin-therapy",
       badge: "SKIN THERAPY",
-      badgeStyle: { backgroundColor: "#4C0A2E", color: "#fff" },
+      badgeStyle: { backgroundColor: "#BA7E38", color: "#fff" },
     },
     {
       key: "hair-therapy",
       badge: "HAIR THERAPY",
-      badgeStyle: { backgroundColor: "#4C0A2E", color: "#fff" },
+      badgeStyle: { backgroundColor: "#BA7E38", color: "#fff" },
     },
     {
       key: "ritual-kit",
       badge: "RITUAL KIT",
-      badgeStyle: { backgroundColor: "#4C0A2E", color: "#fff" },
+      badgeStyle: { backgroundColor: "#BA7E38", color: "#fff" },
     },
   ];
   const CARDS = [
@@ -92,7 +92,7 @@ export default function HomePage({ onAddToCart }) {
       section: "BODY THERAPY",
     },
     {
-      image: "/f1.png",
+      image: "/card11.png",
       title: "ROYAL BODY BUTTER",
       desc: "Luxurious body butter enriched with natural ingredients that deeply moisturize and nourish your skin for a royal glow.",
       price: "₹1900",
@@ -100,7 +100,7 @@ export default function HomePage({ onAddToCart }) {
       section: "BODY THERAPY",
     },
     {
-      image: "/f2.png",
+      image: "/card12.png",
       title: "DIVINE BODY LOTION",
       desc: "A lightweight yet nourishing body lotion that absorbs quickly and leaves your skin feeling silky smooth all day.",
       price: "₹1400",
@@ -572,16 +572,29 @@ export default function HomePage({ onAddToCart }) {
                 style={{
                   fontSize: "clamp(14px, 1.2vw, 16px)",
                   fontFamily: "Avenir, sans-serif",
-                  fontWeight: 400,
+                  fontWeight: 500,
                   color: "#414141",
                   lineHeight: "1.6",
                   marginTop: "18px",
                   marginBottom: 0,
-                  maxWidth: "620px",
+                  maxWidth: "400px",
                 }}
               >
-                Raajsi is a premium ayurvedic beauty and wellness brand with a royal touch. Combining elements of regal rituals and ayurveda, we invite you to immerse yourself in the scents, texture and colours of our heritage.
+                Raajsi is a premium ayurvedic beauty and wellness brand with a royal touch. 
               </p>
+
+              <p
+                style={{
+                  fontSize: "clamp(14px, 1.2vw, 16px)",
+                  fontFamily: "Avenir, sans-serif",
+                  fontWeight: 500,
+                  color: "#414141",
+                  lineHeight: "1.6",
+                  marginTop: "18px",
+                  marginBottom: 0,
+                  maxWidth: "400px",
+                }}
+              >Combining elements of regal rituals and ayurveda, we invite you to immerse yourself in the scents, texture and colours of our heritage.</p>
 
               <Link
                 href="/our-essence"
@@ -1170,7 +1183,7 @@ export default function HomePage({ onAddToCart }) {
                     <div
                       className="left-text-strip px-4 py-4"
                       style={{
-                        backgroundColor: "#6A5013",
+                        backgroundColor: "#BA7E38",
                         color: "#FFD700",
                         fontFamily: "'Rose Velt Personal Use Only', serif",
                         fontSize: "1.1rem",
@@ -1204,7 +1217,7 @@ export default function HomePage({ onAddToCart }) {
                     <div
                       className="left-text-strip px-4 py-4"
                       style={{
-                        backgroundColor: "#8F7B4C",
+                        backgroundColor: "#BA7E38",
                         color: "#fff",
                         fontFamily: "'Rose Velt Personal Use Only', serif",
                         fontSize: "1.1rem",
@@ -1237,7 +1250,7 @@ export default function HomePage({ onAddToCart }) {
                     <div
                       className="left-text-strip px-4 py-4"
                       style={{
-                        backgroundColor: "#978864",
+                        backgroundColor: "#BA7E38",
                         color: "#4e3b00",
                         fontFamily: "'Rose Velt Personal Use Only', serif",
                         fontSize: "1.1rem",
@@ -1461,7 +1474,6 @@ export default function HomePage({ onAddToCart }) {
       <section
         id="featured-products-section"
         className="featured-products-section py-5"
-        style={{ backgroundColor: "#fff" }}
       >
         <div className="container">
           <div className="row justify-content-center align-items-center mb-4 featured-title-row">
@@ -1517,7 +1529,6 @@ export default function HomePage({ onAddToCart }) {
             <div
               className="d-flex justify-content-center align-items-center tab-container"
               style={{
-                backgroundColor: "#f5f0eb",
                 borderRadius: "30px",
                 padding: "6px 10px",
                 maxWidth: "600px",
@@ -1544,11 +1555,11 @@ export default function HomePage({ onAddToCart }) {
                   className="me-2 tab-button"
                   style={{
                     backgroundColor:
-                      idx === sectionIdx ? "#4C0A2E" : "transparent",
+                      idx === sectionIdx ? "#BA7E38" : "transparent",
                     color: idx === sectionIdx ? "#fff" : "#4C0A2E",
                     border: "none",
                     borderRadius: "25px",
-                    padding: "6px 18px",
+                    padding: "10px 18px",
                     fontSize: "0.9rem",
                     fontWeight: "500",
                     transition: "background 0.2s, color 0.2s",
@@ -1563,8 +1574,6 @@ export default function HomePage({ onAddToCart }) {
             </div>
           </div>
         </div>
-        
-
 
         <div className="container-fluid text-center">
           <div className="container-fluid mt-4">
@@ -1644,12 +1653,10 @@ export default function HomePage({ onAddToCart }) {
                         fontFamily: "Georgia, serif",
                         maxWidth: "70%",
                         lineHeight: "1.5",
-                        padding: "10px 12px",
                         textShadow: "0 2px 8px rgba(0, 0, 0, 0.9), 0 0 20px rgba(0, 0, 0, 0.5)",
                         fontWeight: "500",
                         letterSpacing: "0.5px",
                         zIndex: 2,
-                        backgroundColor: "rgba(0, 0, 0, 0.2)",
                         borderRadius: "8px",
                       }}
                     >
@@ -1694,6 +1701,7 @@ export default function HomePage({ onAddToCart }) {
                           marginBottom: "8px",
                           marginTop: "18px",
                           textAlign: "left",
+                          fontFamily: "'Rose Velt Personal Use Only', serif",
                         }}
                       >
                         {sectionCards[mobileCardIndex]?.title || sectionCards[0]?.title}
@@ -1704,6 +1712,7 @@ export default function HomePage({ onAddToCart }) {
                           paddingLeft: "10px",
                           marginBottom: "10px",
                           textAlign: "left",
+                          fontFamily: "Avenir, sans-serif",
                         }}
                       >
                         {sectionCards[mobileCardIndex]?.desc || sectionCards[0]?.desc}
@@ -1715,7 +1724,7 @@ export default function HomePage({ onAddToCart }) {
                       href="/product/1"
                       className="btn btn-sm d-flex align-items-center justify-content-center"
                       style={{
-                        backgroundColor: "#8B5E3C",
+                        backgroundColor: "#BA7E38",
                         color: "white",
                         borderRadius: "30px",
                         maxWidth: "194px",
@@ -1755,7 +1764,7 @@ export default function HomePage({ onAddToCart }) {
                       }}
                       className="btn position-absolute"
                       style={{
-                        backgroundColor: mobileCardIndex === 0 ? "#ccc" : "#8B5E3C",
+                        backgroundColor: mobileCardIndex === 0 ? "#ccc" : "#BA7E38",
                         color: "white",
                         borderRadius: "50%",
                         width: "40px",
@@ -1793,7 +1802,7 @@ export default function HomePage({ onAddToCart }) {
                             width: "8px",
                             height: "8px",
                             borderRadius: "50%",
-                            backgroundColor: mobileCardIndex === index ? "#8B5E3C" : "#ccc",
+                            backgroundColor: mobileCardIndex === index ? "#BA7E38" : "#ccc",
                             cursor: "pointer",
                           }}
                           onClick={() => {
@@ -1812,7 +1821,7 @@ export default function HomePage({ onAddToCart }) {
                       }}
                       className="btn position-absolute"
                       style={{
-                        backgroundColor: mobileCardIndex === sectionCards.length - 1 ? "#ccc" : "#8B5E3C",
+                        backgroundColor: mobileCardIndex === sectionCards.length - 1 ? "#ccc" : "#BA7E38",
                         color: "white",
                         borderRadius: "50%",
                         width: "40px",
@@ -1944,18 +1953,31 @@ export default function HomePage({ onAddToCart }) {
                                     fontFamily: "Georgia, serif",
                                     maxWidth: "70%",
                                     lineHeight: "1.5",
-                                    padding: "10px 12px",
                                     textShadow: "0 2px 8px rgba(0, 0, 0, 0.9), 0 0 20px rgba(0, 0, 0, 0.5)",
                                     fontWeight: "500",
                                     letterSpacing: "0.5px",
                                     zIndex: 2,
-                                    backgroundColor: "rgba(0, 0, 0, 0.2)",
                                     borderRadius: "8px",
+                                    display: "flex",
+                                    alignItems: "flex-start",
+                                    gap: "10px",
                                   }}
                                 >
-                                  मुग्धे! धानुष्कता केयमपूर्वा त्वयि दृश्यते{" "}
-                                  <br />
-                                  यया विध्यसि चेतांसि गुणैरेव न सायकैः ॥
+                                  <Image
+                                    src="/translate.png"
+                                    alt="Translation"
+                                    width={40}
+                                    height={40}
+                                    style={{
+                                      flexShrink: 0,
+                                      marginTop: "2px",
+                                    }}
+                                  />
+                                  <div>
+                                    मुग्धे! धानुष्कता केयमपूर्वा त्वयि दृश्यते{" "}
+                                    <br />
+                                    यया विध्यसि चेतांसि गुणैरेव न सायकैः ॥
+                                  </div>
                                 </div>
                                 <div
                                   style={{
@@ -1995,6 +2017,7 @@ export default function HomePage({ onAddToCart }) {
                                       marginBottom: "8px",
                                       marginTop: "18px",
                                       textAlign: "left",
+                                      fontFamily: "'Rose Velt Personal Use Only', serif",
                                     }}
                                   >
                                     {card.title}
@@ -2005,6 +2028,7 @@ export default function HomePage({ onAddToCart }) {
                                       paddingLeft: "10px",
                                       marginBottom: "10px",
                                       textAlign: "left",
+                                      fontFamily: "Avenir, sans-serif",
                                     }}
                                   >
                                     {card.desc}
@@ -2016,7 +2040,7 @@ export default function HomePage({ onAddToCart }) {
                                   href="/product/1"
                                   className="btn btn-sm d-flex align-items-center justify-content-center"
                                   style={{
-                                    backgroundColor: "#8B5E3C",
+                                    backgroundColor: "#BA7E38",
                                     color: "white",
                                     borderRadius: "30px",
                                     maxWidth: "194px",
@@ -2423,7 +2447,7 @@ export default function HomePage({ onAddToCart }) {
             <button
               className="btn px-5 py-2"
               style={{
-                backgroundColor: "#4C0A2E",
+                backgroundColor: "#BA7E38",
                 color: "#fff",
                 borderRadius: "25px",
                 fontWeight: "600",
@@ -2527,13 +2551,35 @@ export default function HomePage({ onAddToCart }) {
             style={{ maxWidth: "700px" }}
           >
             {[
-              "Is Raajsi for me?",
-              "Is Raajsi safe?",
-              "Do you offer free shipping?",
-              "Where do you ship?",
-              "How long does delivery take?",
-              "What if Raajsi doesn't work for me?",
-            ].map((question, index) => (
+              {
+                question: "When is the best time to apply ubtan ?",
+                answer: "Ubtan can be applied 15-30 mins before bath 2-3 times a week to get the maximum benefits. It is part of bath ritual and can also be applied after oil massage. Application of ubtan post massage provides great results for dry skin. Applying the Cosmic body oil followed by the Lavish body scrub not only gently exfoliates the skin but also acts as a natural polish inducing a smooth, radiant look."
+              },
+              {
+                question: "Can I use the body cleanser and scrub together ?",
+                answer: "Yes! For best results, cleanse first to remove surface impurities, then follow with the scrub to deeply exfoliate and rejuvenate your skin."
+              },
+              {
+                question: "Will RAAJSI body scrub help with ingrown hairs or keratosis pilaris ?",
+                answer: "Our exfoliating scrubs help unclog pores and remove dead skin buildup, which can minimize ingrown hairs and smooth rough, bumpy skin. Regular use may improve these conditions over time."
+              },
+              {
+                question: "Can I use RAAJSI products alongside my current skincare products ?",
+                answer: "RAAJSI products are mild and easy on skin. They do not cause skin reactions due to being natural. If you have sensitive skin or a dermatological condition, please introduce one product at a time and perform a patch test."
+              },
+              {
+                question: "Do RAAJSI products contain preservatives ?",
+                answer: "We use natural, Ayurveda-approved preservatives to ensure product longevity and safety without compromising purity."
+              },
+              {
+                question: "Does RAAJSI offer international shipping ?",
+                answer: "Yes, we ship internationally. Shipping rates and delivery times will be calculated at checkout based on your location."
+              },
+              {
+                question: "Does RAAJSI offer combo packs?",
+                answer: "Yes! We offer curated body care ritual kits for regular deliveries. Check our \"Rituals Kit\" section for current deals."
+              }
+            ].map((faq, index) => (
               <div
                 className="border-0 border-bottom"
                 style={{ borderBottom: "2px solid #2e2e2e" }}
@@ -2547,16 +2593,17 @@ export default function HomePage({ onAddToCart }) {
                       setExpandedFaq(expandedFaq === index ? null : index)
                     }
                     style={{
-                      fontWeight: "600",
+                      fontWeight: "500",
                       fontSize: "18px",
                       backgroundColor: "transparent",
                       boxShadow: "none",
                       border: "none",
                       flex: 1,
                       textAlign: "left",
+                      fontFamily: "Avenir, sans-serif",
                     }}
                   >
-                    <span>{question}</span>
+                    <span>{faq.question}</span>
                   </button>
                   <span
                     className="d-flex justify-content-center align-items-center"
@@ -2580,10 +2627,9 @@ export default function HomePage({ onAddToCart }) {
                 {expandedFaq === index && (
                   <div
                     className="text-start px-0 py-2 text-muted"
-                    style={{ fontSize: "15px" }}
+                    style={{ fontSize: "15px", fontFamily: "Avenir, sans-serif" }}
                   >
-                    This is the answer to the question. You can customize this
-                    content.
+                    {faq.answer}
                   </div>
                 )}
               </div>
