@@ -299,7 +299,6 @@
 
 .mobileSlideItem {
   flex: 0 0 100%;
-  padding: 0 10px;
 }
 
 @media (max-width: 600px) {
