@@ -4,6 +4,7 @@ import Link from "next/link";
 import "bootstrap/dist/css/bootstrap.min.css";
 import React, { useState, useEffect } from "react";
 import { FaChevronDown, FaChevronUp } from "react-icons/fa";
+import ProductCard from "../components/ProductCard";
 
 export default function HomePage({ onAddToCart }) {
 
@@ -540,9 +541,9 @@ export default function HomePage({ onAddToCart }) {
               <h2
                 style={{
                   color: "#1F1F1F",
-                  fontWeight: 600,
+                  fontWeight: 400,
                   fontFamily: "'Rose Velt Personal Use Only', serif",
-                  fontSize: "clamp(22px, 2.8vw, 36px)",
+                  fontSize: "clamp(22px, 2.8vw, 32px)",
                   letterSpacing: "0.5px",
                   lineHeight: "1.2",
                   textTransform: "none",
@@ -553,9 +554,11 @@ export default function HomePage({ onAddToCart }) {
 
               <p
                 style={{
-                  fontSize: "clamp(14px, 1.3vw, 18px)",
+                  fontSize: "clamp(14px, 1.3vw, 24px)",
+                  fontWeight: 400,
                   marginBottom: "2px",
-                  backgroundImage: "linear-gradient(45deg, rgb(111, 87, 42) 0%, rgb(213, 167, 81) 50%, rgb(111, 87, 42) 100%)",
+                  background:
+                    "linear-gradient(45deg, rgb(111, 87, 42) 0%, rgb(213, 167, 81) 50%, rgb(111, 87, 42) 100%)",
                   backgroundClip: "text",
                   WebkitBackgroundClip: "text",
                   WebkitTextFillColor: "transparent",
@@ -570,10 +573,11 @@ export default function HomePage({ onAddToCart }) {
 
               <p
                 style={{
-                  fontSize: "clamp(14px, 1.2vw, 16px)",
+                  fontSize: "clamp(14px, 1.2vw, 18px)",
                   fontFamily: "Avenir, sans-serif",
-                  fontWeight: 500,
-                  color: "#414141",
+                  fontWeight: 400,
+                  color: "#000",
+                  fontStyle: "Roman",
                   lineHeight: "1.6",
                   marginTop: "18px",
                   marginBottom: 0,
@@ -585,10 +589,10 @@ export default function HomePage({ onAddToCart }) {
 
               <p
                 style={{
-                  fontSize: "clamp(14px, 1.2vw, 16px)",
+                  fontSize: "clamp(14px, 1.2vw, 18px)",
                   fontFamily: "Avenir, sans-serif",
-                  fontWeight: 500,
-                  color: "#414141",
+                  fontWeight: 400,
+                  color: "#000",
                   lineHeight: "1.6",
                   marginTop: "18px",
                   marginBottom: 0,
@@ -1907,168 +1911,19 @@ export default function HomePage({ onAddToCart }) {
                       >
                         {sectionCards.slice(pairIndex * 2, pairIndex * 2 + 2).map(
                           (card, cardIndex) => (
-                            <div
+                            <ProductCard
                               key={cardIndex}
-                              className="d-flex flex-column align-items-center mb-4"
+                              product={{...card, id: cardIndex + 1}}
+                              showShloka={true}
+                              showTag={true}
+                              cardHeight="450px"
+                              className="mb-4"
                               style={{
                                 minWidth: "calc(50vw - 160px)",
                                 maxWidth: "600px",
                                 flex: "1",
                               }}
-                            >
-                              <div
-                                className="card"
-                                style={{
-                                  width: "100%",
-                                  height: "450px",
-                                  backgroundImage: `url(${card.image})`,
-                                  backgroundSize: "cover",
-                                  backgroundPosition: "center",
-                                  borderRadius: "15px",
-                                  position: "relative",
-                                  overflow: "hidden",
-                                  border: "none",
-                                  boxShadow: "0 4px 12px rgba(0,0,0,0.15)",
-                                }}
-                              >
-                                {/* Enhanced overlay for better text readability */}
-                                <div
-                                  style={{
-                                    position: "absolute",
-                                    top: 0,
-                                    left: 0,
-                                    right: 0,
-                                    bottom: 0,
-                                    background: "linear-gradient(135deg, rgba(0,0,0,0.3) 0%, rgba(0,0,0,0.1) 40%, rgba(0,0,0,0.4) 100%)",
-                                    zIndex: 1,
-                                  }}
-                                />
-                                <div
-                                  style={{
-                                    position: "absolute",
-                                    top: "15px",
-                                    left: "15px",
-                                    color: "#fff",
-                                    fontSize: "0.85rem",
-                                    fontFamily: "Georgia, serif",
-                                    maxWidth: "70%",
-                                    lineHeight: "1.5",
-                                    textShadow: "0 2px 8px rgba(0, 0, 0, 0.9), 0 0 20px rgba(0, 0, 0, 0.5)",
-                                    fontWeight: "500",
-                                    letterSpacing: "0.5px",
-                                    zIndex: 2,
-                                    borderRadius: "8px",
-                                    display: "flex",
-                                    alignItems: "flex-start",
-                                    gap: "10px",
-                                  }}
-                                >
-                                  <Image
-                                    src="/translate.png"
-                                    alt="Translation"
-                                    width={40}
-                                    height={40}
-                                    style={{
-                                      flexShrink: 0,
-                                      marginTop: "2px",
-                                    }}
-                                  />
-                                  <div>
-                                    मुग्धे! धानुष्कता केयमपूर्वा त्वयि दृश्यते{" "}
-                                    <br />
-                                    यया विध्यसि चेतांसि गुणैरेव न सायकैः ॥
-                                  </div>
-                                </div>
-                                <div
-                                  style={{
-                                    position: "absolute",
-                                    top: "10px",
-                                    right: "10px",
-                                    backgroundColor: "rgba(0, 0, 0, 0.6)",
-                                    color: "#fff",
-                                    padding: "4px 10px",
-                                    fontSize: "0.7rem",
-                                    borderRadius: "20px",
-                                    fontWeight: 500,
-                                    fontFamily: "Arial, sans-serif",
-                                    zIndex: 2,
-                                    backdropFilter: "blur(4px)",
-                                  }}
-                                >
-                                  Ingredients & Benefits
-                                </div>
-                                <div
-                                  style={{
-                                    position: "absolute",
-                                    bottom: "0",
-                                    width: "100%",
-                                    color: "#fff",
-                                    padding: "1rem",
-                                    fontFamily: "Georgia, serif",
-                                    marginTop: "40px",
-                                    zIndex: 2,
-                                    background: "linear-gradient(transparent, rgba(0,0,0,0.7))",
-                                  }}
-                                >
-                                  <h5
-                                    style={{
-                                      fontWeight: "bold",
-                                      paddingLeft: "10px",
-                                      marginBottom: "8px",
-                                      marginTop: "18px",
-                                      textAlign: "left",
-                                      fontFamily: "'Rose Velt Personal Use Only', serif",
-                                    }}
-                                  >
-                                    {card.title}
-                                  </h5>
-                                  <p
-                                    style={{
-                                      fontSize: "14px",
-                                      paddingLeft: "10px",
-                                      marginBottom: "10px",
-                                      textAlign: "left",
-                                      fontFamily: "Avenir, sans-serif",
-                                    }}
-                                  >
-                                    {card.desc}
-                                  </p>
-                                </div>
-                              </div>
-                              <div className="d-flex justify-content-between w-100 px-4 mt-2">
-                                <Link
-                                  href="/product/1"
-                                  className="btn btn-sm d-flex align-items-center justify-content-center"
-                                  style={{
-                                    backgroundColor: "#BA7E38",
-                                    color: "white",
-                                    borderRadius: "30px",
-                                    maxWidth: "194px",
-                                    maxHeight: "52px",
-                                    height: "40px",
-                                    minHeight: "40px",
-                                    lineHeight: "40px",
-                                    padding: "0 24px",
-                                    fontWeight: 500,
-                                    fontSize: "1rem",
-                                  }}
-                                >
-                                  VIEW PRODUCT
-                                </Link>
-                                <div className="text-end">
-                                  <strong>{card.price}</strong>
-                                  <div
-                                    style={{
-                                      fontSize: "0.75rem",
-                                      textDecoration: "line-through",
-                                      color: "gray",
-                                    }}
-                                  >
-                                    Get 50% OFF {card.oldPrice}
-                                  </div>
-                                </div>
-                              </div>
-                            </div>
+                            />
                           )
                         )}
                       </div>

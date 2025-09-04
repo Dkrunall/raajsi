@@ -48,9 +48,19 @@ export default function TermsConditions() {
           text-transform: uppercase;
         }
         
-        .content {
+        .content ol {
+          margin: 15px 0;
+          padding-left: 20px;
+        }
+        
+        .content ul {
+          margin: 15px 0;
+          padding-left: 20px;
+        }
+        
+        .content li {
+          margin-bottom: 10px;
           font-size: 0.95rem;
-          margin-bottom: 15px;
         }
         
         @media (max-width: 768px) {
@@ -89,32 +99,52 @@ export default function TermsConditions() {
         </div>
         
         <div className="section">
-          <h2 className="section-title">Usage of Service</h2>
+          <h2 className="section-title">Terms of Use</h2>
           <p className="content">
-            By accessing our website, you agree to use it in accordance with applicable laws and our policies. You must provide accurate information when placing an order and refrain from any unauthorized or unlawful activity.
+            Welcome to Raajsi. By accessing or using our website, you agree to the following terms:
           </p>
+          <ol className="content">
+            <li>All product images, descriptions, and content are for informational purposes and may vary slightly in appearance.</li>
+            <li>Although our products are crafted using natural, ayurvedic ingredients, we recommend conducting a patch test before use, as individual skin responses may vary.</li>
+            <li>We reserve the right to update prices, policies, and product offerings without prior notice.</li>
+            <li>Orders are confirmed only upon successful payment and availability.</li>
+            <li>Raajsi retains ownership of this website's content, trademarks, and intellectual property.</li>
+          </ol>
           <p className="content">
-            We reserve the right to refuse or cancel orders if fraudulent or suspicious activity is detected.
+            Your use of our platform implies your acceptance of these terms. For questions or clarifications, feel free to contact us.
+          </p>
+          <p className="content" style={{fontStyle: 'italic', textAlign: 'center', marginTop: '20px'}}>
+            "Grace begins with clarity."
           </p>
         </div>
         
         <div className="section">
-          <h2 className="section-title">Orders and Payments</h2>
+          <h2 className="section-title">Returns And Refund Policy</h2>
           <p className="content">
-            Orders are subject to availability and payment verification. Prices may be updated without prior notice.
+            We hope every Raajsi ritual brings you joy. But in the rare case that something doesn't feel right, we're here to make it better.
           </p>
-          <p className="content">
-            In case of payment failures, please retry or reach out to our support for assistance.
-          </p>
+          <ul className="content">
+            <li>Returns are accepted within 7 days of delivery for unused, sealed products in their original packaging.</li>
+            <li>For damaged or incorrect items, please contact us within 48 hours of delivery along with clear photographs.</li>
+            <li>All returns, including faulty or damaged items, must be initiated within 15 days of receiving your order.</li>
+            <li>Opened, used, or tampered products cannot be returned due to hygiene and safety standards.</li>
+            <li>Returns will not be accepted if packaging, labels, or included gift/sample items are missing.</li>
+            <li>If your order included a gift or sample, please return it along with the product.</li>
+          </ul>
         </div>
         
         <div className="section">
-          <h2 className="section-title">Returns and Refunds</h2>
+          <h2 className="section-title">Refund Process</h2>
+          <ul className="content">
+            <li>Once your return is approved, the refund will be processed within 7–10 working days.</li>
+            <li>For card payments, refunds will be made to the same debit/credit card.</li>
+            <li>For Cash on Delivery (COD) orders, we'll reach out via email to collect your bank details and process the refund via bank transfer within 24–48 business hours of receiving the product. Funds may take 4–5 additional business days to reflect in your account.</li>
+          </ul>
           <p className="content">
-            Items are eligible for return or refund only if they meet the conditions stated in our Returns & Refund Policy. Please ensure the original packaging and receipts are intact when initiating a return.
+            We're committed to offering you the best in self-grooming and wellness. If you feel we've missed the mark, let us know — we'll do our best to make it right. Write to us at Info@phyinternational.com for return initiation.
           </p>
-          <p className="content">
-            Refunds are processed to the original payment method within a specified timeline after inspection and approval.
+          <p className="content" style={{fontStyle: 'italic', textAlign: 'center', marginTop: '30px', fontSize: '1.1rem'}}>
+            "Your satisfaction is part of our royal promise."
           </p>
         </div>
       </div>

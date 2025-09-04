@@ -103,6 +103,9 @@ export default function PrivacyPolicy() {
           <p className="content">
             All transactions are encrypted and secure. For any questions or requests regarding your data, please contact our support team.
           </p>
+          <p className="content" style={{fontStyle: 'italic', textAlign: 'center', marginTop: '30px', fontSize: '1.1rem'}}>
+            "Because trust is the most timeless luxury."
+          </p>
         </div>
       </div>
     </>

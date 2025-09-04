@@ -5,11 +5,7 @@ import './Footer.css';
 import { Container, Row, Col, Form, Button } from 'react-bootstrap';
 import {
   FaInstagram,
-  FaFacebookF,
-  FaTwitter,
-  FaPinterestP,
-  FaRedditAlien,
-  FaTiktok,
+  FaEnvelope,
   FaMapMarkerAlt,
   FaPhoneAlt,
   FaRegCopyright,
@@ -141,19 +137,14 @@ const Footer = () => {
         <Container>
           <Row className="align-items-center">
             <Col md={6} className="d-flex align-items-center justify-content-center justify-content-md-start" style={{ fontSize: '0.9rem' }}>
-              <FaMapMarkerAlt style={{ marginRight: '5px' }} />
-              Indore, Vijay Nagar, Palasia
+              <FaEnvelope style={{ marginRight: '5px' }} />
+              Info@phyinternational.com
               <span style={{ margin: '0 10px' }}>|</span>
               <FaPhoneAlt style={{ marginRight: '5px' }} />
               1-802-526-2463
             </Col>
             <Col md={6} className="d-flex justify-content-center justify-content-md-end">
-              <a href="#" className="text-white mx-2" aria-label="Instagram"><FaInstagram /></a>
-              <a href="#" className="text-white mx-2" aria-label="Facebook"><FaFacebookF /></a>
-              <a href="#" className="text-white mx-2" aria-label="Twitter"><FaTwitter /></a>
-              <a href="#" className="text-white mx-2" aria-label="Pinterest"><FaPinterestP /></a>
-              <a href="#" className="text-white mx-2" aria-label="Reddit"><FaRedditAlien /></a>
-              <a href="#" className="text-white mx-2" aria-label="TikTok"><FaTiktok /></a>
+              <a href="https://www.instagram.com/raajsi.in" className="text-white mx-2" aria-label="Instagram"><FaInstagram /></a>
             </Col>
           </Row>
         </Container>

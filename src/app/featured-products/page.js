@@ -3,6 +3,7 @@
 import React, { useState, useEffect } from "react";
 import Image from "next/image";
 import styles from "./featured.module.css"; // optional custom styling
+import ProductCard from "../../components/ProductCard";
 
 export default function FeaturedProducts() {
   const [currentSlide, setCurrentSlide] = useState(0);
@@ -14,6 +15,125 @@ export default function FeaturedProducts() {
   const [currentHairSlide2, setCurrentHairSlide2] = useState(0);
   const [currentTestimonialSlide, setCurrentTestimonialSlide] = useState(0);
   const [isMobile, setIsMobile] = useState(false);
+
+  // Featured Products Data
+  const featuredProducts = [
+    {
+      id: 1,
+      image: "/card11.png",
+      title: "COSMIC BODY OIL",
+      desc: "Unlock celestial beauty in a bottle. A careful blend of essential oils and natural ingredients that melt into your skin, leaving you nourished and calm.",
+      price: "₹1800",
+      oldPrice: "₹2400",
+      section: "BODY THERAPY",
+    },
+    {
+      id: 2,
+      image: "/card12.png",
+      title: "LAVISH BODY SCRUB",
+      desc: "A royal touch to desi household ingredients crafted for indulgence. Suitable for all skin types, and achieves smooth skin.",
+      price: "₹1600",
+      oldPrice: "₹2000",
+      section: "BODY THERAPY",
+    },
+    {
+      id: 3,
+      image: "/card21.png",
+      title: "ROYAL FACE SERUM",
+      desc: "A luxurious blend of natural ingredients designed to rejuvenate and brighten your skin, revealing your natural radiance.",
+      price: "₹2200",
+      oldPrice: "₹2800",
+      section: "SKIN THERAPY",
+    },
+    {
+      id: 4,
+      image: "/card22.png",
+      title: "DIVINE FACE MASK",
+      desc: "A nourishing face mask that deeply hydrates and revitalizes your skin with natural ingredients.",
+      price: "₹1800",
+      oldPrice: "₹2200",
+      section: "SKIN THERAPY",
+    },
+  ];
+
+  // Hair Therapy Products Data
+  const hairTherapyProducts1 = [
+    {
+      id: 5,
+      image: "/card11.png",
+      title: "COSMIC HAIR OIL",
+      desc: "Transform your hair with celestial nourishment. Natural oils blend to strengthen and add lustrous shine.",
+      price: "₹1600",
+      oldPrice: "₹2200",
+      section: "HAIR THERAPY",
+    },
+    {
+      id: 6,
+      image: "/card12.png",
+      title: "NOURISH HAIR MASK",
+      desc: "Deep conditioning treatment with traditional herbs. Repairs damage and restores natural hair health.",
+      price: "₹1600",
+      oldPrice: "₹2200",
+      section: "HAIR THERAPY",
+    },
+    {
+      id: 7,
+      image: "/card21.png",
+      title: "DIVINE HAIR SERUM",
+      desc: "Premium hair serum enriched with natural ingredients for silky, manageable hair with lasting shine.",
+      price: "₹1600",
+      oldPrice: "₹2200",
+      section: "HAIR THERAPY",
+    },
+    {
+      id: 8,
+      image: "/card22.png",
+      title: "ROYAL HAIR TONIC",
+      desc: "Ancient Ayurvedic formula for scalp health. Promotes growth and prevents hair fall naturally.",
+      price: "₹1600",
+      oldPrice: "₹2200",
+      section: "HAIR THERAPY",
+    },
+  ];
+
+  const hairTherapyProducts2 = [
+    {
+      id: 9,
+      image: "/card11.png",
+      title: "ROYAL HAIR SERUM",
+      desc: "Premium hair serum with ancient Ayurvedic ingredients. Promotes growth and adds natural shine.",
+      price: "₹1900",
+      oldPrice: "₹2500",
+      section: "HAIR THERAPY",
+    },
+    {
+      id: 10,
+      image: "/card12.png",
+      title: "HERBAL HAIR TONIC",
+      desc: "Traditional herbal blend for scalp health. Strengthens roots and prevents hair fall naturally.",
+      price: "₹1900",
+      oldPrice: "₹2500",
+      section: "HAIR THERAPY",
+    },
+    {
+      id: 11,
+      image: "/card21.png",
+      title: "COSMIC HAIR ELIXIR",
+      desc: "Celestial blend of natural oils and herbs. Transforms dull hair into lustrous, healthy locks.",
+      price: "₹1900",
+      oldPrice: "₹2500",
+      section: "HAIR THERAPY",
+    },
+    {
+      id: 12,
+      image: "/card22.png",
+      title: "DIVINE HAIR TREATMENT",
+      desc: "Luxurious hair treatment with traditional formulations. Repairs and revitalizes from root to tip.",
+      price: "₹1900",
+      oldPrice: "₹2500",
+      section: "HAIR THERAPY",
+    },
+  ];
 
   const testimonials = [
     {
@@ -92,27 +212,27 @@ export default function FeaturedProducts() {
 
   // Mobile product slider functions
   const nextProductSlide = () => {
-    setCurrentProductSlide((prev) => (prev + 1) % 4);
+    setCurrentProductSlide((prev) => (prev + 1) % featuredProducts.length);
   };
 
   const prevProductSlide = () => {
-    setCurrentProductSlide((prev) => (prev - 1 + 4) % 4);
+    setCurrentProductSlide((prev) => (prev - 1 + featuredProducts.length) % featuredProducts.length);
   };
 
   const nextHairSlide1 = () => {
-    setCurrentHairSlide1((prev) => (prev + 1) % 4);
+    setCurrentHairSlide1((prev) => (prev + 1) % hairTherapyProducts1.length);
   };
 
   const prevHairSlide1 = () => {
-    setCurrentHairSlide1((prev) => (prev - 1 + 4) % 4);
+    setCurrentHairSlide1((prev) => (prev - 1 + hairTherapyProducts1.length) % hairTherapyProducts1.length);
   };
 
   const nextHairSlide2 = () => {
-    setCurrentHairSlide2((prev) => (prev + 1) % 4);
+    setCurrentHairSlide2((prev) => (prev + 1) % hairTherapyProducts2.length);
   };
 
   const prevHairSlide2 = () => {
-    setCurrentHairSlide2((prev) => (prev - 1 + 4) % 4);
+    setCurrentHairSlide2((prev) => (prev - 1 + hairTherapyProducts2.length) % hairTherapyProducts2.length);
   };
 
   // Mobile testimonial slider functions
@@ -298,130 +418,14 @@ export default function FeaturedProducts() {
               {/* Desktop Grid Layout */}
               {!isMobile && (
                 <div className="row gy-4">
-                  {[1, 2, 3, 4].map((item, index) => (
-                    <div
-                      key={index}
-                      className="col-12 col-md-6 d-flex flex-column align-items-center"
-                    >
-                      <div
-                        className="card w-100"
-                        style={{
-                          height: "350px",
-                          backgroundImage: `url(${
-                            index % 2 === 0 ? "/card11.png" : "/card12.png"
-                          })`,
-                          backgroundSize: "cover",
-                          backgroundPosition: "center",
-                          borderRadius: "15px",
-                          position: "relative",
-                          overflow: "hidden",
-                        }}
-                      >
-
-                        {/* Shloka */}
-                        <div
-                          style={{
-                            position: "absolute",
-                            top: "10px",
-                            left: "10px",
-                            fontSize: "0.8rem",
-                            fontFamily: "Georgia, serif",
-                            fontWeight: "500",
-                            letterSpacing: "0.5px",
-                            maxWidth: "65%",
-                            lineHeight: "1.5",
-                            color: "white",
-                            zIndex: 2,
-                          }}
-                        >
-                          मुग्धे! धानुष्कता केयमपूर्वा त्वयि दृश्यते <br />
-                          यया विध्यसि चेतांसि गुणैरेव न सायकैः ॥
-                        </div>
-
-                        {/* Top-right label */}
-                        <div
-                          className="card-label"
-                          style={{
-                            position: "absolute",
-                            top: "10px",
-                            right: "10px",
-                            backgroundColor: "rgba(0, 0, 0, 0.4)",
-                            color: "#fff",
-                            padding: "4px 10px",
-                            fontSize: "0.6rem",
-                            borderRadius: "20px",
-                            fontWeight: 500,
-                            fontFamily: "Arial, sans-serif",
-                          }}
-                        >
-                          Ingredients & Benefits
-                        </div>
-
-                        {/* Bottom Content */}
-                        <div
-                          style={{
-                            position: "absolute",
-                            bottom: "0",
-                            width: "100%",
-                            color: "#fff",
-                            padding: "1rem",
-                            fontFamily: "Georgia, serif",
-                          }}
-                        >
-                          <h5
-                            style={{
-                              fontWeight: "bold",
-                              fontSize: "18px",
-                              fontFamily:
-                                "'Rose Velt Personal Use Only', serif",
-                            }}
-                          >
-                            {index % 2 === 0
-                              ? "COSMIC BODY OIL"
-                              : "LAVISH BODY SCRUB"}
-                          </h5>
-                          <p
-                            style={{
-                              fontSize: "12px",
-                              fontFamily: "Avenir, sans-serif!important",
-                            }}
-                          >
-                            {index % 2 === 0
-                              ? "Unlock celestial beauty in a bottle. A careful blend of essential oils and natural ingredients that melt into your skin, leaving you nourished and calm."
-                              : "A royal touch to desi household ingredients crafted for indulgence. Suitable for all skin types, and achieves smooth skin."}
-                          </p>
-                        </div>
-                      </div>
-
-                      {/* Button & Price */}
-                      <div className="d-flex justify-content-between w-100 px-2 px-md-4 mt-2">
-                        <button
-                          className="btn btn-sm"
-                          style={{
-                            backgroundColor: "#BA7E38",
-                            color: "white",
-                            borderRadius: "30px",
-                            padding: "8px 20px",
-                          }}
-                        >
-                          VIEW PRODUCT
-                        </button>
-                        <div className="text-end">
-                          <strong style={{ fontSize: "14px", color: "#000" }}>
-                            ₹1800
-                          </strong>
-                          <div
-                            style={{
-                              fontSize: "0.6rem",
-                              textDecoration: "line-through",
-                              color: "gray",
-                            }}
-                          >
-                            Get 50% OFF ₹2400
-                          </div>
-                        </div>
-                      </div>
-                    </div>
+                  {featuredProducts.map((product, index) => (
+                    <ProductCard
+                      key={product.id}
+                      product={product}
+                      showShloka={true}
+                      showTag={true}
+                      cardHeight="350px"
+                    />
                   ))}
                 </div>
               )}
@@ -438,92 +442,16 @@ export default function FeaturedProducts() {
                       transform: `translateX(-${currentProductSlide * 100}%)`,
                     }}
                   >
-                    {[1, 2, 3, 4].map((item, index) => (
+                    {featuredProducts.map((product, index) => (
                       <div key={index} className={styles.mobileSlideItem}>
-                        <div
-                          className="card w-100"
-                          style={{
-                            height: "350px",
-                            backgroundImage: `url(${
-                              index % 2 === 0 ? "/card11.png" : "/card12.png"
-                            })`,
-                            backgroundSize: "cover",
-                            backgroundPosition: "center",
-                            borderRadius: "15px",
-                            position: "relative",
-                            overflow: "hidden",
-                          }}
-                        >
-
-                          <div
-                            style={{
-                              position: "absolute",
-                              top: "10px",
-                              left: "10px",
-                              fontSize: "0.8rem",
-                              fontFamily: "Georgia, serif",
-                              fontWeight: "500",
-                              letterSpacing: "0.5px",
-                              maxWidth: "65%",
-                              lineHeight: "1.5",
-                              color: "white",
-                              zIndex: 2,
-                            }}
-                          >
-                            मुग्धे! धानुष्कता केयमपूर्वा त्वयि दृश्यते <br />
-                            यया विध्यसि चेतांसि गुणैरेव न सायकैः ॥
-                          </div>
-                          <div
-                            style={{
-                              position: "absolute",
-                              top: "10px",
-                              right: "10px",
-                              backgroundColor: "rgba(0, 0, 0, 0.4)",
-                              color: "#fff",
-                              padding: "4px 10px",
-                              fontSize: "0.6rem",
-                              borderRadius: "20px",
-                              fontWeight: 500,
-                              fontFamily: "Arial, sans-serif",
-                            }}
-                          >
-                            Ingredients & Benefits
-                          </div>
-                          <div
-                            style={{
-                              position: "absolute",
-                              bottom: "0",
-                              width: "100%",
-                              color: "#fff",
-                              padding: "1rem",
-                              fontFamily: "Georgia, serif",
-                            }}
-                          >
-                            <h5
-                              style={{
-                                fontWeight: "bold",
-                                fontSize: "18px",
-                                fontFamily:
-                                  "'Rose Velt Personal Use Only', serif",
-                              }}
-                            >
-                              {index % 2 === 0
-                                ? "COSMIC BODY OIL"
-                                : "LAVISH BODY SCRUB"}
-                            </h5>
-                            <p
-                              style={{
-                                fontSize: "12px",
-                                fontFamily: "Avenir, sans-serif!important",
-                              }}
-                            >
-                              {index % 2 === 0
-                                ? "Unlock celestial beauty in a bottle. A careful blend of essential oils and natural ingredients that melt into your skin, leaving you nourished and calm."
-                                : "A royal touch to desi household ingredients crafted for indulgence. Suitable for all skin types, and achieves smooth skin."}
-                            </p>
-                          </div>
-                        </div>
-
+                        <ProductCard
+                          product={product}
+                          showShloka={false}
+                          showTag={true}
+                          cardHeight="350px"
+                          isMobile={true}
+                        />
+                        
                         <div className="d-flex justify-content-between w-100 px-2 px-md-4 mt-2">
                           <button
                             className="btn btn-sm"
@@ -538,7 +466,7 @@ export default function FeaturedProducts() {
                           </button>
                           <div className="text-end">
                             <strong style={{ fontSize: "14px", color: "#000" }}>
-                              ₹1800
+                              {product.price}
                             </strong>
                             <div
                               style={{
@@ -547,7 +475,7 @@ export default function FeaturedProducts() {
                                 color: "gray",
                               }}
                             >
-                              Get 50% OFF ₹2400
+                              Get 50% OFF {product.oldPrice}
                             </div>
                           </div>
                         </div>
@@ -575,7 +503,7 @@ export default function FeaturedProducts() {
 
                     {/* Slide indicators */}
                     <div className="d-flex gap-2">
-                      {[0, 1, 2, 3].map((slide) => (
+                      {featuredProducts.map((_, slide) => (
                         <div
                           key={slide}
                           style={{
@@ -635,7 +563,7 @@ export default function FeaturedProducts() {
                   fontSize: "clamp(18px, 2.2vw, 28px)",
                   letterSpacing: 0.6,
                   textTransform: "uppercase",
-                  color: "#FFFFFF",
+                  color: "#000000",
                   margin: 0,
                 }}
               >
@@ -700,131 +628,14 @@ export default function FeaturedProducts() {
             {!isMobile && (
               <div className="container">
                 <div className="row gy-4">
-                  {[1, 2, 3, 4].map((item, index) => (
-                    <div
-                      key={index}
-                      className="col-12 col-md-6 d-flex flex-column align-items-center"
-                    >
-                      <div
-                        className="card w-100"
-                        style={{
-                          height: "350px",
-                          backgroundImage: `url(${
-                            index % 2 === 0 ? "/card11.png" : "/card12.png"
-                          })`,
-                          backgroundSize: "cover",
-                          backgroundPosition: "center",
-                          borderRadius: "15px",
-                          position: "relative",
-                          overflow: "hidden",
-                        }}
-                      >
-
-                        {/* Shloka */}
-                        <div
-                          style={{
-                            position: "absolute",
-                            top: "10px",
-                            left: "10px",
-                            fontSize: "0.8rem",
-                            fontFamily: "Georgia, serif",
-                            fontWeight: "500",
-                            letterSpacing: "0.5px",
-                            maxWidth: "65%",
-                            lineHeight: "1.5",
-                            color: "white",
-                            zIndex: 2,
-                          }}
-                        >
-                          मुग्धे! धानुष्कता केयमपूर्वा त्वयि दृश्यते <br />
-                          यया विध्यसि चेतांसि गुणैरेव न सायकैः ॥
-                        </div>
-
-                        {/* Top-right label */}
-                        <div
-                          style={{
-                            position: "absolute",
-                            top: "10px",
-                            right: "10px",
-                            backgroundColor: "rgba(0, 0, 0, 0.4)",
-                            color: "#fff",
-                            padding: "4px 10px",
-                            fontSize: "0.6rem",
-                            borderRadius: "20px",
-                            fontWeight: 500,
-                            fontFamily: "Arial, sans-serif",
-                            zIndex: 2,
-                          }}
-                        >
-                          Ingredients & Benefits
-                        </div>
-
-                        {/* Bottom Content */}
-                        <div
-                          style={{
-                            position: "absolute",
-                            bottom: "0",
-                            width: "100%",
-                            color: "#fff",
-                            padding: "1rem",
-                            fontFamily: "Georgia, serif",
-                            zIndex: 2,
-                          }}
-                        >
-                          <h5
-                            style={{
-                              fontWeight: "bold",
-                              fontSize: "18px",
-                              fontFamily:
-                                "'Rose Velt Personal Use Only', serif",
-                            }}
-                          >
-                            {index % 2 === 0
-                              ? "COSMIC BODY OIL"
-                              : "LAVISH BODY SCRUB"}
-                          </h5>
-                          <p
-                            style={{
-                              fontSize: "12px",
-                              fontFamily: "Avenir, sans-serif!important",
-                            }}
-                          >
-                            {index % 2 === 0
-                              ? "Unlock celestial beauty in a bottle. A careful blend of essential oils and natural ingredients that melt into your skin, leaving you nourished and calm."
-                              : "A royal touch to desi household ingredients crafted for indulgence. Suitable for all skin types, and achieves smooth skin."}
-                          </p>
-                        </div>
-                      </div>
-
-                      {/* Button & Price */}
-                      <div className="d-flex justify-content-between w-100 px-2 px-md-4 mt-2">
-                        <button
-                          className="btn btn-sm"
-                          style={{
-                            backgroundColor: "#BA7E38",
-                            color: "white",
-                            borderRadius: "30px",
-                            padding: "8px 20px",
-                          }}
-                        >
-                          VIEW PRODUCT
-                        </button>
-                        <div className="text-end">
-                          <strong style={{ fontSize: "14px", color: "#000" }}>
-                            ₹1800
-                          </strong>
-                          <div
-                            style={{
-                              fontSize: "0.6rem",
-                              textDecoration: "line-through",
-                              color: "gray",
-                            }}
-                          >
-                            Get 50% OFF ₹2400
-                          </div>
-                        </div>
-                      </div>
-                    </div>
+                  {hairTherapyProducts1.map((product, index) => (
+                    <ProductCard
+                      key={product.id}
+                      product={product}
+                      showShloka={true}
+                      showTag={true}
+                      cardHeight="350px"
+                    />
                   ))}
                 </div>
               </div>
@@ -840,93 +651,16 @@ export default function FeaturedProducts() {
                       transform: `translateX(-${currentHairSlide1 * 100}%)`,
                     }}
                   >
-                    {[1, 2, 3, 4].map((item, index) => (
+                    {hairTherapyProducts1.map((product, index) => (
                       <div key={index} className={styles.mobileSlideItem}>
-                        <div
-                          className="card w-100"
-                          style={{
-                            height: "350px",
-                            backgroundImage: `url(${
-                              index % 2 === 0 ? "/card11.png" : "/card12.png"
-                            })`,
-                            backgroundSize: "cover",
-                            backgroundPosition: "center",
-                            borderRadius: "15px",
-                            position: "relative",
-                            overflow: "hidden",
-                          }}
-                        >
-
-                          <div
-                            style={{
-                              position: "absolute",
-                              top: "10px",
-                              left: "10px",
-                              fontSize: "0.8rem",
-                              fontFamily: "Georgia, serif",
-                              fontWeight: "500",
-                              letterSpacing: "0.5px",
-                              maxWidth: "65%",
-                              lineHeight: "1.5",
-                              color: "white",
-                              zIndex: 2,
-                            }}
-                          >
-                            मुग्धे! धानुष्कता केयमपूर्वा त्वयि दृश्यते <br />
-                            यया विध्यसि चेतांसि गुणैरेव न सायकैः ॥
-                          </div>
-                          <div
-                            style={{
-                              position: "absolute",
-                              top: "10px",
-                              right: "10px",
-                              backgroundColor: "rgba(0, 0, 0, 0.4)",
-                              color: "#fff",
-                              padding: "4px 10px",
-                              fontSize: "0.6rem",
-                              borderRadius: "20px",
-                              fontWeight: 500,
-                              fontFamily: "Arial, sans-serif",
-                              zIndex: 2,
-                            }}
-                          >
-                            Ingredients & Benefits
-                          </div>
-                          <div
-                            style={{
-                              position: "absolute",
-                              bottom: "0",
-                              width: "100%",
-                              color: "#fff",
-                              padding: "1rem",
-                              fontFamily: "Georgia, serif",
-                              zIndex: 2,
-                            }}
-                          >
-                            <h5
-                              style={{
-                                fontWeight: "bold",
-                                fontSize: "18px",
-                                fontFamily:
-                                  "'Rose Velt Personal Use Only', serif",
-                              }}
-                            >
-                              {index % 2 === 0
-                                ? "COSMIC HAIR OIL"
-                                : "NOURISH HAIR MASK"}
-                            </h5>
-                            <p
-                              style={{
-                                fontSize: "12px",
-                                fontFamily: "Avenir, sans-serif!important",
-                              }}
-                            >
-                              {index % 2 === 0
-                                ? "Transform your hair with celestial nourishment. Natural oils blend to strengthen and add lustrous shine."
-                                : "Deep conditioning treatment with traditional herbs. Repairs damage and restores natural hair health."}
-                            </p>
-                          </div>
-                        </div>
+                        <ProductCard
+                          product={product}
+                          showShloka={false}
+                          showTag={true}
+                          cardHeight="350px"
+                          isMobile={true}
+                        />
+                        
                         <div className="d-flex justify-content-between w-100 px-2 px-md-4 mt-2">
                           <button
                             className="btn btn-sm"
@@ -941,7 +675,7 @@ export default function FeaturedProducts() {
                           </button>
                           <div className="text-end">
                             <strong style={{ fontSize: "14px", color: "#000" }}>
-                              ₹1600
+                              {product.price}
                             </strong>
                             <div
                               style={{
@@ -950,7 +684,7 @@ export default function FeaturedProducts() {
                                 color: "gray",
                               }}
                             >
-                              Get 40% OFF ₹2200
+                              Get 40% OFF {product.oldPrice}
                             </div>
                           </div>
                         </div>
@@ -978,7 +712,7 @@ export default function FeaturedProducts() {
 
                   {/* Slide indicators */}
                   <div className="d-flex gap-2">
-                    {[0, 1, 2, 3].map((slide) => (
+                    {hairTherapyProducts1.map((_, slide) => (
                       <div
                         key={slide}
                         style={{
@@ -1100,131 +834,14 @@ export default function FeaturedProducts() {
             {!isMobile && (
               <div className="container">
                 <div className="row gy-4">
-                  {[1, 2, 3, 4].map((item, index) => (
-                    <div
-                      key={index}
-                      className="col-12 col-md-6 d-flex flex-column align-items-center"
-                    >
-                      <div
-                        className="card w-100"
-                        style={{
-                          height: "350px",
-                          backgroundImage: `url(${
-                            index % 2 === 0 ? "/card11.png" : "/card12.png"
-                          })`,
-                          backgroundSize: "cover",
-                          backgroundPosition: "center",
-                          borderRadius: "15px",
-                          position: "relative",
-                          overflow: "hidden",
-                        }}
-                      >
-
-                        {/* Shloka */}
-                        <div
-                          style={{
-                            position: "absolute",
-                            top: "10px",
-                            left: "10px",
-                            fontSize: "0.8rem",
-                            fontFamily: "Georgia, serif",
-                            fontWeight: "500",
-                            letterSpacing: "0.5px",
-                            maxWidth: "65%",
-                            lineHeight: "1.5",
-                            color: "white",
-                            zIndex: 2,
-                          }}
-                        >
-                          मुग्धे! धानुष्कता केयमपूर्वा त्वयि दृश्यते <br />
-                          यया विध्यसि चेतांसि गुणैरेव न सायकैः ॥
-                        </div>
-
-                        {/* Top-right label */}
-                        <div
-                          style={{
-                            position: "absolute",
-                            top: "10px",
-                            right: "10px",
-                            backgroundColor: "rgba(0, 0, 0, 0.4)",
-                            color: "#fff",
-                            padding: "4px 10px",
-                            fontSize: "0.6rem",
-                            borderRadius: "20px",
-                            fontWeight: 500,
-                            fontFamily: "Arial, sans-serif",
-                            zIndex: 2,
-                          }}
-                        >
-                          Ingredients & Benefits
-                        </div>
-
-                        {/* Bottom Content */}
-                        <div
-                          style={{
-                            position: "absolute",
-                            bottom: "0",
-                            width: "100%",
-                            color: "#fff",
-                            padding: "1rem",
-                            fontFamily: "Georgia, serif",
-                            zIndex: 2,
-                          }}
-                        >
-                          <h5
-                            style={{
-                              fontWeight: "bold",
-                              fontSize: "18px",
-                              fontFamily:
-                                "'Rose Velt Personal Use Only', serif",
-                            }}
-                          >
-                            {index % 2 === 0
-                              ? "COSMIC BODY OIL"
-                              : "LAVISH BODY SCRUB"}
-                          </h5>
-                          <p
-                            style={{
-                              fontSize: "12px",
-                              fontFamily: "Avenir, sans-serif!important",
-                            }}
-                          >
-                            {index % 2 === 0
-                              ? "Unlock celestial beauty in a bottle. A careful blend of essential oils and natural ingredients that melt into your skin, leaving you nourished and calm."
-                              : "A royal touch to desi household ingredients crafted for indulgence. Suitable for all skin types, and achieves smooth skin."}
-                          </p>
-                        </div>
-                      </div>
-
-                      {/* Button & Price */}
-                      <div className="d-flex justify-content-between w-100 px-2 px-md-4 mt-2">
-                        <button
-                          className="btn btn-sm"
-                          style={{
-                            backgroundColor: "#BA7E38",
-                            color: "white",
-                            borderRadius: "30px",
-                            padding: "8px 20px",
-                          }}
-                        >
-                          VIEW PRODUCT
-                        </button>
-                        <div className="text-end">
-                          <strong style={{ fontSize: "14px", color: "#000" }}>
-                            ₹1800
-                          </strong>
-                          <div
-                            style={{
-                              fontSize: "0.6rem",
-                              textDecoration: "line-through",
-                              color: "gray",
-                            }}
-                          >
-                            Get 50% OFF ₹2400
-                          </div>
-                        </div>
-                      </div>
-                    </div>
+                  {hairTherapyProducts2.map((product, index) => (
+                    <ProductCard
+                      key={product.id}
+                      product={product}
+                      showShloka={true}
+                      showTag={true}
+                      cardHeight="350px"
+                    />
                   ))}
                 </div>
               </div>
@@ -1240,93 +857,16 @@ export default function FeaturedProducts() {
                       transform: `translateX(-${currentHairSlide2 * 100}%)`,
                     }}
                   >
-                    {[1, 2, 3, 4].map((item, index) => (
+                    {hairTherapyProducts2.map((product, index) => (
                       <div key={index} className={styles.mobileSlideItem}>
-                        <div
-                          className="card w-100"
-                          style={{
-                            height: "350px",
-                            backgroundImage: `url(${
-                              index % 2 === 0 ? "/card11.png" : "/card12.png"
-                            })`,
-                            backgroundSize: "cover",
-                            backgroundPosition: "center",
-                            borderRadius: "15px",
-                            position: "relative",
-                            overflow: "hidden",
-                          }}
-                        >
-
-                          <div
-                            style={{
-                              position: "absolute",
-                              top: "10px",
-                              left: "10px",
-                              fontSize: "0.8rem",
-                              fontFamily: "Georgia, serif",
-                              fontWeight: "500",
-                              letterSpacing: "0.5px",
-                              maxWidth: "65%",
-                              lineHeight: "1.5",
-                              color: "white",
-                              zIndex: 2,
-                            }}
-                          >
-                            मुग्धे! धानुष्कता केयमपूर्वा त्वयि दृश्यते <br />
-                            यया विध्यसि चेतांसि गुणैरेव न सायकैः ॥
-                          </div>
-                          <div
-                            style={{
-                              position: "absolute",
-                              top: "10px",
-                              right: "10px",
-                              backgroundColor: "rgba(0, 0, 0, 0.4)",
-                              color: "#fff",
-                              padding: "4px 10px",
-                              fontSize: "0.6rem",
-                              borderRadius: "20px",
-                              fontWeight: 500,
-                              fontFamily: "Arial, sans-serif",
-                              zIndex: 2,
-                            }}
-                          >
-                            Ingredients & Benefits
-                          </div>
-                          <div
-                            style={{
-                              position: "absolute",
-                              bottom: "0",
-                              width: "100%",
-                              color: "#fff",
-                              padding: "1rem",
-                              fontFamily: "Georgia, serif",
-                              zIndex: 2,
-                            }}
-                          >
-                            <h5
-                              style={{
-                                fontWeight: "bold",
-                                fontSize: "18px",
-                                fontFamily:
-                                  "'Rose Velt Personal Use Only', serif",
-                              }}
-                            >
-                              {index % 2 === 0
-                                ? "ROYAL HAIR SERUM"
-                                : "HERBAL HAIR TONIC"}
-                            </h5>
-                            <p
-                              style={{
-                                fontSize: "12px",
-                                fontFamily: "Avenir, sans-serif!important",
-                              }}
-                            >
-                              {index % 2 === 0
-                                ? "Premium hair serum with ancient Ayurvedic ingredients. Promotes growth and adds natural shine."
-                                : "Traditional herbal blend for scalp health. Strengthens roots and prevents hair fall naturally."}
-                            </p>
-                          </div>
-                        </div>
+                        <ProductCard
+                          product={product}
+                          showShloka={false}
+                          showTag={true}
+                          cardHeight="350px"
+                          isMobile={true}
+                        />
+                        
                         <div className="d-flex justify-content-between w-100 px-2 px-md-4 mt-2">
                           <button
                             className="btn btn-sm"
@@ -1341,7 +881,7 @@ export default function FeaturedProducts() {
                           </button>
                           <div className="text-end">
                             <strong style={{ fontSize: "14px", color: "#000" }}>
-                              ₹1900
+                              {product.price}
                             </strong>
                             <div
                               style={{
@@ -1350,7 +890,7 @@ export default function FeaturedProducts() {
                                 color: "gray",
                               }}
                             >
-                              Get 45% OFF ₹2500
+                              Get 45% OFF {product.oldPrice}
                             </div>
                           </div>
                         </div>
@@ -1378,7 +918,7 @@ export default function FeaturedProducts() {
 
                   {/* Slide indicators */}
                   <div className="d-flex gap-2">
-                    {[0, 1, 2, 3].map((slide) => (
+                    {hairTherapyProducts2.map((_, slide) => (
                       <div
                         key={slide}
                         style={{

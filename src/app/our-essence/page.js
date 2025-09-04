@@ -275,7 +275,7 @@ export default function OurEssence() {
         <div className="essence-card d-flex flex-column flex-md-row">
           {/* Left Text Section */}
           <div className="p-4 p-md-5 essence-body vcenter" style={{ flex: 1, marginLeft: "30px" }}>
-            <h5 className="fw-semibold essence-title">
+            <h5 className="fw-regular essence-title">
               <span style={{ fontSize: "32px", marginLeft: "-16px" }}>G</span>ENESIS
             </h5>
             <p className="essence-text">
@@ -310,7 +310,7 @@ export default function OurEssence() {
 
           {/* Right Content */}
           <div className="p-4 p-md-5 d-flex flex-column justify-content-center essence-body" style={{ flex: 1, paddingTop: "10px" }}>
-            <h5 className="fw-semibold mb-3 essence-title">
+            <h5 className="fw-regular mb-3 essence-title">
               <span style={{ fontSize: "32px", marginLeft: "-16px"}}>C</span>REATIVE / <span style={{ fontSize: "32px" }}>A</span>RTISTIC <span style={{ fontSize: "32px" }}>D</span>ESCRIPTION
             </h5>
             <p className="essence-text">
@@ -324,7 +324,7 @@ export default function OurEssence() {
       <section className="my-5 d-flex justify-content-center essence-row right">
         <div className="essence-card d-flex flex-column flex-md-row">
           <div className="p-4 p-md-5 essence-body vcenter" style={{ flex: 1, marginLeft: "30px" }}>
-            <h5 className="fw-semibold essence-title">
+            <h5 className="fw-regular essence-title">
               <span style={{ fontSize: "32px", marginLeft: "-16px" }}>P</span>HILOSOPHY
             </h5>
             <p className="essence-text">
@@ -361,7 +361,7 @@ export default function OurEssence() {
 
           {/* Right Content */}
           <div className="p-4 p-md-5 d-flex flex-column justify-content-center essence-body" style={{ flex: 1, paddingTop: "10px" }}>
-            <h5 className="fw-semibold mb-3 essence-title">
+            <h5 className="fw-regular mb-3 essence-title">
               <span style={{ fontSize: "32px", marginLeft: "-16px" }}>A</span>SPIRATIONAL <span style={{ fontSize: "32px" }}>B</span>EAUTY
             </h5>
             <p className="essence-text">

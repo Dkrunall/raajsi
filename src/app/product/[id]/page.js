@@ -5,6 +5,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import React, { useState } from "react";
 import { FaStar, FaStarHalfAlt, FaRegStar, FaMinus, FaPlus } from "react-icons/fa";
 import Navbar from "../../../components/Navbar";
+import ProductCard from "../../../components/ProductCard";
 
 export default function ProductPage({ onAddToCart }) {
   const [selectedImage, setSelectedImage] = useState(0);
@@ -42,10 +43,42 @@ export default function ProductPage({ onAddToCart }) {
 
   // Related products (static sample)
   const relatedProducts = [
-    { id: 2, name: "COSMIC BODY OIL", price: 1800, oldPrice: 2000, image: "/card1.png", tag: "Ingredients & Benefits", rating: 4.5 },
-    { id: 3, name: "LAVISH BODY SCRUB", price: 1800, oldPrice: 2000, image: "/card2.png", tag: "Ingredients & Benefits", rating: 4.8 },
-    { id: 4, name: "COSMIC BODY OIL", price: 1800, oldPrice: 2000, image: "/card11.png", tag: "Herbal & Ayurvedic", rating: 4.3 },
-    { id: 5, name: "LAVISH BODY SCRUB", price: 1800, oldPrice: 2000, image: "/card12.png", tag: "Ingredients & Benefits", rating: 4.7 },
+    { 
+      id: 2, 
+      title: "COSMIC BODY OIL", 
+      price: "₹1800", 
+      oldPrice: "₹2000", 
+      image: "/card1.png", 
+      desc: "Unlock celestial beauty in a bottle. A careful blend of botanicals for luminous, soft skin.",
+      rating: 4.5 
+    },
+    { 
+      id: 3, 
+      title: "LAVISH BODY SCRUB", 
+      price: "₹1800", 
+      oldPrice: "₹2000", 
+      image: "/card2.png", 
+      desc: "Exfoliate and rejuvenate with our luxurious body scrub for silky smooth skin.",
+      rating: 4.8 
+    },
+    { 
+      id: 4, 
+      title: "COSMIC BODY OIL", 
+      price: "₹1800", 
+      oldPrice: "₹2000", 
+      image: "/card11.png", 
+      desc: "Nourish your skin with our premium cosmic body oil blend.",
+      rating: 4.3 
+    },
+    { 
+      id: 5, 
+      title: "LAVISH BODY SCRUB", 
+      price: "₹1800", 
+      oldPrice: "₹2000", 
+      image: "/card12.png", 
+      desc: "Pamper yourself with our gentle yet effective body scrub formula.",
+      rating: 4.7 
+    },
   ];
 
   // Gallery helpers
@@ -123,6 +156,9 @@ export default function ProductPage({ onAddToCart }) {
                     }}
                   >
                     <Image key={selectedImage} src={product.images[selectedImage]} alt={product.name} width={800} height={600} className="w-100 h-auto fade-in" style={{ objectFit: 'cover' }} />
+                    
+                    {/* Hindi text overlay on top left */}
+                
                     <button type="button" aria-label="Previous image" className="gallery-nav-btn start-0" onClick={goPrev} disabled={selectedImage === 0}>
                       ‹
                     </button>
@@ -275,84 +311,15 @@ export default function ProductPage({ onAddToCart }) {
             </div>
 
             <div className="row">
-              {relatedProducts.map((rp) => (
-                <div key={rp.id} className="col-12 col-md-6 mb-4">
-                  <div
-                    className="card related-grid-card"
-                    style={{
-                      width: '100%',
-                      height: '380px',
-                      backgroundImage: `url(${rp.image})`,
-                      backgroundSize: 'cover',
-                      backgroundPosition: 'center',
-                      borderRadius: '15px',
-                      position: 'relative',
-                      overflow: 'hidden',
-                      border: 'none',
-                      boxShadow: '0 4px 12px rgba(0,0,0,0.15)'
-                    }}
-                  >
-                    <div
-                      style={{
-                        position: 'absolute',
-                        top: '10px',
-                        right: '10px',
-                        backgroundColor: 'rgba(0, 0, 0, 0.6)',
-                        color: '#fff',
-                        padding: '4px 10px',
-                        fontSize: '0.7rem',
-                        borderRadius: '20px',
-                        fontWeight: 500,
-                        fontFamily: 'Arial, sans-serif',
-                        zIndex: 2,
-                        backdropFilter: 'blur(4px)'
-                      }}
-                    >
-                      {rp.tag}
-                    </div>
-
-                    <div
-                      style={{
-                        position: 'absolute',
-                        bottom: 0,
-                        left: 0,
-                        right: 0,
-                        color: '#fff',
-                        padding: '1rem',
-                        zIndex: 2,
-                        background: 'linear-gradient(transparent, rgba(0,0,0,0.7))'
-                      }}
-                    >
-                      <h5 style={{ fontWeight: 'bold', marginBottom: '6px', textAlign: 'left' }}>{rp.name}</h5>
-                    </div>
-                  </div>
-
-                  <div className="d-flex justify-content-between align-items-center px-1 mt-2">
-                    <div className="d-flex gap-2 flex-wrap">
-                      <Link
-                        href={`/product/${rp.id}`}
-                        className="btn btn-sm d-flex align-items-center justify-content-center"
-                        style={{
-                          backgroundColor: '#8B5E3C',
-                          color: 'white',
-                          borderRadius: '30px',
-                          height: '40px',
-                          minHeight: '40px',
-                          lineHeight: '40px',
-                          padding: '0 24px',
-                          fontWeight: 500,
-                          fontSize: '1rem'
-                        }}
-                      >
-                        VIEW PRODUCT
-                      </Link>
-                    </div>
-                    <div className="text-end">
-                      <strong>₹{rp.price}</strong>
-                      <div style={{ fontSize: '0.75rem', textDecoration: 'line-through', color: 'gray' }}>Get 50% OFF ₹{rp.oldPrice}</div>
-                    </div>
-                  </div>
-                </div>
+              {relatedProducts.map((product) => (
+                <ProductCard
+                  key={product.id}
+                  product={product}
+                  showShloka={true}
+                  showTag={true}
+                  cardHeight="380px"
+                  className="mb-4"
+                />
               ))}
             </div>
           </div>
@@ -368,12 +335,9 @@ export default function ProductPage({ onAddToCart }) {
         .gallery-nav-btn.start-0 { left: 10px; }
         .gallery-nav-btn.end-0 { right: 10px; }
         .qty-input { width: 64px; }
-        /* Related products card sizing */
-        .related-grid-card { height: 380px; }
-        @media (min-width: 992px) { .related-grid-card { height: 420px; } }
         @media (max-width: 768px) {
           :global(img[src="/left-design.png"]), :global(img[src="/right-design.png"]) { display: none !important; }
-          .related-grid-card { height: 300px !important; }
+          .related-title { font-size: 1.5rem !important; }
         }
       `}</style>
       </div>
