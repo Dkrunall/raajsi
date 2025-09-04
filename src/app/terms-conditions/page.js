@@ -114,14 +114,14 @@ export default function TermsConditions() {
             Your use of our platform implies your acceptance of these terms. For questions or clarifications, feel free to contact us.
           </p>
           <p className="content" style={{fontStyle: 'italic', textAlign: 'center', marginTop: '20px'}}>
-            "Grace begins with clarity."
+            &ldquo;Grace begins with clarity.&rdquo;
           </p>
         </div>
         
         <div className="section">
           <h2 className="section-title">Returns And Refund Policy</h2>
           <p className="content">
-            We hope every Raajsi ritual brings you joy. But in the rare case that something doesn't feel right, we're here to make it better.
+            We hope every Raajsi ritual brings you joy. But in the rare case that something doesn&rsquo;t feel right, we&rsquo;re here to make it better.
           </p>
           <ul className="content">
             <li>Returns are accepted within 7 days of delivery for unused, sealed products in their original packaging.</li>
@@ -141,10 +141,10 @@ export default function TermsConditions() {
             <li>For Cash on Delivery (COD) orders, we'll reach out via email to collect your bank details and process the refund via bank transfer within 24–48 business hours of receiving the product. Funds may take 4–5 additional business days to reflect in your account.</li>
           </ul>
           <p className="content">
-            We're committed to offering you the best in self-grooming and wellness. If you feel we've missed the mark, let us know — we'll do our best to make it right. Write to us at Info@phyinternational.com for return initiation.
+            We're committed to offering you the best in self-grooming and wellness. If you feel we've missed the mark, let us know — we&rsquo;ll do our best to make it right. Write to us at Info@phyinternational.com for return initiation.
           </p>
           <p className="content" style={{fontStyle: 'italic', textAlign: 'center', marginTop: '30px', fontSize: '1.1rem'}}>
-            "Your satisfaction is part of our royal promise."
+            &ldquo;Your satisfaction is part of our royal promise.&rdquo;
           </p>
         </div>
       </div>
