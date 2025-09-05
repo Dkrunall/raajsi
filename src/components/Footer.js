@@ -136,12 +136,16 @@ const Footer = () => {
       <div style={{ backgroundColor: '#631E44', color: 'white', padding: '10px 0' }}>
         <Container>
           <Row className="align-items-center">
-            <Col md={6} className="d-flex align-items-center justify-content-center justify-content-md-start" style={{ fontSize: '0.9rem' }}>
-              <FaEnvelope style={{ marginRight: '5px' }} />
-              Info@phyinternational.com
-              <span style={{ margin: '0 10px' }}>|</span>
-              <FaPhoneAlt style={{ marginRight: '5px' }} />
-              1-802-526-2463
+            <Col md={6} className="d-flex align-items-center justify-content-between justify-content-md-start contact-info-container" style={{ fontSize: '0.9rem' }}>
+              <div className="d-flex align-items-center contact-email">
+                <FaEnvelope style={{ marginRight: '5px' }} />
+                Info@phyinternational.com
+              </div>
+              <span className="contact-separator" style={{ margin: '0 20px' }}>|</span>
+              <div className="d-flex align-items-center contact-phone">
+                <FaPhoneAlt style={{ marginRight: '5px' }} />
+                1-802-526-2463
+              </div>
             </Col>
             <Col md={6} className="d-flex justify-content-center justify-content-md-end">
               <a href="https://www.instagram.com/raajsi.in" className="text-white mx-2" aria-label="Instagram"><FaInstagram /></a>
@@ -274,6 +278,21 @@ const Footer = () => {
             margin-bottom: 0 !important;
             padding: 0 !important;
           }
+          div[style*='#631E44'] .contact-info-container {
+            flex-direction: column !important;
+            align-items: flex-start !important;
+            gap: 12px !important;
+          }
+          div[style*='#631E44'] .contact-separator {
+            display: none !important;
+          }
+          div[style*='#631E44'] .contact-divider {
+            display: block !important;
+            width: 100% !important;
+            height: 1px !important;
+            background-color: rgba(255,255,255,0.2) !important;
+            margin: 0 !important;
+          }
           div[style*='#631E44'] a {
             font-size: 1.2rem !important;
             margin: 0 6px 0 0 !important;
@@ -302,6 +321,188 @@ const Footer = () => {
           div[style*='#14010A'] a {
             font-size: 0.85rem !important;
             margin: 0 15px 0 0 !important;
+          }
+        }
+        
+        @media (max-width: 480px) {
+          /* Golden Strip - Ultra-compact mobile layout */
+          .py-3 {
+            padding: 12px 0 !important;
+          }
+          .py-3 .container {
+            padding: 0 12px !important;
+          }
+          .py-3 .row {
+            gap: 10px !important;
+          }
+          .py-3 .col-md-3 {
+            padding: 6px 0 !important;
+          }
+          .py-3 img {
+            height: 20px !important;
+            margin-right: 6px !important;
+          }
+          .py-3 span {
+            font-size: 0.8rem !important;
+            line-height: 1.25 !important;
+          }
+          
+          /* Main footer - Compact mobile layout */
+          div[style*='#4C0A2E'] {
+            padding: 20px 0 !important;
+          }
+          div[style*='#4C0A2E'] .container {
+            padding: 0 12px !important;
+          }
+          div[style*='#4C0A2E'] .row {
+            gap: 15px !important;
+          }
+          div[style*='#4C0A2E'] img {
+            width: 80px !important;
+            margin-bottom: 8px !important;
+          }
+          div[style*='#4C0A2E'] h5 {
+            font-size: 1rem !important;
+            margin-bottom: 8px !important;
+          }
+          div[style*='#4C0A2E'] ul {
+            font-size: 0.85rem !important;
+          }
+          div[style*='#4C0A2E'] ul li {
+            margin-bottom: 6px !important;
+          }
+          div[style*='#4C0A2E'] p {
+            font-size: 0.8rem !important;
+            margin-bottom: 12px !important;
+            line-height: 1.3 !important;
+          }
+          div[style*='#4C0A2E'] .btn {
+            font-size: 0.8rem !important;
+            padding: 6px 12px !important;
+          }
+          div[style*='#4C0A2E'] input {
+            font-size: 0.8rem !important;
+            padding: 6px 0 !important;
+          }
+          
+          /* Contact & Social - Compact mobile layout */
+          div[style*='#631E44'] {
+            padding: 12px 0 !important;
+          }
+          div[style*='#631E44'] .container {
+            padding: 0 12px !important;
+          }
+          div[style*='#631E44'] .row {
+            gap: 10px !important;
+          }
+          div[style*='#631E44'] .col-md-6 {
+            font-size: 0.8rem !important;
+          }
+          div[style*='#631E44'] .contact-info-container {
+            flex-direction: column !important;
+            align-items: flex-start !important;
+            gap: 10px !important;
+          }
+          div[style*='#631E44'] .contact-separator {
+            display: none !important;
+          }
+          div[style*='#631E44'] .contact-divider {
+            display: block !important;
+            width: 100% !important;
+            height: 1px !important;
+            background-color: rgba(255,255,255,0.15) !important;
+            margin: 0 !important;
+          }
+          div[style*='#631E44'] a {
+            font-size: 1.1rem !important;
+            margin: 0 5px 0 0 !important;
+          }
+          
+          /* Bottom bar - Compact mobile layout */
+          div[style*='#14010A'] {
+            padding: 12px 0 !important;
+          }
+          div[style*='#14010A'] .container {
+            padding: 0 12px !important;
+          }
+          div[style*='#14010A'] .row {
+            gap: 8px !important;
+          }
+          div[style*='#14010A'] .col-md-6 {
+            font-size: 0.75rem !important;
+          }
+          div[style*='#14010A'] a {
+            font-size: 0.75rem !important;
+            margin: 0 12px 0 0 !important;
+          }
+        }
+        
+        @media (max-width: 468px) {
+          /* Ultra-specific fixes for 468px devices */
+          div[style*='#631E44'] {
+            padding: 10px 0 !important;
+          }
+          div[style*='#631E44'] .container {
+            padding: 0 10px !important;
+          }
+          div[style*='#631E44'] .col-md-6 {
+            font-size: 0.75rem !important;
+          }
+          div[style*='#631E44'] .contact-info-container {
+            flex-direction: column !important;
+            align-items: flex-start !important;
+            gap: 8px !important;
+            white-space: nowrap !important;
+          }
+          div[style*='#631E44'] .contact-separator {
+            display: none !important;
+          }
+          div[style*='#631E44'] .contact-divider {
+            display: block !important;
+            width: 100% !important;
+            height: 1px !important;
+            background-color: rgba(255,255,255,0.12) !important;
+            margin: 0 !important;
+          }
+          div[style*='#631E44'] .contact-email,
+          div[style*='#631E44'] .contact-phone {
+            font-size: 0.75rem !important;
+            white-space: nowrap !important;
+          }
+          div[style*='#631E44'] a {
+            font-size: 1rem !important;
+            margin: 0 4px 0 0 !important;
+          }
+        }
+        
+        @media (max-width: 466px) {
+          /* Specific fixes for 466px devices - increased gap and font size */
+          div[style*='#631E44'] {
+            padding: 12px 0 !important;
+          }
+          div[style*='#631E44'] .container {
+            padding: 0 12px !important;
+          }
+          div[style*='#631E44'] .col-md-6 {
+            font-size: 0.9rem !important;
+          }
+          div[style*='#631E44'] .contact-info-container {
+            flex-direction: column !important;
+            align-items: flex-start !important;
+            gap: 16px !important;
+            white-space: nowrap !important;
+          }
+          div[style*='#631E44'] .contact-separator {
+            display: none !important;
+          }
+          div[style*='#631E44'] .contact-email,
+          div[style*='#631E44'] .contact-phone {
+            font-size: 0.9rem !important;
+            white-space: nowrap !important;
+          }
+          div[style*='#631E44'] a {
+            font-size: 1.1rem !important;
+            margin: 0 6px 0 0 !important;
           }
         }
       `}</style>

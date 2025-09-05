@@ -132,6 +132,41 @@ const ProductCard = ({
               font-size: 0.8rem;
             }
           }
+          
+          @media (max-width: 480px) {
+            .product-card-mobile {
+              border-radius: 12px;
+            }
+            .shloka-mobile {
+              font-size: 0.6rem;
+              max-width: 85%;
+              gap: 5px;
+              top: 12px;
+              left: 12px;
+            }
+            .translate-icon {
+              width: 32px !important;
+              height: 32px !important;
+            }
+            .tag-mobile {
+              font-size: 0.65rem;
+              padding: 3px 8px;
+              top: 8px;
+              right: 8px;
+            }
+            .content-mobile {
+              padding: 0.75rem;
+            }
+            .title-mobile {
+              font-size: 0.9rem;
+              margin-bottom: 6px;
+              margin-top: 12px;
+            }
+            .desc-mobile {
+              font-size: 0.75rem;
+              margin-bottom: 8px;
+            }
+          }
         `}</style>
         <div className="card w-100 product-card-mobile" style={style}>
           {/* Shloka - Optional */}
@@ -296,6 +331,44 @@ const ProductCard = ({
           }
           .desc-desktop {
             font-size: 0.8rem;
+          }
+        }
+        
+        @media (max-width: 480px) {
+          .product-card-desktop {
+            height: 280px !important;
+            border-radius: 12px;
+          }
+          .shloka-desktop {
+            font-size: 0.6rem;
+            max-width: 85%;
+            gap: 5px;
+            top: 12px;
+            left: 12px;
+          }
+          .translate-icon-desktop {
+            width: 32px !important;
+            height: 32px !important;
+          }
+          .tag-desktop {
+            font-size: 0.65rem;
+            padding: 3px 8px;
+            top: 8px;
+            right: 8px;
+          }
+          .content-desktop {
+            padding: 0.75rem;
+          }
+          .title-desktop {
+            font-size: 0.9rem;
+            margin-bottom: 6px;
+            margin-top: 12px;
+            padding-left: 8px;
+          }
+          .desc-desktop {
+            font-size: 0.75rem;
+            margin-bottom: 8px;
+            padding-left: 8px;
           }
         }
       `}</style>

@@ -71,7 +71,23 @@ html, body {
 }
 @media (max-width: 480px) {
   .home-hero {
-    min-height: 90vh !important;
-    height: 90svh !important;
+    min-height: 85vh !important;
+    height: 85svh !important;
+  }
+  
+  .half-card {
+    height: 180px;
+    border-radius: 12px;
+  }
+  
+  .full-card {
+    height: 260px;
+    border-radius: 15px;
+  }
+  
+  .left-text-strip {
+    padding-left: 0.75rem !important;
+    padding-top: 1.25rem !important;
+    padding-bottom: 1.25rem !important;
   }
 }

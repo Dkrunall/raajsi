@@ -291,8 +291,9 @@ export default function FeaturedProducts() {
           className="position-absolute"
           style={{
             top: "clamp(80px, 12vh, 120px)",
-            left: "clamp(24px, 6vw, 80px)",
-            maxWidth: 900,
+            left: "clamp(16px, 4vw, 80px)",
+            right: "clamp(16px, 4vw, 80px)",
+            maxWidth: "min(900px, calc(100vw - 32px))",
             pointerEvents: "none",
           }}
         >
@@ -321,8 +322,9 @@ export default function FeaturedProducts() {
               fontFamily: "Avenir, sans-serif",
               fontSize: "clamp(25px, 2vw, 30px)",
               lineHeight: 1.6,
-              maxWidth: 700,
+              maxWidth: "min(700px, calc(100% - 16px))",
               textShadow: "0 1px 12px rgba(0,0,0,0.45)",
+              paddingRight: "8px",
             }}
           >
             शरीरमाद्यं खलु धर्मसाधनम्।
@@ -1305,6 +1307,56 @@ export default function FeaturedProducts() {
             .testimonial-arrow-right {
               font-size: 1.2rem !important;
               margin-right: 10px !important;
+            }
+          }
+        `}</style>
+        
+        <style jsx>{`
+          @media (max-width: 480px) {
+            :global(.position-absolute) {
+              left: clamp(12px, 3vw, 16px) !important;
+              right: 12px !important;
+              max-width: calc(100vw - 24px) !important;
+              padding-right: 6px !important;
+            }
+            
+            :global(.position-absolute h1) {
+              font-size: clamp(18px, 4.5vw, 24px) !important;
+              line-height: 1.15 !important;
+              margin-top: 40px !important;
+              padding-right: 6px !important;
+            }
+            
+            :global(.position-absolute p) {
+              font-size: clamp(20px, 1.8vw, 24px) !important;
+              line-height: 1.4 !important;
+              margin-top: 8px !important;
+              max-width: calc(100% - 6px) !important;
+              padding-right: 6px !important;
+            }
+          }
+          
+          @media (max-width: 468px) {
+            :global(.position-absolute) {
+              left: 10px !important;
+              right: 10px !important;
+              max-width: calc(100vw - 20px) !important;
+              padding-right: 4px !important;
+            }
+            
+            :global(.position-absolute h1) {
+              font-size: 16px !important;
+              line-height: 1.1 !important;
+              margin-top: 35px !important;
+              padding-right: 4px !important;
+            }
+            
+            :global(.position-absolute p) {
+              font-size: 18px !important;
+              line-height: 1.3 !important;
+              margin-top: 6px !important;
+              max-width: calc(100% - 4px) !important;
+              padding-right: 4px !important;
             }
           }
         `}</style>

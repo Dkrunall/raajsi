@@ -339,6 +339,67 @@ export default function ProductPage({ onAddToCart }) {
           :global(img[src="/left-design.png"]), :global(img[src="/right-design.png"]) { display: none !important; }
           .related-title { font-size: 1.5rem !important; }
         }
+        
+        @media (max-width: 480px) {
+          .container {
+            padding-left: 12px !important;
+            padding-right: 12px !important;
+          }
+          
+          .pdp-title {
+            font-size: clamp(1.3rem, 2.2vw, 1.8rem) !important;
+          }
+          
+          .pdp-subtle {
+            font-size: 0.85rem !important;
+            margin-bottom: 8px !important;
+          }
+          
+          .pdp-price {
+            font-size: 1.8rem !important;
+          }
+          
+          .gallery-nav-btn {
+            width: 30px !important;
+            height: 30px !important;
+            font-size: 18px !important;
+          }
+          
+          .gallery-nav-btn.start-0 { left: 8px; }
+          .gallery-nav-btn.end-0 { right: 8px; }
+          
+          .qty-input {
+            width: 56px !important;
+            font-size: 0.9rem !important;
+          }
+          
+          .nav {
+            gap: 16px !important;
+          }
+          
+          .nav-link {
+            font-size: 0.9rem !important;
+            padding: 8px 12px !important;
+          }
+          
+          .tab-content h4 {
+            font-size: 1.1rem !important;
+          }
+          
+          .tab-content p {
+            font-size: 0.85rem !important;
+            line-height: 1.6 !important;
+            padding: 0 8px !important;
+          }
+          
+          .related-title {
+            font-size: 1.3rem !important;
+          }
+          
+          .breadcrumb {
+            font-size: 0.85rem !important;
+          }
+        }
       `}</style>
       </div>
     </Navbar>

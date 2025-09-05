@@ -635,14 +635,22 @@ export default function HomePage({ onAddToCart }) {
             padding: 15px !important;
             max-width: 90% !important;
           }
+          
+          /* Gradient text consistency for mobile */
+          p[style*="background-clip"] {
+            background: linear-gradient(45deg, rgb(111, 87, 42) 0%,rgb(111, 87, 42) 30%, rgb(213, 167, 81) 100%) !important;
+            background-clip: text !important;
+            -webkit-background-clip: text !important;
+            -webkit-text-fill-color: transparent !important;
+          }
         }
 
         @media (max-width: 480px) {
           .custom-overlay-text {
-            font-size: 16px !important;
-            line-height: 125% !important;
-            padding: 10px !important;
-            max-width: 95% !important;
+            font-size: 14px !important;
+            line-height: 120% !important;
+            padding: 8px !important;
+            max-width: 96% !important;
           }
         }
       `}</style>
@@ -740,50 +748,50 @@ export default function HomePage({ onAddToCart }) {
         
         @media (max-width: 480px) {
           #royal-indulgence-section {
-            margin-top: 20px !important;
-            padding-top: 60px !important;
-            padding-bottom: 30px !important;
+            margin-top: 15px !important;
+            padding-top: 50px !important;
+            padding-bottom: 25px !important;
           }
           
           .step-royal-row h2 {
-            font-size: 1.2rem !important;
-            padding: 0 5px !important;
+            font-size: 1.1rem !important;
+            padding: 0 3px !important;
             white-space: nowrap !important;
             margin: 0 !important;
           }
           
           .step-royal-row h2 span {
-            font-size: 1.4rem !important;
+            font-size: 1.3rem !important;
           }
           
           .step-royal-row img {
-            max-width: 30px !important;
+            max-width: 24px !important;
             height: auto !important;
           }
           
           #royal-indulgence-section .container {
-            padding: 0 10px !important;
+            padding: 0 8px !important;
           }
           
           #royal-indulgence-section .row {
-            padding: 15px 5px !important;
+            padding: 12px 3px !important;
           }
           
           #royal-indulgence-section .col-md-7 {
-            padding: 0 5px !important;
+            padding: 0 3px !important;
           }
           
           #royal-indulgence-section h5 {
-            font-size: 0.9rem !important;
+            font-size: 0.85rem !important;
           }
           
           #royal-indulgence-section h5 span {
-            font-size: 1.1rem !important;
+            font-size: 1rem !important;
           }
           
           #royal-indulgence-section p {
-            font-size: 0.8rem !important;
-            padding: 0 5px !important;
+            font-size: 0.75rem !important;
+            padding: 0 3px !important;
           }
         }
       `}</style>
@@ -852,65 +860,65 @@ export default function HomePage({ onAddToCart }) {
         
         @media (max-width: 480px) {
           #our-essence h2 {
-            font-size: 1.5rem !important;
+            font-size: 1.4rem !important;
           }
           #our-essence p {
-            font-size: 0.9rem !important;
+            font-size: 0.85rem !important;
           }
           #our-essence p[style*="font-devanagari"] {
-            font-size: 0.85rem !important;
-            line-height: 1.25 !important;
-            margin-bottom: 10px !important;
-            padding: 0 3px !important;
+            font-size: 0.8rem !important;
+            line-height: 1.2 !important;
+            margin-bottom: 8px !important;
+            padding: 0 2px !important;
           }
           #our-essence p[style*="marginTop"] {
-            margin-top: 10px !important;
+            margin-top: 8px !important;
           }
           #our-essence .fst-italic {
-            font-size: 0.8rem !important;
+            font-size: 0.75rem !important;
           }
           #our-essence div[style*="background-image"] {
-            height: 38vh !important;
-            min-height: 200px !important;
-            max-height: 320px !important;
+            height: 35vh !important;
+            min-height: 180px !important;
+            max-height: 300px !important;
             width: 100% !important;
             margin: 0 !important;
             background-position: 50% !important;
             background-size: cover !important;
           }
           .royal-promise-section {
-            min-height: 450px !important;
-            max-width: 98% !important;
-            margin: 20px auto !important;
-            border-radius: 12px !important;
-            padding: 15px 0 !important;
+            min-height: 420px !important;
+            max-width: 97% !important;
+            margin: 15px auto !important;
+            border-radius: 10px !important;
+            padding: 12px 0 !important;
           }
           .royal-promise-section .container {
-            padding: 0 10px !important;
+            padding: 0 8px !important;
           }
           .royal-promise-section h3 {
-            font-size: 1.5rem !important;
-            margin-bottom: 12px !important;
+            font-size: 1.4rem !important;
+            margin-bottom: 10px !important;
           }
           .royal-promise-section h3 span {
-            font-size: 1.7rem !important;
+            font-size: 1.6rem !important;
           }
           .royal-promise-section p {
-            font-size: 0.8rem !important;
-            padding: 0 5px !important;
-            margin: 0 auto 12px auto !important;
+            font-size: 0.75rem !important;
+            padding: 0 3px !important;
+            margin: 0 auto 10px auto !important;
           }
           .royal-promise-section .fst-italic {
-            font-size: 0.9rem !important;
+            font-size: 0.85rem !important;
           }
           .royal-promise-section .btn {
-            width: 140px !important;
-            height: 40px !important;
-            font-size: 0.9rem !important;
+            width: 130px !important;
+            height: 36px !important;
+            font-size: 0.85rem !important;
           }
           .royal-promise-section img[alt="Royal Promise"] {
-            max-width: 95% !important;
-            max-height: 220px !important;
+            max-width: 93% !important;
+            max-height: 200px !important;
           }
         }
       `}</style>
@@ -1466,6 +1474,48 @@ export default function HomePage({ onAddToCart }) {
             vertical-align: middle !important;
           }
         }
+        
+        @media (max-width: 480px) {
+          .mobile-featured-card {
+            width: 90vw !important;
+            max-width: 90vw !important;
+            height: 380px !important;
+            border-radius: 12px !important;
+          }
+          
+          .mobile-card-container .btn {
+            max-width: 160px !important;
+            height: 34px !important;
+            font-size: 0.85rem !important;
+            padding: 0 16px !important;
+          }
+          
+          .mobile-card-container .position-relative {
+            height: 45px !important;
+          }
+          
+          .mobile-card-container .position-absolute.btn {
+            width: 34px !important;
+            height: 34px !important;
+            font-size: 16px !important;
+          }
+          
+          .mobile-featured-card div[style*="fontSize: \"0.8rem\""] {
+            font-size: 0.7rem !important;
+            max-width: 80% !important;
+            line-height: 1.3 !important;
+          }
+          
+          .mobile-featured-card h5 {
+            font-size: 0.95rem !important;
+            margin-bottom: 6px !important;
+          }
+          
+          .mobile-featured-card p {
+            font-size: 0.8rem !important;
+            margin-bottom: 8px !important;
+          }
+        }
         @media (max-width: 768px) {
           img[src="/left-design.png"],
           img[src="/right-design.png"] {
@@ -1616,10 +1666,10 @@ export default function HomePage({ onAddToCart }) {
                   <div
                     className="card mobile-featured-card"
                     style={{
-                      width: "85vw",
-                      maxWidth: "85vw",
-                      height: "450px",
-                      borderRadius: "15px",
+                      width: "92vw",
+                      maxWidth: "92vw",
+                      height: "400px",
+                      borderRadius: "12px",
                       backgroundImage: `url(${
                         sectionCards[mobileCardIndex]?.image || sectionCards[0]?.image
                       })`,
@@ -1653,10 +1703,10 @@ export default function HomePage({ onAddToCart }) {
                         top: "15px",
                         left: "15px",
                         color: "#fff",
-                        fontSize: "0.85rem",
+                        fontSize: "0.8rem",
                         fontFamily: "Georgia, serif",
-                        maxWidth: "70%",
-                        lineHeight: "1.5",
+                        maxWidth: "75%",
+                        lineHeight: "1.4",
                         textShadow: "0 2px 8px rgba(0, 0, 0, 0.9), 0 0 20px rgba(0, 0, 0, 0.5)",
                         fontWeight: "500",
                         letterSpacing: "0.5px",
@@ -1731,14 +1781,14 @@ export default function HomePage({ onAddToCart }) {
                         backgroundColor: "#BA7E38",
                         color: "white",
                         borderRadius: "30px",
-                        maxWidth: "194px",
-                        maxHeight: "52px",
-                        height: "40px",
-                        minHeight: "40px",
-                        lineHeight: "40px",
-                        padding: "0 24px",
+                        maxWidth: "170px",
+                        maxHeight: "44px",
+                        height: "36px",
+                        minHeight: "36px",
+                        lineHeight: "36px",
+                        padding: "0 20px",
                         fontWeight: 500,
-                        fontSize: "1rem",
+                        fontSize: "0.9rem",
                       }}
                     >
                       VIEW PRODUCT
@@ -2335,22 +2385,25 @@ export default function HomePage({ onAddToCart }) {
         }
         @media (max-width: 480px) {
           .faq-section {
-            padding-top: 40px !important;
-            padding-bottom: 40px !important;
-            margin-top: 20px !important;
-            margin-bottom: 20px !important;
+            padding-top: 35px !important;
+            padding-bottom: 35px !important;
+            margin-top: 15px !important;
+            margin-bottom: 15px !important;
           }
           .faq-section h2 {
-            font-size: 1.1rem !important;
+            font-size: 1rem !important;
           }
           .faq-section p {
-            font-size: 14px !important;
+            font-size: 0.8rem !important;
           }
           .faq-section .btn {
-            font-size: 14px !important;
+            font-size: 0.8rem !important;
           }
           .faq-section img {
-            max-width: 20px !important;
+            max-width: 18px !important;
+          }
+          .faq-section .accordion {
+            max-width: 98% !important;
           }
         }
       `}</style>

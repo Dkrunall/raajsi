@@ -80,6 +80,47 @@ export default function PrivacyPolicy() {
             font-size: 0.9rem;
           }
         }
+        
+        @media (max-width: 480px) {
+          .container {
+            padding-left: 15px;
+            padding-right: 15px;
+            padding-top: 90px;
+            margin: 0 auto;
+          }
+          
+          .title {
+            font-size: 1.3rem;
+            line-height: 1.3;
+            margin-bottom: 10px;
+          }
+          
+          .subtitle {
+            font-size: 0.9rem;
+            line-height: 1.4;
+          }
+          
+          .section {
+            margin-bottom: 25px;
+          }
+          
+          .section-title {
+            font-size: 1rem;
+            margin-bottom: 12px;
+            line-height: 1.3;
+          }
+          
+          .content {
+            font-size: 0.85rem;
+            line-height: 1.5;
+            margin-bottom: 15px;
+          }
+          
+          .header {
+            margin-bottom: 30px;
+            padding-bottom: 15px;
+          }
+        }
       `}</style>
 
       <div className="container">
